@@ -17,12 +17,7 @@ enterButton.addEventListener('click', function (event) {
     document.body.classList.remove('body-blue');
 });
 
-filter.addEventListener('change', function (event) {
-    if (event.target.value === 'personajes') {
-        //const orderedData = data.films.sort();
-        //createFilms(orderedData);
-    }
-});
+
 
 function createFilms(data) {
     root.innerHTML = '';
@@ -41,3 +36,25 @@ function createFilms(data) {
         </figure>`;
     }
 }
+const dataGhibli = data.films;
+
+const charactersRoot = document.getElementById("characters-small-container");
+
+function printDataCharacters(array) {
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array[i].people.length; j++) {
+            //console.log(array[i].people.length);
+            charactersRoot.innerHTML += `<div class="characters-each">
+     
+       <img src="${array[i].people[j].img}" class="poster-ch">
+
+         <h3>${array[i].people[j].name}</h3> 
+         <hr>
+         <p><strong>Age</strong>:  ${array[i].people[j].age}</p>
+         <p><strong>Specie</strong>: ${array[i].people[j].specie}</p>
+         <p><strong>Gender</strong>: ${array[i].people[j].gender}</p>
+        </div>`;
+        }
+    }
+}
+printDataCharacters(dataGhibli);
