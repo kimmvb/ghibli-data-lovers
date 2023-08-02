@@ -1,42 +1,101 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Index</title>
-    <link rel="stylesheet" href="./home.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Lexend+Giga:wght@100;300;500&display=swap" rel="stylesheet">
-  </head>
+<html lang="es">
 
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FanArtStudioGhibli</title>
+  <link rel="stylesheet" href="/src/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Lexend+Giga:wght@100;300;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="body-blue">
+
+  <!--INICIO DE PAGINA -->
+  <section id="index" class="show">
     <header>
-      <figure class="index-titulo">
+      <figure class="index-title">
         <img src="./img/Logo.Titulo.png" alt="">
       </figure>
     </header>
-
     <main>
-      <div class="letras">
-      <div class="p1">E</div>
-      <div class="p2">N </div>
-      <div class="p3">T</div>
-      <div class="p4">R</div>
-      <div class="letras2">
-        <div class="p5">A </div>
-        <div class="p6">R</div>
-      </div>
-      
-      </div>
-      
-      <figure class="monito-entrar">
-        <img src="./img/Susuwataris.png" alt=""></figure>
-        <figure class="conejito-pie">
-          <img src="./Menu/img/chibi&susuwatari.png" alt="">
-        
+      <a href="#" id="action-enter">
+        <div class="letter">
+          <div class="p1">E</div>
+          <div class="p2">N </div>
+          <div class="p3">T</div>
+          <div class="p4">R</div>
+          <div class="letter2">
+            <div class="p5">A </div>
+            <div class="p6">R</div>
+          </div>
+        </div>
+        <figure class="cartoon-enter">
+          <img src="./img/Susuwataris.png" alt="">
         </figure>
+      </a>
+      <figure class="rabbit-footer">
+        <img src="./img/chibi&susuwatari.png" alt="">
+      </figure>
+    </main>
+  </section>
+  <!--INICIO DE PAGINA -->
+
+  <section id="movies" class="hidden">
+    <header>
+      <figure>
+        <img class="logo-tittle" src="./img/Logotitulo00.png" alt="Logo">
+      </figure>
+    </header>
+
+    <nav class="menu">
+      <ul class="menu-button">
+        <li><a href="#">Personajes</a></li>
+        <li><a href="#">Directores</a></li>
+        <li><a href="#">Productores</a></li>
+        <li><a href="#">Vehiculos</a></li>
+        <li><a href="#">Locaciones</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <div class="box-filter">
+        <select name="filter" id="button-filter">
+          <option value="">Ordenar</option>
+          <option value="personajes">Personajes (A-Z)</option>
+          <option value="directores">Directores (A-Z)</option>
+          <option value="productores">Productores (A-Z)</option>
+          <option value="locaciones">Locaciones (A-Z)</option>
+        </select>
+      </div>
+    </div>
+
+    <main class="main-container">
+      <div class="movie-container" id="root"></div>
     </main>
 
-    <script src="main.js" type="module"></script>
-    </body>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <footer>
+      <figure class="image-footer">
+        <img src="./img/chibi&totoroazul.png" alt="">
+      </figure>
+      <ul>
+        <li>Filmography</li>
+        <li>Contact Us</li>
+        <li>© 2023 The Studio Ghibli Collection. All Rights Reserved.</li>
+      </ul>
+
+    </footer>
+  </section>
+
+  <script src="main.js" type="module"></script>
+</body>
+
 </html>
