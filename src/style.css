@@ -1,0 +1,40 @@
+#characters-big-container {
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+}
+
+#characters-small-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 225px);
+  justify-content: center;
+  gap: 120px 40px;
+  margin-bottom: 350px;
+}
+
+.characters-each {
+  background-color: white;
+  width: 160px;
+  border: 1px solid rgb(209, 206, 206);
+  padding: 30px;
+  margin: 10px;
+  text-align: center;
+  font-size: large;
+  justify-self: center;
+}
+
+
+.poster-ch {
+  width: 100%;
+  object-fit: contain;
+  height: 300px;
+}
+
+.characters-each h3 {
+   height: 40px;
+}
+
+.characters-each p {
+  text-align: left;
+  line-height: 1.6;
+}
