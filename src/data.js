@@ -1,7 +1,8 @@
 // métodos
 
-export const example = () => {
-  return 'example';
+export const aToZ = (data) => {
+
+  return data.sort();
 };
 
 export const anotherExample = () => {
