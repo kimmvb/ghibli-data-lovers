@@ -4,6 +4,7 @@ const sectionHome = document.getElementById("index");
 const sectionMovies = document.getElementById("movies");
 const root = document.getElementById("root");
 const enterButton = document.getElementById("action-enter");
+const containerVehicules = document.getElementById("vehicules-small-container")
 const filter = document.getElementById("button-filter");
 
 createFilms(data);
@@ -34,6 +35,26 @@ function createFilms(data) {
         </figure>`;
     }
 }
+
+function createVehicules() {
+    for (let i = 0; i < data.films.length; i++) {
+        for (let v = 0; v < data.films[i].vehicles.length; v++) {
+            containerVehicules.innerHTML += `<figure class="vehicules-poster">
+            <img src="${data.films[i].vehicles[v].img}" alt="${data.films[i].vehicles[v].name}" />
+        </figure>
+        <figcaption class="info-vehicules">
+     </figcaption>`;
+        }
+    }
+
+}
+
+
+
+
+
+
+
 const dataGhibli = data.films;
 
 const charactersRoot = document.getElementById("characters-small-container");
@@ -54,6 +75,23 @@ function printDataCharacters(array) {
     }
 }
 printDataCharacters(dataGhibli);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //función alfabéticamente ascendente
 function aToZ(array) {
