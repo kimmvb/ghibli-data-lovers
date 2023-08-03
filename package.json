@@ -21,6 +21,8 @@
     "htmlhint": "^1.0.0",
     "jest": "^27.0.1",
     "opener": "^1.5.1",
+    "serve": "^14.2.0",
+    "prettier": "^3.0.0",
     "serve": "^13.0.2"
   },
   "engines": {
@@ -30,5 +32,8 @@
     "createdAt": "2023-07-17T14:15:37.842Z",
     "version": "6.4.0",
     "commit": "4ea26447e1a259476f237a7a6212e3a02409910b"
+  },
+  "dependencies": {
+    "chart.js": "^4.3.2"
   }
 }
