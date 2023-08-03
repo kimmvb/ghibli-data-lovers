@@ -1,0 +1,318 @@
+* {
+    font-family: 'Lato', sans-serif;
+    font-family: 'Lexend Giga', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.body-blue {
+    background-color: #109CEB;
+}
+
+header {
+    text-align: center;
+    background-color: #109CEB;
+    height: 40%;
+}
+
+.index-title {
+    text-align: center;
+
+}
+
+.index-title img {
+    width: 25%;
+
+}
+
+#index {
+    display: block;
+    background-color: #109CEB;
+}
+
+#movies {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.logo-title {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    height: 95px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 190px;
+    color: white;
+
+    font-size: 40px;
+    text-shadow: 2px 1px 0px black;
+}
+
+.letter2 {
+    display: flex;
+    gap: 23px;
+    padding: 26px;
+    margin-top: -28px;
+
+}
+
+
+.p1 {
+    animation: subir 3s infinite;
+    padding: 25px;
+    transform: rotate(325deg);
+}
+
+
+.p2 {
+    animation: subir 3s infinite;
+    transform: rotate(343deg);
+
+}
+
+.p3 {
+    animation: subir 3s infinite;
+    transform: rotate(3deg);
+}
+
+.p4 {
+    animation: subir 3s infinite;
+    transform: rotate(-345deg);
+}
+
+.p5 {
+    animation: subir 3s infinite;
+    transform: rotate(350deg);
+}
+
+.p6 {
+    animation: subir 3s infinite;
+    transform: rotate(326deg)
+}
+
+@keyframes subir {
+
+    0% {
+        margin-top: 28;
+    }
+
+    20% {
+        margin-top: 5;
+
+    }
+
+    25% {
+        margin-top: -8px;
+    }
+
+}
+
+
+.cartoon-enter {
+    text-align: center;
+
+}
+
+.cartoon-enter img {
+    width: 20%;
+}
+
+.rabbit-footer {
+    text-align: left;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.rabbit-footer img {
+    margin: 0;
+    width: 38%;
+}
+
+
+.menu {
+    background-color: black;
+    height: 80px;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.menu-button {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.menu-button a {
+    text-decoration: none;
+    color: rgb(246, 247, 248);
+    text-align: center;
+    font-size: 15px;
+}
+
+.menu-button li {
+    margin-top: 26px;
+}
+
+.menu-button a:hover {
+    color: #109CEB !important;
+
+}
+
+.box-filter {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px;
+}
+
+#button-filter {
+    width: 15rem;
+    height: 30px;
+    border: 2px solid #aaa;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.main-container {
+    width: 100%;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.movie-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 255px);
+    justify-content: center;
+    gap: 120px 40px;
+    margin-bottom: 350px;
+}
+
+.movie-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+figcaption {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #ccc;
+    font-size: 13px;
+}
+
+hr {
+    border: 1px solid #ccc;
+}
+
+
+
+main {
+    text-align: center;
+    margin-top: 90px;
+}
+
+#characters-big-container {
+    width: 100%;
+    margin-top: 100px;
+    text-align: center;
+}
+
+#characters-small-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 225px);
+    justify-content: center;
+    gap: 120px 70px;
+    margin-bottom: 350px;
+}
+
+.characters-each {
+    background-color: white;
+    width: 200px;
+    border: 1px solid rgb(209, 206, 206);
+    padding: 30px;
+    margin: 10px;
+    text-align: center;
+    justify-self: center;
+}
+
+
+.poster-ch {
+    width: 100%;
+    object-fit: contain;
+    height: 300px;
+}
+
+.characters-each h3 {
+    height: 90px;
+}
+
+.characters-each p {
+    text-align: left;
+    line-height: 1.6;
+}
+
+footer {
+    display: flex;
+    background-color: rgba(235, 223, 223, 0.363);
+    text-align: center;
+    height: 50%;
+    font-size: 13px;
+}
+
+footer ul {
+    list-style: none;
+
+}
+
+.imagen-footer img {
+    margin: 0;
+
+    right: 0;
+}
+
+.info {
+    display: none;
+    position: absolute;
+    width: 300px;
+    border-radius: 0 6px 6px 6px;
+    margin-left: 100px;
+    border: 1px solid #000000;
+    padding: 5px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.904);
+    padding: 10px;
+    color: #0a0a0a;
+    font-size: 12px;
+}
+
+.title-tooltip {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#root .poster:hover div.info {
+    display: block;
+}
