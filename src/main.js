@@ -8,11 +8,13 @@ const containerVehicles = document.getElementById("vehicles-small-container")
 const filter = document.getElementById("button-filter");
 const dataGhibli = data.films;
 const charactersRoot = document.getElementById("characters-small-container");
+const locations = document.getElementById("locations-small-container");
+
 
 createFilms(data);
-
 createVehicles(data);
 printDataCharacters(dataGhibli);
+createLocations(data);
 
 
 enterButton.addEventListener("click", function (event) {
@@ -41,14 +43,25 @@ function createFilms(data) {
         </figure>`;
     }
 }
-
-
-
 function createVehicles(data) {
     for (let i = 0; i < data.films.length; i++) {
         for (let v = 0; v < data.films[i].vehicles.length; v++) {
             containerVehicles.innerHTML += `<figure class="vehicles-poster">
             <img src="${data.films[i].vehicles[v].img}" alt="${data.films[i].vehicles[v].id}" />
+             <figcaption>"${data.films[i].vehicles[v].name}"</figcaption>
+             <p>"${data.films[i].vehicles[v].description}"</p>
+        </figure>`;
+
+        }
+    }
+
+}
+
+function createLocations(data) {
+    for (let i = 0; i < data.films.length; i++) {
+        for (let l = 0; l < data.films[i].locations.length; v++) {
+            locations.innerHTML += `<figure class="locations-poster">
+            <img src="${data.films[i].locations[v].img}" alt="${data.films[i].locations[v].id}" />
              <figcaption>"${data.films[i].vehicles[v].name}"</figcaption>
              <p>"${data.films[i].vehicles[v].description}"</p>
         </figure>`;

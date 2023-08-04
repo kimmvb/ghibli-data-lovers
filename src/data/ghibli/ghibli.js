@@ -298,7 +298,7 @@ export default {
         {
           "id": "591524bc-04fe-4e60-8d61-2425e42ffb2a",
           "name": "Chu Totoro",
-          "img": "https://www.ghibli.jp/gallery/thumb-totoro019.png",
+          "img": "http://confusedkittysewing.com/wp-content/uploads/2015/05/chu_totoro_main_ref.jpg",
           "gender": "NA",
           "age": "",
           "eye_color": "Black",
@@ -308,7 +308,7 @@ export default {
         {
           "id": "c491755a-407d-4d6e-b58a-240ec78b5061",
           "name": "Chibi Totoro",
-          "img": "https://static.wikia.nocookie.net/studio-ghibli/images/c/c5/Little_Totoro_spirit_moving.gif",
+          "img": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b905ee1c-fa12-4df3-83d9-a2290104d84e/d83stbx-d6b12b51-2b59-4279-8973-f6956681bb12.jpg/v1/fill/w_894,h_894,q_70,strp/chibi_totoro_and_his_friend__the_yellow_butterfly_by_pocketsizedobserver_d83stbx-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcL2I5MDVlZTFjLWZhMTItNGRmMy04M2Q5LWEyMjkwMTA0ZDg0ZVwvZDgzc3RieC1kNmIxMmI1MS0yYjU5LTQyNzktODk3My1mNjk1NjY4MWJiMTIuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.3Gns2dQAu3ZEOizDuJ0vh5goVdZKKi_mrR6scpSsfe8",
           "gender": "NA",
           "age": "",
           "eye_color": "Black",
