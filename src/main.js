@@ -5,17 +5,20 @@ const sectionMovies = document.getElementById("movies");
 const root = document.getElementById("root");
 const enterButton = document.getElementById("action-enter");
 const containerVehicles = document.getElementById("vehicles-small-container")
-const filter = document.getElementById("button-filter");
 const dataGhibli = data.films;
 const charactersRoot = document.getElementById("characters-small-container");
 const locations = document.getElementById("locations-small-container");
+// const producers = document.getElementById("producers-small-container")
+
+
+// const filter = document.getElementById("button-filter");
+const filterProducer = document.getElementById('button-filter-producer');
 
 
 createFilms(data);
 createVehicles(data);
 printDataCharacters(dataGhibli);
 createLocations(data);
-
 
 enterButton.addEventListener("click", function (event) {
     event.preventDefault();
@@ -25,6 +28,11 @@ enterButton.addEventListener("click", function (event) {
     sectionMovies.classList.add("show");
     document.body.classList.remove("body-blue");
 });
+
+filterProducer.addEventListener('change', function (event) {
+    filterForProducers(data, event.target.value);
+});
+
 
 function createFilms(data) {
     root.innerHTML = "";
@@ -46,7 +54,7 @@ function createFilms(data) {
 function createVehicles(data) {
     for (let i = 0; i < data.films.length; i++) {
         for (let v = 0; v < data.films[i].vehicles.length; v++) {
-            containerVehicles.innerHTML += `<figure class="vehicles-poster">
+            containerVehicles.innerHTML += `<figure class = "content">
             <img src="${data.films[i].vehicles[v].img}" alt="${data.films[i].vehicles[v].id}" />
              <figcaption>"${data.films[i].vehicles[v].name}"</figcaption>
              <p>"${data.films[i].vehicles[v].description}"</p>
@@ -59,11 +67,11 @@ function createVehicles(data) {
 
 function createLocations(data) {
     for (let i = 0; i < data.films.length; i++) {
-        for (let l = 0; l < data.films[i].locations.length; v++) {
-            locations.innerHTML += `<figure class="locations-poster">
-            <img src="${data.films[i].locations[v].img}" alt="${data.films[i].locations[v].id}" />
-             <figcaption>"${data.films[i].vehicles[v].name}"</figcaption>
-             <p>"${data.films[i].vehicles[v].description}"</p>
+        for (let l = 0; l < data.films[i].locations.length; l++) {
+            locations.innerHTML += `<figure class = "content">
+            <img src="${data.films[i].locations[l].img}" alt="${data.films[i].locations[l].id}" />
+             <figcaption>"${data.films[i].locations[l].name}"</figcaption>
+             <p>"${data.films[i].locations[l].description}"</p>
         </figure>`;
 
         }
@@ -71,31 +79,34 @@ function createLocations(data) {
 
 }
 
-
 function printDataCharacters(array) {
     for (let i = 0; i < array.length; i++) {
         for (let j = 0; j < array[i].people.length; j++) {
             //console.log(array[i].people.length);
-            charactersRoot.innerHTML += `<div class="characters-each">
-         <img src="${array[i].people[j].img}" class="poster-ch">
-         <h3>${array[i].people[j].name}</h3> 
+            charactersRoot.innerHTML += `<figure class = "content">
+         <img src="${array[i].people[j].img}" alt="${array[i].people[j].id}" />
+         <figcaption>"${array[i].people[j].name}"</figcaption>
          <hr>
-         <p><strong>Age</strong>:  ${array[i].people[j].age}</p>
-         <p><strong>Specie</strong>: ${array[i].people[j].specie}</p>
-         <p><strong>Gender</strong>: ${array[i].people[j].gender}</p>
-        </div>`;
+            <p><strong>Age</strong>:  ${array[i].people[j].age}</p>
+            <p><strong>Specie</strong>: ${array[i].people[j].specie}</p>
+            <p><strong>Gender</strong>: ${array[i].people[j].gender}</p>
+        </figure>`;
         }
     }
 }
 
 
-
-
-
-
-
-
-
+// filtrar por productor
+function filterForProducers(data, producerName) {
+    if (producerName === 'todos') {
+        createFilms(data);
+    } else {
+        const dataFiltered = data.films.filter(function (film) {
+            return film.producer === producerName
+        });
+        createFilms({ films: dataFiltered });
+    }
+}
 
 
 
