@@ -1,9 +1,9 @@
 export const showTab = (tabName, tabContents) => {
-  tabContents.forEach(function(tab) {
-    tab.style.display = 'none';
+  tabContents.forEach(function (tab) {
+    tab.style.display = "none";
   });
   const selectedTab = document.getElementById(tabName);
-  selectedTab.style.display = 'block'
+  selectedTab.style.display = "block";
 };
 
 // Se crea la función showTab cuyos parámetros son tabName (nombre de la pestaña) y tabContent (contenido de la pestaña)
