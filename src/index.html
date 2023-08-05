@@ -53,11 +53,12 @@
 
     <nav class="menu">
       <ul class="menu-button">
-        <li><a href="#">Personajes</a></li>
-        <li><a href="#">Directores</a></li>
-        <li><a href="#">Productores</a></li>
-        <li><a href="#">Vehiculos</a></li>
-        <li><a href="#">Locaciones</a></li>
+        <li><a href="#" data-tab="main-container">Movies</a></li>
+        <li><a href="#" data-tab="characters-big-container">Characters</a></li>
+        <li><a href="#" data-tab="directors-big-container">Directors</a></li>
+        <li><a href="#" data-tab="producers-big-container">Producers</a></li>
+        <li><a href="#" data-tab="vehicles-big-container">Vehicles</a></li>
+        <li><a href="#" data-tab="locations-big-container">Locations</a></li>
       </ul>
     </nav>
 
@@ -65,23 +66,19 @@
       <div class="box-filter">
         <select name="filter" id="button-filter">
           <option value="">Ordenar</option>
-          <option value="personajes">Personajes (A-Z)</option>
-          <option value="directores">Directores (A-Z)</option>
-          <option value="productores">Productores (A-Z)</option>
-          <option value="locaciones">Locaciones (A-Z)</option>
+          <option value="personajes">A-Z</option>
+          <option value="directores">Z-A</option>
+          <option value="productores">Newer to Older</option>
+          <option value="locaciones">Older to Newer</option>
         </select>
       </div>
     </div>
 
-    <main class="main-container">
+    <main id="main-container" class="tab-content" >
       <div class="movie-container" id="root"></div>
     </main>
-    <br />
-    <br />
-    <br />
-    <hr />
-    <section id="characters-big-container">
-      <div id="characters-small-container"></div>
+    <section id="characters-big-container" class="tab-content">
+      <div id="characters-small-container" class="tab-content-2"></div>
     </section>
     <hr />
 
