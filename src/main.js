@@ -1,10 +1,31 @@
 import data from "./data/ghibli/ghibli.js";
+import { showTab } from "./data.js"
+
+//Pestaña a pestaña
+document.querySelectorAll('a[data-tab]').forEach(link => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const tabName = event.target.dataset.tab;
+        const tabContents = document.querySelectorAll('.tab-content');
+        showTab(tabName, tabContents)
+    })
+})
+// Con un querySelectorAll se llaman a todos los elementos que cumplan con el atrubuto 'data-tab' en las etiquetas 'a'(enlace).
+//Con la función .forEach() se iteran todos los elementos dentro de un array, tiene como parámetro 'link' y ese 'link' responderá a un event listener que se accionará con un click.
+//El evento (conectado con una función de flechas, teniendo como parámetro 'event') que ocurrirá cuando se haga click es el siguiente: 
+//1. Se utiliza .preventDefault() para eeevitar que el enlace realice su acción predeterminada de navegar a una nueva página.
+//2. Se crea un variable que contiene el evento, con el target (representa el elemento HTML en el cual ocurrió el evento), dataset (propiedad especial del objeto target que nos permite acceder a los atributos de datos (atributos con el prefijo data-) del elemento HTML) y tab.
+//3.Se accede a la clase 'tab-content' a través de un querySelectorAll.
+//4. Se llama a la función "showTab" con los parámetros de las dos varibles anteriores.
+
+//Index a home
 
 const sectionHome = document.getElementById("index");
 const sectionMovies = document.getElementById("movies");
 const root = document.getElementById("root");
 const enterButton = document.getElementById("action-enter");
 const containerVehicles = document.getElementById("vehicles-small-container")
+//const filter = document.getElementById("button-filter");
 const dataGhibli = data.films;
 const charactersRoot = document.getElementById("characters-small-container");
 const locations = document.getElementById("locations-small-container");
@@ -96,66 +117,50 @@ function printDataCharacters(array) {
 }
 
 
-// filtrar por productor
-function filterForProducers(data, producerName) {
-    if (producerName === 'todos') {
-        createFilms(data);
-    } else {
-        const dataFiltered = data.films.filter(function (film) {
-            return film.producer === producerName
-        });
-        createFilms({ films: dataFiltered });
-    }
+
+
+
+
+
+
+
+
+
+
+//función-->filtro-->data
+
+function sortAToZTitle(data) {
+    data.sort((a, b) => a.title < b.title ? -1 : 1);
 }
+sortAToZTitle(dataGhibli)
 
+//console.log(dataGhibli.sort((a,b) => a.title < b.title ? -1 : 1))
 
-
-//función alfabéticamente ascendente
-function aToZ(array) {
-    const titles = [];
-    for (let i = 0; i < array.length; i++) {
-        titles.push(array[i].title);
-    }
-    console.log(titles.sort());
+function sortZToATitle(data) {
+    data.sort((a, b) => a.title > b.title ? -1 : 1)
 }
-aToZ(dataGhibli);
+sortZToATitle(dataGhibli)
 
-//función alfabéticamente descendente
-function zToa(array) {
-    const titles = [];
-    for (let i = 0; i < array.length; i++) {
-        titles.push(array[i].title);
-    }
-    console.log(titles.reverse());
+//console.log(dataGhibli.sort((a,b) => a.title > b.title ? -1 : 1))
+
+function sortRDAsc(data) {
+    data.sort((a, b) => a.release_date - b.release_date)
 }
-zToa(dataGhibli);
+sortRDAsc(dataGhibli)
 
-//función años descendente
-function yearsDown(array) {
-    const yearsMovies = [];
-    for (let i = 0; i < array.length; i++) {
-        yearsMovies.push(array[i].release_date);
-    }
-    console.log(
-        yearsMovies.sort(function (a, b) {
-            return a - b;
-        }),
-    );
+//console.log(dataGhibli.sort((a,b) => a.release_date - b.release_date))
+
+function sortRDDesc(data) {
+    data.sort((a, b) => b.release_date - a.release_date)
 }
-yearsDown(dataGhibli);
+sortRDDesc(dataGhibli)
 
-//función años ascendente
-function yearsUp(array) {
-    const yearsMovies = [];
-    for (let i = 0; i < array.length; i++) {
-        yearsMovies.push(array[i].release_date);
-    }
-    console.log(
-        yearsMovies.sort(function (a, b) {
-            return b - a;
-        }),
-    );
-}
-yearsUp(dataGhibli);
+//console.log(dataGhibli.sort((a,b) => b.release_date - a.release_date))
 
-//https://www.freecodecamp.org/espanol/news/ordenar-arreglos-en-javascript-como-usar-el-metodo-sort/
+
+
+
+
+
+
+
