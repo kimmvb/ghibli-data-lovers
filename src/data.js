@@ -13,6 +13,4 @@ export const showTab = (tabName, tabContents) => {
 
 /*export const anotherExample = () => {
   return 'OMG';
-};
-
-
+}*/
