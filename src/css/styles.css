@@ -195,7 +195,7 @@ header {
     margin-top: 20px;
 }
 
-.main-container {
+#main-container {
     width: 100%;
     margin-top: 100px;
     text-align: center;
@@ -316,3 +316,4 @@ footer ul {
 #root .poster:hover div.info {
     display: block;
 }
+
