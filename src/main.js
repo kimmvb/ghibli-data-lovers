@@ -24,23 +24,32 @@ const sectionHome = document.getElementById("index");
 const sectionMovies = document.getElementById("movies");
 const root = document.getElementById("root");
 const enterButton = document.getElementById("action-enter");
+const containerVehicles = document.getElementById("vehicles-small-container")
 //const filter = document.getElementById("button-filter");
+const dataGhibli = data.films;
+const charactersRoot = document.getElementById("characters-small-container");
+const locations = document.getElementById("locations-small-container");
+
 
 createFilms(data);
+createVehicles(data);
+printDataCharacters(dataGhibli);
+createLocations(data);
+
 
 enterButton.addEventListener("click", function (event) {
-  event.preventDefault();
-  sectionHome.classList.remove("show");
-  sectionHome.classList.add("hidden");
-  sectionMovies.classList.remove("hidden");
-  sectionMovies.classList.add("show");
-  document.body.classList.remove("body-blue");
+    event.preventDefault();
+    sectionHome.classList.remove("show");
+    sectionHome.classList.add("hidden");
+    sectionMovies.classList.remove("hidden");
+    sectionMovies.classList.add("show");
+    document.body.classList.remove("body-blue");
 });
 
 function createFilms(data) {
-  root.innerHTML = "";
-  for (let i = 0; i < data.films.length; i++) {
-    root.innerHTML += `<figure class="poster">
+    root.innerHTML = "";
+    for (let i = 0; i < data.films.length; i++) {
+        root.innerHTML += `<figure class="poster">
         <div class="info">
             <p class="title-tooltip"><b>${data.films[i].title}</b></p> 
             <p><b>Rating<b/>: ⭐${data.films[i].rt_score} / <b>Año:</b> ${data.films[i].release_date}</p> 
@@ -52,17 +61,42 @@ function createFilms(data) {
         <img src="${data.films[i].poster}" alt="${data.films[i].title}" />
         <figcaption>${data.films[i].title}</figcaption> 
         </figure>`;
-  }
+    }
 }
-const dataGhibli = data.films;
+function createVehicles(data) {
+    for (let i = 0; i < data.films.length; i++) {
+        for (let v = 0; v < data.films[i].vehicles.length; v++) {
+            containerVehicles.innerHTML += `<figure class="vehicles-poster">
+            <img src="${data.films[i].vehicles[v].img}" alt="${data.films[i].vehicles[v].id}" />
+             <figcaption>"${data.films[i].vehicles[v].name}"</figcaption>
+             <p>"${data.films[i].vehicles[v].description}"</p>
+        </figure>`;
 
-const charactersRoot = document.getElementById("characters-small-container");
+        }
+    }
+
+}
+
+function createLocations(data) {
+    for (let i = 0; i < data.films.length; i++) {
+        for (let l = 0; l < data.films[i].locations.length; v++) {
+            locations.innerHTML += `<figure class="locations-poster">
+            <img src="${data.films[i].locations[v].img}" alt="${data.films[i].locations[v].id}" />
+             <figcaption>"${data.films[i].vehicles[v].name}"</figcaption>
+             <p>"${data.films[i].vehicles[v].description}"</p>
+        </figure>`;
+
+        }
+    }
+
+}
+
 
 function printDataCharacters(array) {
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array[i].people.length; j++) {
-      //console.log(array[i].people.length);
-      charactersRoot.innerHTML += `<div class="characters-each">
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array[i].people.length; j++) {
+            //console.log(array[i].people.length);
+            charactersRoot.innerHTML += `<div class="characters-each">
          <img src="${array[i].people[j].img}" class="poster-ch">
          <h3>${array[i].people[j].name}</h3> 
          <hr>
@@ -70,11 +104,20 @@ function printDataCharacters(array) {
          <p><strong>Specie</strong>: ${array[i].people[j].specie}</p>
          <p><strong>Gender</strong>: ${array[i].people[j].gender}</p>
         </div>`;
+        }
     }
-  }
 }
 
-printDataCharacters(dataGhibli);
+
+
+
+
+
+
+
+
+
+
 
 //función-->filtro-->data
 
