@@ -7,9 +7,9 @@ document.querySelectorAll('a[data-tab]').forEach(link => {
         event.preventDefault();
         const tabName = event.target.dataset.tab;
         const tabContents = document.querySelectorAll('.tab-content');
-        showTab(tabName, tabContents)
-    })
-})
+        showTab(tabName, tabContents);
+    });
+});
 // Con un querySelectorAll se llaman a todos los elementos que cumplan con el atrubuto 'data-tab' en las etiquetas 'a'(enlace).
 //Con la función .forEach() se iteran todos los elementos dentro de un array, tiene como parámetro 'link' y ese 'link' responderá a un event listener que se accionará con un click.
 //El evento (conectado con una función de flechas, teniendo como parámetro 'event') que ocurrirá cuando se haga click es el siguiente: 
@@ -25,14 +25,13 @@ const sectionMovies = document.getElementById("movies");
 const root = document.getElementById("root");
 const enterButton = document.getElementById("action-enter");
 const containerVehicles = document.getElementById("vehicles-small-container")
-//const filter = document.getElementById("button-filter");
 const dataGhibli = data.films;
 const charactersRoot = document.getElementById("characters-small-container");
 const locations = document.getElementById("locations-small-container");
 // const producers = document.getElementById("producers-small-container")
 
 
-// const filter = document.getElementById("button-filter");
+const filter = document.getElementById("button-filter");
 const filterProducer = document.getElementById('button-filter-producer');
 
 
@@ -54,13 +53,29 @@ filterProducer.addEventListener('change', function (event) {
     filterForProducers(data, event.target.value);
 });
 
+filter.addEventListener('change', function (event) {
+
+});
+
+function filterForProducers(data, producerName) {
+    if (producerName === 'todos') {
+        createFilms(data);
+    } else {
+        const dataFiltered = data.films.filter(function (film) {
+            return film.producer === producerName
+        });
+        createFilms({ films: dataFiltered });
+    }
+}
+
+
+
 
 function createFilms(data) {
     root.innerHTML = "";
     for (let i = 0; i < data.films.length; i++) {
         root.innerHTML += `<figure class="poster">
         <div class="info">
-            <p class="title-tooltip"><b>${data.films[i].title}</b></p> 
             <p><b>Rating<b/>: ⭐${data.films[i].rt_score} / <b>Año:</b> ${data.films[i].release_date}</p> 
             <p>${data.films[i].description}</p>
             <br>
@@ -91,8 +106,10 @@ function createLocations(data) {
         for (let l = 0; l < data.films[i].locations.length; l++) {
             locations.innerHTML += `<figure class = "content">
             <img src="${data.films[i].locations[l].img}" alt="${data.films[i].locations[l].id}" />
-             <figcaption>"${data.films[i].locations[l].name}"</figcaption>
-             <p>"${data.films[i].locations[l].description}"</p>
+             <figcaption>${data.films[i].locations[l].name}</figcaption>
+             <p>This area has a climate ${data.films[i].locations[l].climate}</p>
+             <p>and a piece of land of ${data.films[i].locations[l].terrain}</p>
+             <p>It has a water surface of ${data.films[i].locations[l].surface_water}</p>
         </figure>`;
 
         }
@@ -106,7 +123,7 @@ function printDataCharacters(array) {
             //console.log(array[i].people.length);
             charactersRoot.innerHTML += `<figure class = "content">
          <img src="${array[i].people[j].img}" alt="${array[i].people[j].id}" />
-         <figcaption>"${array[i].people[j].name}"</figcaption>
+         <figcaption>${array[i].people[j].name}</figcaption>
          <hr>
             <p><strong>Age</strong>:  ${array[i].people[j].age}</p>
             <p><strong>Specie</strong>: ${array[i].people[j].specie}</p>
@@ -116,15 +133,33 @@ function printDataCharacters(array) {
     }
 }
 
+function yearsDown(array) {
+    const yearsMovies = [];
+    for (let i = 0; i < array.length; i++) {
+        yearsMovies.push(array[i].release_date);
+    }
+    console.log(
+        yearsMovies.sort(function (a, b) {
+            return a - b;
+        })
+    );
+}
 
+yearsDown(dataGhibli);
 
-
-
-
-
-
-
-
+//función años ascendente
+function yearsUp(array) {
+    const yearsMovies = [];
+    for (let i = 0; i < array.length; i++) {
+        yearsMovies.push(array[i].release_date);
+    }
+    console.log(
+        yearsMovies.sort(function (a, b) {
+            return b - a;
+        })
+    );
+}
+yearsUp(dataGhibli);
 
 
 //función-->filtro-->data

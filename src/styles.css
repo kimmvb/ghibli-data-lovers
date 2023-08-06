@@ -181,13 +181,21 @@ header {
 
 }
 
+.filter-container {
+    display: flex;
+    justify-content: end;
+}
+
+.box-filter2,
 .box-filter {
     display: flex;
     justify-content: flex-end;
-    padding: 30px;
+    padding: 15px;
+    margin-top: 25px;
 }
 
-#button-filter {
+#button-filter,
+#button-filter-producer {
     width: 15rem;
     height: 30px;
     border: 2px solid #aaa;
@@ -232,6 +240,14 @@ hr {
 main {
     text-align: center;
     margin-top: 90px;
+}
+
+#characters-big-container,
+#vehicles-big-container,
+#directors-big-container,
+#producers-big-container,
+#locations-big-container {
+    display: none;
 }
 
 .tab-content {

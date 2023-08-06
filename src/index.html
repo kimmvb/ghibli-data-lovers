@@ -55,14 +55,12 @@
       <ul class="menu-button">
         <li><a href="#" data-tab="main-container">Movies</a></li>
         <li><a href="#" data-tab="characters-big-container">Characters</a></li>
-        <li><a href="#" data-tab="directors-big-container">Directors</a></li>
-        <li><a href="#" data-tab="producers-big-container">Producers</a></li>
         <li><a href="#" data-tab="vehicles-big-container">Vehicles</a></li>
         <li><a href="#" data-tab="locations-big-container">Locations</a></li>
       </ul>
     </nav>
 
-    <div>
+    <div class="filter-container">
       <div class="box-filter">
         <select name="filter-producer" id="button-filter-producer">
           <option value="">Filtrar por productor</option>
@@ -74,11 +72,7 @@
           <option value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
         </select>
       </div>
-    </div>
-
-
-    <div>
-      <div class="box-filter">
+      <div class="box-filter2">
         <select name="filter" id="button-filter">
           <option value="">Ordenar</option>
           <option value="personajes">A-Z</option>
@@ -93,9 +87,8 @@
       <div class="movie-container" id="root"></div>
     </main>
     <section id="characters-big-container" class="tab-content">
-      <div id="characters-small-container" class="tab-content-2"></div>
+      <div id="characters-small-container" class="tab-content2"></div>
     </section>
-    <hr />
 
     <section id="vehicles-big-container" class="tab-content">
       <div id="vehicles-small-container" class="tab-content2">
