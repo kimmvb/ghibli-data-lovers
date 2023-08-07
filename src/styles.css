@@ -266,6 +266,10 @@ main {
 
 }
 
+#characters-big-container, #vehicles-big-container, #directors-big-container, #producers-big-container, #locations-big-container {
+    display: none;
+}
+
 .content {
     border: 2px solid #ccc;
 }

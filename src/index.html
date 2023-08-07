@@ -80,11 +80,11 @@
     <div>
       <div class="box-filter">
         <select name="filter" id="button-filter">
-          <option value="">Ordenar</option>
-          <option value="personajes">A-Z</option>
-          <option value="directores">Z-A</option>
-          <option value="productores">Newer to Older</option>
-          <option value="locaciones">Older to Newer</option>
+          <option value="">Sort</option>
+          <option value="ascendant-name-order" id="ascendant-name-order">A-Z</option>
+          <option value="descendant-name-order" id="descendant-name-order" >Z-A</option>
+          <option value="ascendant-date-order" id="ascendant-date-order">Newer to Older</option>
+          <option value="descendant-date-order" id="descendant-date-order">Older to Newer</option>
         </select>
       </div>
     </div>
@@ -92,10 +92,10 @@
     <main id="main-container" class="tab-content">
       <div class="movie-container" id="root"></div>
     </main>
+
     <section id="characters-big-container" class="tab-content">
-      <div id="characters-small-container" class="tab-content-2"></div>
+      <div id="characters-small-container" class="tab-content2"></div>
     </section>
-    <hr />
 
     <section id="vehicles-big-container" class="tab-content">
       <div id="vehicles-small-container" class="tab-content2">
