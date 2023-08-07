@@ -181,6 +181,10 @@ header {
 
 }
 
+a[data-tab].active {
+    color: #109CEB !important;
+}
+
 .filter-container {
     display: flex;
     justify-content: end;

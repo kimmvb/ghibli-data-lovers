@@ -949,7 +949,7 @@ export default {
         },
         {
           "id": "00001289009000",
-          "name": " Mitsubishi Fuso",
+          "name": "Mitsubishi Fuso",
           "img": "https://www.imcdb.org/i056661.jpg",
           "description": "truck used by the workers of the forestry company.",
           "vehicle_class": " Trucks, Simple truck",
@@ -2508,7 +2508,7 @@ export default {
         },
         {
           "id": "be634b4e-c333-4225-a5f0-2a0aa33d6453",
-          "name": "Ōna",
+          "name": "Ona",
           "img": "https://static.wikia.nocookie.net/studio-ghibli/images/c/cb/Ouna.jpg",
           "gender": "Female",
           "age": "Elder",
