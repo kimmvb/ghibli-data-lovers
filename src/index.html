@@ -53,16 +53,14 @@
 
     <nav class="menu">
       <ul class="menu-button">
-        <li><a href="#" data-tab="main-container">Movies</a></li>
+        <li><a href="#" data-tab="main-container" class="active">Movies</a></li>
         <li><a href="#" data-tab="characters-big-container">Characters</a></li>
-        <li><a href="#" data-tab="directors-big-container">Directors</a></li>
-        <li><a href="#" data-tab="producers-big-container">Producers</a></li>
         <li><a href="#" data-tab="vehicles-big-container">Vehicles</a></li>
         <li><a href="#" data-tab="locations-big-container">Locations</a></li>
       </ul>
     </nav>
 
-    <div>
+    <div class="filter-container">
       <div class="box-filter">
         <select name="filter-producer" id="button-filter-producer">
           <option value="">Filtrar por productor</option>
@@ -74,17 +72,13 @@
           <option value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
         </select>
       </div>
-    </div>
-
-
-    <div>
-      <div class="box-filter">
+      <div class="box-filter2">
         <select name="filter" id="button-filter">
-          <option value="">Sort</option>
-          <option value="ascendant-name-order" id="ascendant-name-order">A-Z</option>
-          <option value="descendant-name-order" id="descendant-name-order" >Z-A</option>
-          <option value="ascendant-date-order" id="ascendant-date-order">Newer to Older</option>
-          <option value="descendant-date-order" id="descendant-date-order">Older to Newer</option>
+          <option value="">Ordenar</option>
+          <option value="a-z">A-Z</option>
+          <option value="z-a">Z-A</option>
+          <option value="n-o">Newer to Older</option>
+          <option value="o-n">Older to Newer</option>
         </select>
       </div>
     </div>

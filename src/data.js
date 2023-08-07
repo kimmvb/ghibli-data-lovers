@@ -6,51 +6,64 @@ export const showTab = (tabName, tabContents) => {
   selectedTab.style.display = "block";
 };
 
-// Se crea la función showTab cuyos parámetros son tabName (nombre de la pestaña) y tabContent (contenido de la pestaña)
-//Con la función forEach se itera por cada elemento del contenido de las pestañas, la acción que sucederá por la iteración es que por cada pestaña se ocultará, con un style.display.
-//Luego se crea una variable que contiene un DOM que llama al nombre de la pestaña
-//A la pestaña seleccionada se le cambiará el display a 'block' para mostrarlo
+export const actives = {
+  removerActives: () => {
+    document.querySelectorAll('a[data-tab]').forEach(link => {
+      link.classList.remove('active');
+    });
+  }
+}
 
-
-export function printDataCharacters(array, place) {
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array[i].people.length; j++) {
-      //console.log(array[i].people.length);
-      place.innerHTML += `<figure class = "content">
-         <img src="${array[i].people[j].img}" alt="${array[i].people[j].id}" />
-         <figcaption>"${array[i].people[j].name}"</figcaption>
-         <hr>
-            <p><strong>Age</strong>:  ${array[i].people[j].age}</p>
-            <p><strong>Specie</strong>: ${array[i].people[j].specie}</p>
-            <p><strong>Gender</strong>: ${array[i].people[j].gender}</p>
-        </figure>`;
+export const filterImport = {
+  // Se crea funcion para recibir data de peliculas y el nombre de productor y filtra
+  // para volver a mostrar las peliculas se llama a la funcion createfilms
+  filterForProducers: (films, producerName) => {
+    if (producerName === 'todos' || producerName === "") {
+      return films;
+    } else {
+      const dataFiltered = films.filter(function (film) {
+        return film.producer === producerName
+      });
+      return dataFiltered;
     }
   }
 }
 
-const sortFunction = {
+export const orderImport = {
+  sortAToZTitle: (data, tabActive) => {
+    if (tabActive === 'Movies') {
+      return data.sort((a, b) => a.title < b.title ? -1 : 1);
+    } else if (tabActive === 'Characters') {
+      return data.sort((a, b) => a.name < b.name ? -1 : 1);
+    } else if (tabActive === 'Vehicles') {
+      return data.sort((a, b) => a.name < b.name ? -1 : 1);
+    } else {
+      return data.sort((a, b) => a.name < b.name ? -1 : 1);
+    }
+  },
 
-  sortAToZTitle: (data) => {
-    data.films.sort((a, b) => (a.title < b.title ? -1 : 1));
+  sortZToATitle: (data, tabActive) => {
+    if (tabActive === 'Movies') {
+      return data.sort((a, b) => a.title > b.title ? -1 : 1);
+    } else if (tabActive === 'Characters') {
+      return data.sort((a, b) => a.name > b.name ? -1 : 1);
+    } else if (tabActive === 'Vehicles') {
+      return data.sort((a, b) => a.name > b.name ? -1 : 1);
+    } else {
+      return data.sort((a, b) => a.name > b.name ? -1 : 1);
+    }
   },
- 
-  
-  sortZToATitle: (data) => {
-    data.films.sort((a, b) => (a.title > b.title ? -1 : 1));
+
+  yearsDown: (data) => {
+    return data.sort(function (a, b) {
+      return a - b;
+    });
   },
-  
-  
-  sortRDAsc: (data) => {
-    data.films.sort((a, b) => a.release_date - b.release_date);
-  },
-  
-  sortRDDesc: (data) => {
-    data.films.sort((a, b) => b.release_date - a.release_date);
-  },
-  
+  //función años ascendente
+  yearsUp: (data) => {
+    return data.sort(function (a, b) {
+      return b - a;
+    });
+  }
+
 }
-
-export default sortFunction 
-/*export const anotherExample = () => {
-  return 'OMG';
-}*/
