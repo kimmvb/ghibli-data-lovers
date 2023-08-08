@@ -54,16 +54,19 @@ export const orderImport = {
     }
   },
 
-  yearsDown: (data) => {
-    return data.sort(function (a, b) {
-      return a - b;
-    });
+  sortRDAsc: (data, tabActive) => {
+    if (tabActive === 'Movies') {
+      return data.sort((a, b) => a.release_date - b.release_date);
+    } else if (tabActive === 'Characters') {
+      return data.sort((a, b) => a.age - b.age);
+    }
   },
-  //función años ascendente
-  yearsUp: (data) => {
-    return data.sort(function (a, b) {
-      return b - a;
-    });
-  }
-
+  
+  sortRDDesc: (data, tabActive) => {
+    if (tabActive === 'Movies') {
+      return data.sort((a, b) => b.release_date - a.release_date);
+    } else if (tabActive === 'Characters') {
+      return data.sort((a, b) => b.age - a.age);
+    }
+  },
 }

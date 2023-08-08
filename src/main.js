@@ -8,27 +8,29 @@ const locationsRoot = document.getElementById("locations-small-container");
 const filter = document.getElementById("button-filter");
 const filterProducer = document.getElementById("button-filter-producer");
 
-const filmsData = data.films;
-const peopleData = [];
+//Data recogida en un array
+const filmsData = data.films; //Variable que contiene la data del array 'films'.
+
+const peopleData = []; //Variable con array vacio
 data.films.forEach((element) => {
   element.people.forEach((row) => {
     peopleData.push(row);
   });
-});
+}); //Se para la información por un bucle con el método .forEach. Por cada elemento de la propiedad 'people', se crea otro bucle con .forEach que toma cada uno de los elementos y con el método .push() los añade a a la varible con el array vacío. De esta manera todos los elementos de 'people' quedarían dentro de un array.
 
 const vehiclesData = [];
 data.films.forEach((element) => {
   element.vehicles.forEach((row) => {
     vehiclesData.push(row);
   });
-});
+}); //Se repite el procedimiento anterior con los vehículos.
 
 const locationsData = [];
 data.films.forEach((element) => {
   element.locations.forEach((row) => {
     locationsData.push(row);
   });
-});
+}); //Se repite el procedimiento anterior con las locaciones.
 
 //Pestaña a pestaña
 document.querySelectorAll("a[data-tab]").forEach((link) => {
@@ -40,18 +42,21 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
     const tabName = event.target.dataset.tab;
     const tabContents = document.querySelectorAll(".tab-content");
     showTab(tabName, tabContents);
+    if (tabName === "main-container") {
+      filterProducer.style.display = "block";
+    } else {
+      filterProducer.style.display = "none";
+    }
   });
 });
 
 // Con un querySelectorAll se llaman a todos los elementos que cumplan con el atrubuto 'data-tab' en las etiquetas 'a'(enlace).
 //Con la función .forEach() se iteran todos los elementos dentro de un array, tiene como parámetro 'link' y ese 'link' responderá a un event listener que se accionará con un click.
 //El evento (conectado con una función de flechas, teniendo como parámetro 'event') que ocurrirá cuando se haga click es el siguiente:
-//1. Se utiliza .preventDefault() para eeevitar que el enlace realice su acción predeterminada de navegar a una nueva página.
+//1. Se utiliza .preventDefault() para evitar que el enlace realice su acción predeterminada de navegar a una nueva página.
 //2. Se crea un variable que contiene el evento, con el target (representa el elemento HTML en el cual ocurrió el evento), dataset (propiedad especial del objeto target que nos permite acceder a los atributos de datos (atributos con el prefijo data-) del elemento HTML) y tab.
 //3.Se accede a la clase 'tab-content' a través de un querySelectorAll.
 //4. Se llama a la función "showTab" con los parámetros de las dos varibles anteriores.
-
-//Index a home
 
 createFilms(filmsData);
 createVehicles(vehiclesData);
@@ -99,11 +104,11 @@ filter.addEventListener("change", function (event) {
     return;
   }
   if (event.target.value === "o-n") {
-    // llamar  una funcion
+    callDateAsc(tabActive);
     return;
   }
   if (event.target.value === "n-o") {
-    // llamar  una funcion
+    callDateDesc(tabActive);
     return; // estos return para no hacer tanto else if else if else if else
     // se llama a una RETURN para detener el flujo de js: nombre técnico es EARLY RETURN;
   }
@@ -135,7 +140,21 @@ function callOrderZA(tabActive) {
   }
 }
 
-//
+function callDateAsc(tabActive) {
+  if (tabActive === "Movies") {
+    createFilms(orderImport.sortRDAsc(filmsData, tabActive));
+  } else if (tabActive === "Characters");
+  printDataCharacters(orderImport.sortRDAsc(peopleData, tabActive));
+}
+
+function callDateDesc(tabActive) {
+  if (tabActive === "Movies") {
+    createFilms(orderImport.sortRDDesc(filmsData, tabActive));
+  } else tabActive === "Characters";
+  printDataCharacters(orderImport.sortRDDesc(peopleData, tabActive));
+}
+
+//Mostrar data ordenada en página
 function createFilms(films) {
   root.innerHTML = "";
   for (let i = 0; i < films.length; i++) {
@@ -169,9 +188,9 @@ function createLocations(locations) {
     locationsRoot.innerHTML += `<figure class = "content">
         <img src="${locations[i].img}" alt="${locations[i].id}" />
             <figcaption>${locations[i].name}</figcaption>
-            <p>This area has a climate ${locations[i].climate}</p>
-            <p>and a piece of land of ${locations[i].terrain}</p>
-            <p>It has a water surface of ${locations[i].surface_water}</p>
+            <p>This area has a <strong>${locations[i].climate}</strong> climate</p>
+            <p>and its terrain type is <strong>${locations[i].terrain}</strong>.</p>
+            <p>It has a water surface of <strong>${locations[i].surface_water}</strong>.</p>
         </figure>`;
   }
 }
@@ -189,20 +208,3 @@ function printDataCharacters(people) {
         </figure>`;
   }
 }
-
-// validar si estas dos funciones se van a utilizar
-//console.log(dataGhibli.sort((a,b) => a.title > b.title ? -1 : 1))
-
-/*function sortRDAsc(data) {
-  data.sort((a, b) => a.release_date - b.release_date);
-}
-
-//console.log(dataGhibli.sort((a,b) => a.release_date - b.release_date))
-
-function sortRDDesc(data) {
-  data.sort((a, b) => b.release_date - a.release_date);
-}/*
-
-//console.log(dataGhibli.sort((a,b) => b.release_date - a.release_date))
-
-//console.log(dataGhibli.sort((a,b) => b.release_date - a.release_date))*/
