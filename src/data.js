@@ -13,9 +13,9 @@ export const actives = {
     });
   }
 }
-
+//se declara una constante como objeto para que este tenga muchas funciones dentro
 export const filterImport = {
-  // Se crea funcion para recibir data de peliculas y el nombre de productor y filtra
+  // Se crea funcion para recibir data de peliculas y el nombre de productor 
   // para volver a mostrar las peliculas se llama a la funcion createfilms
   filterForProducers: (films, producerName) => {
     if (producerName === 'todos' || producerName === "") {

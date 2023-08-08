@@ -34,27 +34,36 @@ data.films.forEach(element => {
 });
 
 //Pestaña a pestaña
+// Con querySelectorAll se llaman a todos los elementos que cumplan con el atrubuto 'data-tab' en las etiquetas 'a'(enlace).
+//Con la función .forEach() se iteran todos los elementos dentro de un array, tiene como parámetro 'link' y ese 'link' responderá a un event listener que se accionará con un click.
+//El evento conectado con fat arrow, teniendo como parámetro 'event' que ocurrirá cuando se haga click 
+//es el siguiente: 
+// Con preventDefault() se evitar que el enlace realice su acción predeterminada de navegar a una nueva página.
+// Se crea un variable que contiene el evento, con el target (representa el elemento HTML en el cual ocurrió el evento), dataset (propiedad especial del objeto target que nos permite acceder a los atributos de datos (atributos con el prefijo data-) del elemento HTML) y tab.
+//Se accede a la clase 'tab-content' a través de un querySelectorAll.
+// Se llama a la función "showTab" con los parámetros de las dos varibles anteriores.
+
 document.querySelectorAll('a[data-tab]').forEach(link => {
     link.addEventListener("click", (event) => {
         document.getElementById("button-filter").value = '';
         event.preventDefault();
-        actives.removerActives();
+        actives.removerActives(); // esta funcion agrega la clase active al menu principal (remueve los activos de todos menos al que le hice clik)
         event.target.classList.add('active');
         const tabName = event.target.dataset.tab;
         const tabContents = document.querySelectorAll('.tab-content');
         showTab(tabName, tabContents);
+        console.log(event);
+        // se agrega este if, para lograr que el filtro productor/director solo este disponible en movies        
+        if (tabName === "main-container") {
+            filterProducer.style.display = "block";
+        } else {
+            filterProducer.style.display = "none";
+        }
     });
 });
 
-// Con un querySelectorAll se llaman a todos los elementos que cumplan con el atrubuto 'data-tab' en las etiquetas 'a'(enlace).
-//Con la función .forEach() se iteran todos los elementos dentro de un array, tiene como parámetro 'link' y ese 'link' responderá a un event listener que se accionará con un click.
-//El evento (conectado con una función de flechas, teniendo como parámetro 'event') que ocurrirá cuando se haga click es el siguiente: 
-//1. Se utiliza .preventDefault() para eeevitar que el enlace realice su acción predeterminada de navegar a una nueva página.
-//2. Se crea un variable que contiene el evento, con el target (representa el elemento HTML en el cual ocurrió el evento), dataset (propiedad especial del objeto target que nos permite acceder a los atributos de datos (atributos con el prefijo data-) del elemento HTML) y tab.
-//3.Se accede a la clase 'tab-content' a través de un querySelectorAll.
-//4. Se llama a la función "showTab" con los parámetros de las dos varibles anteriores.
 
-//Index a home
+
 
 createFilms(filmsData);
 createVehicles(vehiclesData);
@@ -75,7 +84,7 @@ filterProducer.addEventListener('change', function (event) {
 });
 
 //se dedeclara metodo para escuchar el evento change del selector ordenamiento (select)
-// se crea una constante para detectar el tabactivo, (es decir que menu estoy viendo)
+// se crea una constante para detectar el tab activo, (es decir que menu estoy viendo)
 // innertext capturo el texto de cada data-tab que tenga la clase active
 // Se hace un if de acuerdo al valor seleccionado, event (hace referencia a lo que se escucha en html) select
 // Target es atributo de select al igual que value, los que capturan el valor
