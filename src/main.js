@@ -7,6 +7,9 @@ const charactersRoot = document.getElementById("characters-small-container");
 const locationsRoot = document.getElementById("locations-small-container");
 const filter = document.getElementById("button-filter");
 const filterProducer = document.getElementById("button-filter-producer");
+const filterCharacterGender = document.getElementById("button-filter-character-gender");
+const filterCharacterSpecie = document.getElementById("button-filter-character-specie");
+const filterVehicleClass = document.getElementById("button-filter-vehicle-class");
 
 //Data recogida en un array
 const filmsData = data.films; //Variable que contiene la data del array 'films'.
@@ -57,6 +60,21 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
         } else {
             filterProducer.style.display = "none";
         }
+        if (tabName === "characters-big-container") {
+            filterCharacterGender.style.display = "block";
+        } else {
+            filterCharacterGender.style.display = "none";
+        }
+        if (tabName === "characters-big-container") {
+            filterCharacterSpecie.style.display = "block";
+        } else {
+            filterCharacterSpecie.style.display = "none";
+        }
+        if (tabName === "vehicles-big-container") {
+            filterVehicleClass.style.display = "block";
+        } else {
+            filterVehicleClass.style.display = "none";
+        }
     });
 });
 
@@ -79,10 +97,24 @@ enterButton.addEventListener("click", function (event) {
     document.body.classList.remove("body-blue");
 });
 
+//DOM de filtros
 filterProducer.addEventListener("change", function (event) {
     createFilms(filterImport.filterForProducers(filmsData, event.target.value));
 });
 
+filterCharacterGender.addEventListener("change", function (event) {
+    printDataCharacters(filterImport.filterForCharacterGender(peopleData, event.target.value))
+});
+
+filterCharacterSpecie.addEventListener("change", function (event) {
+    printDataCharacters(filterImport.filterForCharacterSpecie(peopleData, event.target.value))
+});
+
+filterVehicleClass.addEventListener("change", function (event) {
+    createVehicles(filterImport.filterForVehicleClass(vehiclesData, event.target.value))
+});
+
+//DOM Ordenar
 //se dedeclara metodo para escuchar el evento change del selector ordenamiento (select)
 // se crea una constante para detectar el tab activo, (es decir que menu estoy viendo)
 // innertext capturo el texto de cada data-tab que tenga la clase active
@@ -210,3 +242,4 @@ function printDataCharacters(people) {
         </figure>`;
     }
 }
+
