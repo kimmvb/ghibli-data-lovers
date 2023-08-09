@@ -1373,7 +1373,7 @@ export default {
           "id": "969850ec-4ab6-4170-ab6b-ae6ac42e1e9a",
           "name": "No-Face",
           "img": "https://static.wikia.nocookie.net/studio-ghibli/images/9/9d/No-Face_infobox.png",
-          "gender": "Unknown (Possible Male)",
+          "gender": "NA",
           "age": "unknown",
           "eye_color": "NA",
           "hair_color": "NA",
