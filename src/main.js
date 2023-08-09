@@ -13,23 +13,23 @@ const filmsData = data.films; //Variable que contiene la data del array 'films'.
 
 const peopleData = []; //Variable con array vacio
 data.films.forEach((element) => {
-  element.people.forEach((row) => {
-    peopleData.push(row);
-  });
+    element.people.forEach((row) => {
+        peopleData.push(row);
+    });
 }); //Se para la información por un bucle con el método .forEach. Por cada elemento de la propiedad 'people', se crea otro bucle con .forEach que toma cada uno de los elementos y con el método .push() los añade a a la varible con el array vacío. De esta manera todos los elementos de 'people' quedarían dentro de un array.
 
 const vehiclesData = [];
 data.films.forEach((element) => {
-  element.vehicles.forEach((row) => {
-    vehiclesData.push(row);
-  });
+    element.vehicles.forEach((row) => {
+        vehiclesData.push(row);
+    });
 }); //Se repite el procedimiento anterior con los vehículos.
 
 const locationsData = [];
 data.films.forEach((element) => {
-  element.locations.forEach((row) => {
-    locationsData.push(row);
-  });
+    element.locations.forEach((row) => {
+        locationsData.push(row);
+    });
 }); //Se repite el procedimiento anterior con las locaciones.
 
 //Pestaña a pestaña
@@ -43,21 +43,21 @@ data.films.forEach((element) => {
 // Se llama a la función "showTab" con los parámetros de las dos varibles anteriores.
 
 document.querySelectorAll("a[data-tab]").forEach((link) => {
-  link.addEventListener("click", (event) => {
-    document.getElementById("button-filter").value = "";
-    event.preventDefault();
-    actives.removerActives(); // esta funcion agrega la clase active al menu principal (remueve los activos de todos menos al que le hice clik)
-    event.target.classList.add("active");
-    const tabName = event.target.dataset.tab;
-    const tabContents = document.querySelectorAll(".tab-content");
-    showTab(tabName, tabContents);
-    // se agrega este if, para lograr que el filtro productor/director solo este disponible en movies
-    if (tabName === "main-container") {
-      filterProducer.style.display = "block";
-    } else {
-      filterProducer.style.display = "none";
-    }
-  });
+    link.addEventListener("click", (event) => {
+        document.getElementById("button-filter").value = "";
+        event.preventDefault();
+        actives.removerActives(); // esta funcion agrega la clase active al menu principal (remueve los activos de todos menos al que le hice clik)
+        event.target.classList.add("active");
+        const tabName = event.target.dataset.tab;
+        const tabContents = document.querySelectorAll(".tab-content");
+        showTab(tabName, tabContents);
+        // se agrega este if, para lograr que el filtro productor/director solo este disponible en movies
+        if (tabName === "main-container") {
+            filterProducer.style.display = "block";
+        } else {
+            filterProducer.style.display = "none";
+        }
+    });
 });
 
 createFilms(filmsData);
@@ -71,16 +71,16 @@ const sectionMovies = document.getElementById("movies");
 const enterButton = document.getElementById("action-enter");
 
 enterButton.addEventListener("click", function (event) {
-  event.preventDefault();
-  sectionHome.classList.remove("show");
-  sectionHome.classList.add("hidden");
-  sectionMovies.classList.remove("hidden");
-  sectionMovies.classList.add("show");
-  document.body.classList.remove("body-blue");
+    event.preventDefault();
+    sectionHome.classList.remove("show");
+    sectionHome.classList.add("hidden");
+    sectionMovies.classList.remove("hidden");
+    sectionMovies.classList.add("show");
+    document.body.classList.remove("body-blue");
 });
 
 filterProducer.addEventListener("change", function (event) {
-  createFilms(filterImport.filterForProducers(filmsData, event.target.value));
+    createFilms(filterImport.filterForProducers(filmsData, event.target.value));
 });
 
 //se dedeclara metodo para escuchar el evento change del selector ordenamiento (select)
@@ -90,77 +90,77 @@ filterProducer.addEventListener("change", function (event) {
 // Target es atributo de select al igual que value, los que capturan el valor
 
 filter.addEventListener("change", function (event) {
-  const tabActive =
-    document.querySelectorAll("a[data-tab].active")[0].innerText;
-  if (event.target.value === "") {
-    // si el valor que obtengo es "nada"
-    // validar que debemos hacer cuando no seleccione nada
-  }
-  if (event.target.value === "a-z") {
-    // si el valor es igual a "a-z"
-    callOrderAZ(tabActive); //llama a funcion calloderaz
-    return;
-  }
-  if (event.target.value === "z-a") {
-    callOrderZA(tabActive);
-    return;
-  }
-  if (event.target.value === "o-n") {
-    callDateAsc(tabActive);
-    return;
-  }
-  if (event.target.value === "n-o") {
-    callDateDesc(tabActive);
-    return; // estos return para no hacer tanto else if else if else if else
-    // se llama a una RETURN para detener el flujo de js: nombre técnico es EARLY RETURN;
-  }
+    const tabActive =
+        document.querySelectorAll("a[data-tab].active")[0].innerText;
+    if (event.target.value === "") {
+        // si el valor que obtengo es "nada"
+        // validar que debemos hacer cuando no seleccione nada
+    }
+    if (event.target.value === "a-z") {
+        // si el valor es igual a "a-z"
+        callOrderAZ(tabActive); //llama a funcion calloderaz
+        return;
+    }
+    if (event.target.value === "z-a") {
+        callOrderZA(tabActive);
+        return;
+    }
+    if (event.target.value === "o-n") {
+        callDateAsc(tabActive);
+        return;
+    }
+    if (event.target.value === "n-o") {
+        callDateDesc(tabActive);
+        return; // estos return para no hacer tanto else if else if else if else
+        // se llama a una RETURN para detener el flujo de js: nombre técnico es EARLY RETURN;
+    }
 });
 
 // se crean estas 2 funciones para desacoplar el listener del selector
 // y para saber en que pestaña se encuentra el usuario.
 function callOrderAZ(tabActive) {
-  if (tabActive === "Movies") {
-    createFilms(orderImport.sortAToZTitle(filmsData, tabActive));
-  } else if (tabActive === "Characters") {
-    printDataCharacters(orderImport.sortAToZTitle(peopleData, tabActive));
-  } else if (tabActive === "Vehicles") {
-    createVehicles(orderImport.sortAToZTitle(vehiclesData, tabActive));
-  } else {
-    createLocations(orderImport.sortAToZTitle(locationsData, tabActive));
-  }
+    if (tabActive === "Movies") {
+        createFilms(orderImport.sortAToZTitle(filmsData, tabActive));
+    } else if (tabActive === "Characters") {
+        printDataCharacters(orderImport.sortAToZTitle(peopleData, tabActive));
+    } else if (tabActive === "Vehicles") {
+        createVehicles(orderImport.sortAToZTitle(vehiclesData, tabActive));
+    } else {
+        createLocations(orderImport.sortAToZTitle(locationsData, tabActive));
+    }
 }
 
 function callOrderZA(tabActive) {
-  if (tabActive === "Movies") {
-    createFilms(orderImport.sortZToATitle(filmsData, tabActive));
-  } else if (tabActive === "Characters") {
-    printDataCharacters(orderImport.sortZToATitle(peopleData, tabActive));
-  } else if (tabActive === "Vehicles") {
-    createVehicles(orderImport.sortZToATitle(vehiclesData, tabActive));
-  } else {
-    createLocations(orderImport.sortZToATitle(locationsData, tabActive));
-  }
+    if (tabActive === "Movies") {
+        createFilms(orderImport.sortZToATitle(filmsData, tabActive));
+    } else if (tabActive === "Characters") {
+        printDataCharacters(orderImport.sortZToATitle(peopleData, tabActive));
+    } else if (tabActive === "Vehicles") {
+        createVehicles(orderImport.sortZToATitle(vehiclesData, tabActive));
+    } else {
+        createLocations(orderImport.sortZToATitle(locationsData, tabActive));
+    }
 }
 
 function callDateAsc(tabActive) {
-  if (tabActive === "Movies") {
-    createFilms(orderImport.sortRDAsc(filmsData, tabActive));
-  } else if (tabActive === "Characters");
-  printDataCharacters(orderImport.sortRDAsc(peopleData, tabActive));
+    if (tabActive === "Movies") {
+        createFilms(orderImport.sortRDAsc(filmsData, tabActive));
+    } else if (tabActive === "Characters");
+    printDataCharacters(orderImport.sortRDAsc(peopleData, tabActive));
 }
 
 function callDateDesc(tabActive) {
-  if (tabActive === "Movies") {
-    createFilms(orderImport.sortRDDesc(filmsData, tabActive));
-  } else tabActive === "Characters";
-  printDataCharacters(orderImport.sortRDDesc(peopleData, tabActive));
+    if (tabActive === "Movies") {
+        createFilms(orderImport.sortRDDesc(filmsData, tabActive));
+    } else tabActive === "Characters";
+    printDataCharacters(orderImport.sortRDDesc(peopleData, tabActive));
 }
 
 //Mostrar data ordenada en página
 function createFilms(films) {
-  root.innerHTML = "";
-  for (let i = 0; i < films.length; i++) {
-    root.innerHTML += `<figure class="poster">
+    root.innerHTML = "";
+    for (let i = 0; i < films.length; i++) {
+        root.innerHTML += `<figure class="poster">
         <div class="info">
             <p><b>Rating<b/>: ⭐${films[i].rt_score} / <b>Año:</b> ${films[i].release_date}</p> 
             <p>${films[i].description}</p>
@@ -171,36 +171,36 @@ function createFilms(films) {
         <img src="${films[i].poster}" alt="${films[i].title}" />
         <figcaption>${films[i].title}</figcaption> 
         </figure>`;
-  }
+    }
 }
 function createVehicles(vehicles) {
-  containerVehicles.innerHTML = "";
-  for (let i = 0; i < vehicles.length; i++) {
-    containerVehicles.innerHTML += `<figure class = "content">
+    containerVehicles.innerHTML = "";
+    for (let i = 0; i < vehicles.length; i++) {
+        containerVehicles.innerHTML += `<figure class = "content">
         <img src="${vehicles[i].img}" alt="${vehicles[i].id}" />
             <figcaption>${vehicles[i].name}</figcaption>
             <p>"${vehicles[i].description}"</p>
     </figure>`;
-  }
+    }
 }
 
 function createLocations(locations) {
-  locationsRoot.innerHTML = "";
-  for (let i = 0; i < locations.length; i++) {
-    locationsRoot.innerHTML += `<figure class = "content">
+    locationsRoot.innerHTML = "";
+    for (let i = 0; i < locations.length; i++) {
+        locationsRoot.innerHTML += `<figure class = "content">
         <img src="${locations[i].img}" alt="${locations[i].id}" />
             <figcaption>${locations[i].name}</figcaption>
             <p>This area has a <strong>${locations[i].climate}</strong> climate</p>
             <p>and its terrain type is <strong>${locations[i].terrain}</strong>.</p>
             <p>It has a water surface of <strong>${locations[i].surface_water}</strong>.</p>
         </figure>`;
-  }
+    }
 }
 
 function printDataCharacters(people) {
-  charactersRoot.innerHTML = "";
-  for (let i = 0; i < people.length; i++) {
-    charactersRoot.innerHTML += `<figure class = "content">
+    charactersRoot.innerHTML = "";
+    for (let i = 0; i < people.length; i++) {
+        charactersRoot.innerHTML += `<figure class = "content">
         <img src="${people[i].img}" alt="${people[i].id}" />
         <figcaption>${people[i].name}</figcaption>
         <hr>
@@ -208,5 +208,5 @@ function printDataCharacters(people) {
         <p><strong>Specie</strong>: ${people[i].specie}</p>
         <p><strong>Gender</strong>: ${people[i].gender}</p>
         </figure>`;
-  }
+    }
 }
