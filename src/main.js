@@ -7,9 +7,22 @@ const charactersRoot = document.getElementById("characters-small-container");
 const locationsRoot = document.getElementById("locations-small-container");
 const filter = document.getElementById("button-filter");
 const filterProducer = document.getElementById("button-filter-producer");
-const filterCharacterGender = document.getElementById("button-filter-character-gender");
-const filterCharacterSpecie = document.getElementById("button-filter-character-specie");
-const filterVehicleClass = document.getElementById("button-filter-vehicle-class");
+const filterMovies = document.getElementById("button-filter-movie");
+const filterCharacterGender = document.getElementById(
+  "button-filter-character-gender",
+);
+const filterCharacterSpecie = document.getElementById(
+  "button-filter-character-specie",
+);
+const filterVehicleClass = document.getElementById(
+  "button-filter-vehicle-class",
+);
+const filterLocationClimate = document.getElementById(
+  "button-filter-location-climate",
+);
+const filterLocationTerrain = document.getElementById(
+  "button-filter-location-terrain",
+);
 
 //Data recogida en un array
 const filmsData = data.films; //Variable que contiene la data del array 'films'.
@@ -62,18 +75,24 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
     }
     if (tabName === "characters-big-container") {
       filterCharacterGender.style.display = "block";
+      filterCharacterSpecie.style.display = "block";
+      filterMovies.style.display = "block";
     } else {
       filterCharacterGender.style.display = "none";
-    }
-    if (tabName === "characters-big-container") {
-      filterCharacterSpecie.style.display = "block";
-    } else {
       filterCharacterSpecie.style.display = "none";
+      filterMovies.style.display = "none";
     }
     if (tabName === "vehicles-big-container") {
       filterVehicleClass.style.display = "block";
     } else {
       filterVehicleClass.style.display = "none";
+    }
+    if (tabName === "locations-big-container") {
+      filterLocationClimate.style.display = "block";
+      filterLocationTerrain.style.display = "block";
+    } else {
+      filterLocationClimate.style.display = "none";
+      filterLocationTerrain.style.display = "none";
     }
   });
 });
@@ -102,17 +121,41 @@ filterProducer.addEventListener("change", function (event) {
   createFilms(filterImport.filterForProducers(filmsData, event.target.value));
 });
 
+filterMovies.addEventListener("change", function (event) {
+  printDataCharacters(
+    filterImport.filterForMovies(filmsData, event.target.value)[0].people,
+  );
+});
+
 filterCharacterGender.addEventListener("change", function (event) {
-  printDataCharacters(filterImport.filterForCharacterGender(peopleData, event.target.value))
+  printDataCharacters(
+    filterImport.filterForCharacterGender(peopleData, event.target.value),
+  );
 });
 
 filterCharacterSpecie.addEventListener("change", function (event) {
-  printDataCharacters(filterImport.filterForCharacterSpecie(peopleData, event.target.value))
+  printDataCharacters(
+    filterImport.filterForCharacterSpecie(peopleData, event.target.value),
+  );
 });
 
 filterVehicleClass.addEventListener("change", function (event) {
-  createVehicles(filterImport.filterForVehicleClass(vehiclesData, event.target.value))
-}); 
+  createVehicles(
+    filterImport.filterForVehicleClass(vehiclesData, event.target.value),
+  );
+});
+
+filterLocationClimate.addEventListener("change", function (event) {
+  createLocations(
+    filterImport.filterForLocationClimate(locationsData, event.target.value),
+  );
+});
+
+filterLocationTerrain.addEventListener("change", function (event) {
+  createLocations(
+    filterImport.filterForLocationTerrain(locationsData, event.target.value),
+  );
+});
 
 //DOM Ordenar
 //se dedeclara metodo para escuchar el evento change del selector ordenamiento (select)
@@ -242,4 +285,3 @@ function printDataCharacters(people) {
         </figure>`;
   }
 }
-

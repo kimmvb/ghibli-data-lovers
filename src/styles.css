@@ -190,19 +190,22 @@ a[data-tab].active {
     justify-content: end;
 }
 
-.box-filter2,
 .box-filter {
     display: flex;
     justify-content: flex-end;
     padding: 15px;
     margin-top: 25px;
+    gap: 30px;
 }
 
 #button-filter,
 #button-filter-producer,
+#button-filter-movie,
 #button-filter-character-gender,
 #button-filter-vehicle-class,
-#button-filter-character-specie
+#button-filter-character-specie,
+#button-filter-location-climate,
+#button-filter-location-terrain
  {
     width: 15rem;
     height: 30px;
@@ -211,9 +214,12 @@ a[data-tab].active {
     margin-top: 20px;
 }
 
+#button-filter-movie,
 #button-filter-character-gender,
 #button-filter-vehicle-class,
-#button-filter-character-specie {
+#button-filter-character-specie,
+#button-filter-location-climate,
+#button-filter-location-terrain {
     display: none;
 }
 
