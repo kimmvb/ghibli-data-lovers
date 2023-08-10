@@ -1,21 +1,94 @@
 import data from "./data/ghibli/ghibli.js";
+import { showTab, filterImport, orderImport, actives, searchImport } from "./data.js";
 
+const root = document.getElementById("root");
+const containerVehicles = document.getElementById("vehicles-small-container");
+const charactersRoot = document.getElementById("characters-small-container");
+const locationsRoot = document.getElementById("locations-small-container");
+const filter = document.getElementById("button-filter");
+const filterProducerDirector = document.getElementById("button-filter-prodirect");
+const filterProducerDirectorContainer = document.getElementById("container-filter-productors-directors");
+const filterCharacterGender = document.getElementById("button-filter-character-gender");
+const filterCharacterSpecie = document.getElementById("button-filter-character-specie");
+const filterVehicleClass = document.getElementById("button-filter-vehicle-class");
+const inputSearch = document.getElementById('input-search');
+
+//Data recogida en un array
+const filmsData = data.films; //Variable que contiene la data del array 'films'.
+
+const peopleData = []; //Variable con array vacio
+data.films.forEach((element) => {
+    element.people.forEach((row) => {
+        peopleData.push(row);
+    });
+}); //Se para la información por un bucle con el método .forEach. Por cada elemento de la propiedad 'people', se crea otro bucle con .forEach que toma cada uno de los elementos y con el método .push() los añade a a la varible con el array vacío. De esta manera todos los elementos de 'people' quedarían dentro de un array.
+
+const vehiclesData = [];
+data.films.forEach((element) => {
+    element.vehicles.forEach((row) => {
+        vehiclesData.push(row);
+    });
+}); //Se repite el procedimiento anterior con los vehículos.
+
+const locationsData = [];
+data.films.forEach((element) => {
+    element.locations.forEach((row) => {
+        locationsData.push(row);
+    });
+}); //Se repite el procedimiento anterior con las locaciones.
+
+//Pestaña a pestaña
+// Con querySelectorAll se llaman a todos los elementos que cumplan con el atrubuto 'data-tab' en las etiquetas 'a'(enlace).
+//Con la función .forEach() se iteran todos los elementos dentro de un array, tiene como parámetro 'link' y ese 'link' responderá a un event listener que se accionará con un click.
+//El evento conectado con fat arrow, teniendo como parámetro 'event' que ocurrirá cuando se haga click
+//es el siguiente:
+// Con preventDefault() se evitar que el enlace realice su acción predeterminada de navegar a una nueva página.
+// Se crea un variable que contiene el evento, con el target (representa el elemento HTML en el cual ocurrió el evento), dataset (propiedad especial del objeto target que nos permite acceder a los atributos de datos (atributos con el prefijo data-) del elemento HTML) y tab.
+//Se accede a la clase 'tab-content' a través de un querySelectorAll.
+// Se llama a la función "showTab" con los parámetros de las dos varibles anteriores.
+
+document.querySelectorAll("a[data-tab]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+        document.getElementById("button-filter").value = "";
+        event.preventDefault();
+        actives.removerActives(); // esta funcion agrega la clase active al menu principal (remueve los activos de todos menos al que le hice clik)
+        event.target.classList.add("active");
+        const tabName = event.target.dataset.tab;
+        const tabContents = document.querySelectorAll(".tab-content");
+        showTab(tabName, tabContents);
+        // se agrega este if, para lograr que el filtro productor/director solo este disponible en movies
+        if (tabName === "main-container") {
+            filterProducerDirectorContainer.style.display = "flex";
+        } else {
+            filterProducerDirectorContainer.style.display = "none";
+        }
+        if (tabName === "characters-big-container") {
+            filterCharacterGender.style.display = "block";
+        } else {
+            filterCharacterGender.style.display = "none";
+        }
+        if (tabName === "characters-big-container") {
+            filterCharacterSpecie.style.display = "block";
+        } else {
+            filterCharacterSpecie.style.display = "none";
+        }
+        if (tabName === "vehicles-big-container") {
+            filterVehicleClass.style.display = "block";
+        } else {
+            filterVehicleClass.style.display = "none";
+        }
+    });
+});
+
+createFilms(filmsData);
+createVehicles(vehiclesData);
+printDataCharacters(peopleData);
+createLocations(locationsData);
+
+//Index a home
 const sectionHome = document.getElementById("index");
 const sectionMovies = document.getElementById("movies");
-const root = document.getElementById("root");
 const enterButton = document.getElementById("action-enter");
-const containerVehicles = document.getElementById("vehicles-small-container")
-const filter = document.getElementById("button-filter");
-const dataGhibli = data.films;
-const charactersRoot = document.getElementById("characters-small-container");
-const locations = document.getElementById("locations-small-container");
-
-
-createFilms(data);
-createVehicles(data);
-printDataCharacters(dataGhibli);
-createLocations(data);
-
 
 enterButton.addEventListener("click", function (event) {
     event.preventDefault();
@@ -25,126 +98,182 @@ enterButton.addEventListener("click", function (event) {
     sectionMovies.classList.add("show");
     document.body.classList.remove("body-blue");
 });
+// Filtro Busqueda/Navegacion
+//se crea la variable inputSearch para hacer referencia al input (linea 13) 
+//Se crea evento para "escuchar" cuando se ejecuta un keyup / con la variable tabActive capturamos el tab activo
+//con if le indicamos que si el tab activo es Movies, creamos/mostramos las movies bajo el parametro
+// - searchImport.searchFilmsByTitle(event.target.value, filmsData -
+// (searchImport) es una constante que fue importada desde data.js que ademas es una funcion (searchFilmsByTitle)
+// y a esa funcion le pasamos el valor que se captura del input text y films.Data (data event.target.value, filmsData)
+// filmsData puede variar dependiendo de la ubicacion del dato
+inputSearch.addEventListener('keyup', function (event) {
+    const tabActive = document.querySelectorAll("a[data-tab].active")[0].innerText;
+    if (tabActive === 'Movies') {
+        createFilms(searchImport.searchFilmsByTitle(event.target.value, filmsData));
+        return;
+    }
+    if (tabActive === 'Characters') {
+        printDataCharacters(searchImport.searchCharacterByName(event.target.value, peopleData));
+        return;
+    }
+    if (tabActive === 'Vehicles') {
+        createVehicles(searchImport.searchVehiclesByName(event.target.value, vehiclesData));
+        return;
+    }
+    if (tabActive === 'Locations') {
+        createLocations(searchImport.searchLocationsByName(event.target.value, locationsData));
+        return;
+    }
+});
 
-function createFilms(data) {
+//DOM de filtros
+filterProducerDirector.addEventListener("change", function (event) {
+    createFilms(filterImport.filterForProducersAndDirectors(filmsData, event.target.value,
+        event.target[event.target.selectedIndex].dataset.id));
+    // se captura el data id de cada option para hacer un if en la función que filtra
+    // le pasamos como parametro 3 el option seleccionado del select, es decir el que el
+    //usuario selecciono y eso se hace con el indice de event.target.selectedIndex
+    // sabemos que las options de un select son un arreglo de options por eso es posible acceder
+    // con los corchetes cuadrados
+});
+
+filterCharacterGender.addEventListener("change", function (event) {
+    printDataCharacters(filterImport.filterForCharacterGender(peopleData, event.target.value))
+});
+
+filterCharacterSpecie.addEventListener("change", function (event) {
+    printDataCharacters(filterImport.filterForCharacterSpecie(peopleData, event.target.value))
+});
+
+filterVehicleClass.addEventListener("change", function (event) {
+    createVehicles(filterImport.filterForVehicleClass(vehiclesData, event.target.value))
+});
+
+//DOM Ordenar
+//se dedeclara metodo para escuchar el evento change del selector ordenamiento (select)
+// se crea una constante para detectar el tab activo, (es decir que menu estoy viendo)
+// innertext capturo el texto de cada data-tab que tenga la clase active
+// Se hace un if de acuerdo al valor seleccionado, event (hace referencia a lo que se escucha en html) select
+// Target es atributo de select al igual que value, los que capturan el valor
+
+filter.addEventListener("change", function (event) {
+    const tabActive = document.querySelectorAll("a[data-tab].active")[0].innerText;
+    if (event.target.value === "") {
+        // si el valor que obtengo es "nada"
+        // validar que debemos hacer cuando no seleccione nada
+    }
+    if (event.target.value === "a-z") {
+        // si el valor es igual a "a-z"
+        callOrderAZ(tabActive); //llama a funcion calloderaz
+        return;
+    }
+    if (event.target.value === "z-a") {
+        callOrderZA(tabActive);
+        return;
+    }
+    if (event.target.value === "o-n") {
+        callDateAsc(tabActive);
+        return;
+    }
+    if (event.target.value === "n-o") {
+        callDateDesc(tabActive);
+        return; // estos return para no hacer tanto else if else if else if else
+        // se llama a una RETURN para detener el flujo de js: nombre técnico es EARLY RETURN;
+    }
+});
+
+// se crean estas 2 funciones para desacoplar el listener del selector
+// y para saber en que pestaña se encuentra el usuario.
+function callOrderAZ(tabActive) {
+    if (tabActive === "Movies") {
+        createFilms(orderImport.sortAToZTitle(filmsData, tabActive));
+    } else if (tabActive === "Characters") {
+        printDataCharacters(orderImport.sortAToZTitle(peopleData, tabActive));
+    } else if (tabActive === "Vehicles") {
+        createVehicles(orderImport.sortAToZTitle(vehiclesData, tabActive));
+    } else {
+        createLocations(orderImport.sortAToZTitle(locationsData, tabActive));
+    }
+}
+
+function callOrderZA(tabActive) {
+    if (tabActive === "Movies") {
+        createFilms(orderImport.sortZToATitle(filmsData, tabActive));
+    } else if (tabActive === "Characters") {
+        printDataCharacters(orderImport.sortZToATitle(peopleData, tabActive));
+    } else if (tabActive === "Vehicles") {
+        createVehicles(orderImport.sortZToATitle(vehiclesData, tabActive));
+    } else {
+        createLocations(orderImport.sortZToATitle(locationsData, tabActive));
+    }
+}
+
+function callDateAsc(tabActive) {
+    if (tabActive === "Movies") {
+        createFilms(orderImport.sortRDAsc(filmsData, tabActive));
+    } else if (tabActive === "Characters");
+    printDataCharacters(orderImport.sortRDAsc(peopleData, tabActive));
+}
+
+function callDateDesc(tabActive) {
+    if (tabActive === "Movies") {
+        createFilms(orderImport.sortRDDesc(filmsData, tabActive));
+    } else tabActive === "Characters";
+    printDataCharacters(orderImport.sortRDDesc(peopleData, tabActive));
+}
+
+//Mostrar data ordenada en página
+function createFilms(films) {
     root.innerHTML = "";
-    for (let i = 0; i < data.films.length; i++) {
+    for (let i = 0; i < films.length; i++) {
         root.innerHTML += `<figure class="poster">
         <div class="info">
-            <p class="title-tooltip"><b>${data.films[i].title}</b></p> 
-            <p><b>Rating<b/>: ⭐${data.films[i].rt_score} / <b>Año:</b> ${data.films[i].release_date}</p> 
-            <p>${data.films[i].description}</p>
+            <p><b>Rating<b/>: ⭐${films[i].rt_score} / <b>Año:</b> ${films[i].release_date}</p> 
+            <p>${films[i].description}</p>
             <br>
-            <p>Director: <b>${data.films[i].director}</b></p> 
-            <p>Productor: <b>${data.films[i].producer}</b></p> 
+            <p>Director: <b>${films[i].director}</b></p> 
+            <p>Productor: <b>${films[i].producer}</b></p> 
         </div>
-        <img src="${data.films[i].poster}" alt="${data.films[i].title}" />
-        <figcaption>${data.films[i].title}</figcaption> 
+        <img src="${films[i].poster}" alt="${films[i].title}" />
+        <figcaption>${films[i].title}</figcaption> 
         </figure>`;
     }
 }
-function createVehicles(data) {
-    for (let i = 0; i < data.films.length; i++) {
-        for (let v = 0; v < data.films[i].vehicles.length; v++) {
-            containerVehicles.innerHTML += `<figure class="vehicles-poster">
-            <img src="${data.films[i].vehicles[v].img}" alt="${data.films[i].vehicles[v].id}" />
-             <figcaption>"${data.films[i].vehicles[v].name}"</figcaption>
-             <p>"${data.films[i].vehicles[v].description}"</p>
+function createVehicles(vehicles) {
+    containerVehicles.innerHTML = "";
+    for (let i = 0; i < vehicles.length; i++) {
+        containerVehicles.innerHTML += `<figure class = "content">
+        <img src="${vehicles[i].img}" alt="${vehicles[i].id}" />
+            <figcaption>${vehicles[i].name}</figcaption>
+            <p>"${vehicles[i].description}"</p>
+    </figure>`;
+    }
+}
+
+function createLocations(locations) {
+    locationsRoot.innerHTML = "";
+    for (let i = 0; i < locations.length; i++) {
+        locationsRoot.innerHTML += `<figure class = "content">
+        <img src="${locations[i].img}" alt="${locations[i].id}" />
+            <figcaption>${locations[i].name}</figcaption>
+            <p>This area has a <strong>${locations[i].climate}</strong> climate</p>
+            <p>and its terrain type is <strong>${locations[i].terrain}</strong>.</p>
+            <p>It has a water surface of <strong>${locations[i].surface_water}</strong>.</p>
         </figure>`;
-
-        }
     }
-
 }
 
-function createLocations(data) {
-    for (let i = 0; i < data.films.length; i++) {
-        for (let l = 0; l < data.films[i].locations.length; v++) {
-            locations.innerHTML += `<figure class="locations-poster">
-            <img src="${data.films[i].locations[v].img}" alt="${data.films[i].locations[v].id}" />
-             <figcaption>"${data.films[i].vehicles[v].name}"</figcaption>
-             <p>"${data.films[i].vehicles[v].description}"</p>
+function printDataCharacters(people) {
+    charactersRoot.innerHTML = "";
+    for (let i = 0; i < people.length; i++) {
+        charactersRoot.innerHTML += `<figure class = "content">
+        <img src="${people[i].img}" alt="${people[i].id}" />
+        <figcaption>${people[i].name}</figcaption>
+        <hr>
+        <p><strong>Age</strong>:  ${people[i].age}</p>
+        <p><strong>Specie</strong>: ${people[i].specie}</p>
+        <p><strong>Gender</strong>: ${people[i].gender}</p>
         </figure>`;
-
-        }
-    }
-
-}
-
-
-function printDataCharacters(array) {
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array[i].people.length; j++) {
-            //console.log(array[i].people.length);
-            charactersRoot.innerHTML += `<div class="characters-each">
-         <img src="${array[i].people[j].img}" class="poster-ch">
-         <h3>${array[i].people[j].name}</h3> 
-         <hr>
-         <p><strong>Age</strong>:  ${array[i].people[j].age}</p>
-         <p><strong>Specie</strong>: ${array[i].people[j].specie}</p>
-         <p><strong>Gender</strong>: ${array[i].people[j].gender}</p>
-        </div>`;
-        }
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-//función alfabéticamente ascendente
-function aToZ(array) {
-    const titles = [];
-    for (let i = 0; i < array.length; i++) {
-        titles.push(array[i].title);
-    }
-    console.log(titles.sort());
-}
-aToZ(dataGhibli);
-
-//función alfabéticamente descendente
-function zToa(array) {
-    const titles = [];
-    for (let i = 0; i < array.length; i++) {
-        titles.push(array[i].title);
-    }
-    console.log(titles.reverse());
-}
-zToa(dataGhibli);
-
-//función años descendente
-function yearsDown(array) {
-    const yearsMovies = [];
-    for (let i = 0; i < array.length; i++) {
-        yearsMovies.push(array[i].release_date);
-    }
-    console.log(
-        yearsMovies.sort(function (a, b) {
-            return a - b;
-        }),
-    );
-}
-yearsDown(dataGhibli);
-
-//función años ascendente
-function yearsUp(array) {
-    const yearsMovies = [];
-    for (let i = 0; i < array.length; i++) {
-        yearsMovies.push(array[i].release_date);
-    }
-    console.log(
-        yearsMovies.sort(function (a, b) {
-            return b - a;
-        }),
-    );
-}
-yearsUp(dataGhibli);
-
-//https://www.freecodecamp.org/espanol/news/ordenar-arreglos-en-javascript-como-usar-el-metodo-sort/

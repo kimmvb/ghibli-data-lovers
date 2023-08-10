@@ -23,8 +23,8 @@ export default {
         },
         {
           "id": "598f7048-74ff-41e0-92ef-87dc1ad980a9",
-          "name": "Lusheeta Toel Ul Laputa",
-          "img": "https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg",
+          "name": "Lusheeta Toel Ul",
+          "img": "https://preview.redd.it/0tu6nzvsw0r81.jpg?auto=webp&s=ee6414a507be7649a3dd2495123cf2303678aa03",
           "gender": "Female",
           "age": "13",
           "eye_color": "Black",
@@ -157,7 +157,7 @@ export default {
         {
           "id": "26361a2c-32c6-4bd5-ae9c-8e40e17ae28d",
           "name": "Pazu's Mines",
-          "img": "https://preview.redd.it/fmikehlh8dl41.jpg?auto=webp&s=a997a7d6726fc151a438985899b052d0fd357716",
+          "img": "https://steampunkfilm.files.wordpress.com/2011/04/laputa-miningtown1.jpg",
           "climate": "Dry",
           "terrain": "Hill",
           "surface_water": "0",
@@ -318,7 +318,7 @@ export default {
         {
           "id": "f467e18e-3694-409f-bdb3-be891ade1106",
           "name": "Catbus",
-          "img": "https://static.wikia.nocookie.net/studio-ghibli/images/3/30/Catbus.jpg",
+          "img": "https://img.buzzfeed.com/buzzfeed-static/complex/images/cd5dd1ec97f0035788f3cf71f5c026ceab7edc38_ddnkew/None.jpg?downsize=920:*&output-format=auto&output-quality=auto",
           "gender": "Male",
           "age": "NA",
           "eye_color": "Yellow",
@@ -949,7 +949,7 @@ export default {
         },
         {
           "id": "00001289009000",
-          "name": " Mitsubishi Fuso",
+          "name": "Mitsubishi Fuso",
           "img": "https://www.imcdb.org/i056661.jpg",
           "description": "truck used by the workers of the forestry company.",
           "vehicle_class": " Trucks, Simple truck",
@@ -1373,7 +1373,7 @@ export default {
           "id": "969850ec-4ab6-4170-ab6b-ae6ac42e1e9a",
           "name": "No-Face",
           "img": "https://static.wikia.nocookie.net/studio-ghibli/images/9/9d/No-Face_infobox.png",
-          "gender": "Unknown (Possible Male)",
+          "gender": "NA",
           "age": "unknown",
           "eye_color": "NA",
           "hair_color": "NA",
@@ -1431,6 +1431,17 @@ export default {
         }
       ],
       "locations": [
+        {
+          "id": "0000000013400023000",
+          "name": "Yubaba's house",
+          "img": "https://pbs.twimg.com/media/Ddg5WmmWsAAXJGC?format=jpg&name=medium",
+          "climate": "TODO",
+          "terrain": "TODO",
+          "surface_water": "40",
+          "residents": [
+            "TODO"
+          ]
+        },
         {
           "id": "a072ec53-0467-4fac-864f-df234f9c4315",
           "name": "Zeniba's Cottage",
@@ -1757,10 +1768,21 @@ export default {
           }
         },
         {
+          "id": "00001289020000",
+          "name": "Flying Battleships",
+          "img": "https://feelinganimatedblog.files.wordpress.com/2020/02/battleship-passes-howl-and-sophie-in-the-valley.jpg?w=768&h=415",
+          "description": "are large aerial battleships seen in the film, Howl's Moving Castle used by the Kingdom of Ingary and other nations.",
+          "vehicle_class": "flying ships",
+          "length": "unknown",
+          "pilot": {
+            "name": "Battleship"
+          }
+        },
+        {
           "id": "00001289015000",
-          "name": "iron ships",
+          "name": "Flying Kayaks",
           "img": "https://i.pinimg.com/564x/92/b3/3c/92b33cbd9bc5d9a12375d502ec4c674b.jpg",
-          "description": "flying iron ships used in the war that has been unleashed against another neighboring town, after the disappearance of the crown prince.",
+          "description": "small two-passenger airships seen in the film, Howl's Moving Castle.",
           "vehicle_class": "flying ships",
           "length": "unknown",
           "pilot": {
@@ -2156,7 +2178,7 @@ export default {
         {
           "id": "f2148ab5-f272-4057-b05a-1321e35227b4",
           "name": "Karigurashi's house",
-          "img": "https://static.wikia.nocookie.net/studio-ghibli/images/c/cd/Karigurashi019.jpg",
+          "img": "https://www.chocolatesparalucia.com/wp-content/uploads/2011/10/vlcsnap-2011-10-24-11h43m56s217.jpg",
           "climate": "Warm",
           "terrain": "Under the floorboards",
           "surface_water": "10",
@@ -2486,7 +2508,7 @@ export default {
         },
         {
           "id": "be634b4e-c333-4225-a5f0-2a0aa33d6453",
-          "name": "Ōna",
+          "name": "Ona",
           "img": "https://static.wikia.nocookie.net/studio-ghibli/images/c/cb/Ouna.jpg",
           "gender": "Female",
           "age": "Elder",
@@ -2499,7 +2521,7 @@ export default {
         {
           "id": "682df5c3-b09e-46af-94d1-ae0d17f9b4b6",
           "name": "Bamboo Forest",
-          "img": "https://static.wikia.nocookie.net/studio-ghibli/images/e/ec/Ghibli-kaguya-bamboo-forest.jpg",
+          "img": "https://pbs.twimg.com/media/DYM8i_qWAAAVNJT?format=jpg&name=small",
           "climate": "Tropical",
           "terrain": "Forest",
           "surface_water": "10",
