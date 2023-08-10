@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -57,22 +57,58 @@
         <li><a href="#" data-tab="characters-big-container">Characters</a></li>
         <li><a href="#" data-tab="vehicles-big-container">Vehicles</a></li>
         <li><a href="#" data-tab="locations-big-container">Locations</a></li>
+        <li><input type="text" placeholder="Search" id="input-search"></li>
       </ul>
+
     </nav>
 
     <div class="filter-container">
       <div class="box-filter">
-        <select name="filter-producer" id="button-filter-producer">
-          <option value="">Producer filter</option>
+        <div id="container-filter-productors-directors">
+          <label for="Filtrar">Productor & Director </label>
+          <select name="filter-prodirect" id="button-filter-prodirect">
+            <optgroup label="Productors">
+              <option value="">--</option>
+              <option data-id="prod" value="Isao Takahata">Isao Takahata</option>
+              <option data-id="prod" value="Hayao Miyazaki">Hayao Miyazaki</option>
+              <option data-id="prod" value="Toru Hara">Toru Hara</option>
+              <option data-id="prod" value="Toshio Suzuki">Toshio Suzuki</option>
+              <option data-id="prod" value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
+            </optgroup>
+            <optgroup label="Directors">
+              <option data-id="dir" value="Isao Takahata">Isao Takahata</option>
+              <option data-id="dir" value="Hayao Miyazaki">Hayao Miyazaki</option>
+              <option data-id="dir" value="Hiroyuki Morita">Hiroyuki Morita</option>
+              <option data-id="dir" value="Gorō Miyazaki">Gorō Miyazaki</option>
+              <option data-id="dir" value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
+              <option data-id="dir" value="Hiromasa Yonebayashi">Hiromasa Yonebayashi</option>
+            </optgroup>
+          </select>
+        </div>
+        <select name="filter-movie" id="button-filter-movie">
+          <option value="">Movie filter</option>
           <option value="all">All</option>
-          <option value="Isao Takahata">Isao Takahata</option>
-          <option value="Hayao Miyazaki">Hayao Miyazaki</option>
-          <option value="Toru Hara">Toru Hara</option>
-          <option value="Toshio Suzuki">Toshio Suzuki</option>
-          <option value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
+          <option value="Castle in the Sky">Castle in the Sky</option>
+          <option value="My Neighbor Totoro">My Neighbor Totoro</option>
+          <option value="Kiki's Delivery Service">Kiki's Delivery Service</option>
+          <option value="Grave of the Fireflies">Grave of the Fireflies</option>
+          <option value="Only Yesterday">Only Yesterday</option>
+          <option value="Porco Rosso">Porco Rosso</option>
+          <option value="Pom Poko">Pom Poko</option>
+          <option value="Whisper of the Heart">Whisper of the Heart</option>
+          <option value="Princess Mononoke">Princess Mononoke</option>
+          <option value="My Neighbors the Yamadas">My Neighbors the Yamadas</option>
+          <option value="Spirited Away">Spirited Away</option>
+          <option value="The Cat Returns">The Cat Returns</option>
+          <option value="Howl's Moving Castle">Howl's Moving Castle</option>
+          <option value="Tales from Earthsea">Tales from Earthsea</option>
+          <option value="Ponyo on the Cliff by the Sea">Ponyo on the Cliff by the Sea</option>
+          <option value="The Secret World of Arrietty">The Secret World of Arrietty</option>
+          <option value="From Up on Poppy Hill">From Up on Poppy Hill</option>
+          <option value="The Wind Rises">The Wind Rises</option>
+          <option value="The Tale of the Princess Kaguya">The Tale of the Princess Kaguya</option>
+          <option value="When Marnie Was There">When Marnie Was There</option>
         </select>
-      </div>
-      <div class="box-filter">
         <select name="filter-character-gender" id="button-filter-character-gender">
           <option value="">Gender filter</option>
           <option value="all">All</option>
@@ -80,8 +116,6 @@
           <option value="Male">Male</option>
           <option value="NA">Unknown</option>
         </select>
-      </div>
-      <div class="box-filter">
         <select name="filter-character-specie" id="button-filter-character-specie">
           <option value="">Specie filter</option>
           <option value="all">All</option>
@@ -102,13 +136,11 @@
           <option value="Bird">Bird</option>
           <option value="Human/Scarecrow">Human/Scarecrow</option>
           <option value="Arch-mage/Human">Arch-mage/Human</option>
-          <option value="unknown">Unknown</option>
           <option value="Red elk">Red elk</option>
           <option value="Dog">Dog</option>
           <option value="Wolf">Wolf</option>
+          <option value="unknown">Unknown</option>
         </select>
-      </div>
-      <div class="box-filter">
         <select name="filter-vehicle-class" id="button-filter-vehicle-class">
           <option value="">Vehicle class filter</option>
           <option value="all">All</option>
@@ -119,8 +151,35 @@
           <option value="War plane">War plane</option>
           <option value="Battle ship">Battle ship</option>
         </select>
+        <select name="filter-location-climate" id="button-filter-location-climate">
+          <option value="">Climate filter</option>
+          <option value="all">All</option>
+          <option value="Continental">Continental</option>
+          <option value="Mild">Mild</option>
+          <option value="Warm">Warm</option>
+          <option value="Wet">Wet</option>
+          <option value="Tropical">Tropical</option>
+          <option value="Damp">Damp</option>
+          <option value="Dry">Dry</option>
+          <option value="TODO">Unknown</option>
+        </select>
+        <select name="filter-location-terrain" id="button-filter-location-terrain">
+          <option value="">Terrain filter</option>
+          <option value="all">All</option>
+          <option value="Hill">Hill</option>
+          <option value="River">River</option>
+          <option value="City">City</option>
+          <option value="Forest">Forest</option>
+          <option value="Ocean">Ocean</option>
+          <option value="Mountain">Mountain</option>
+          <option value="Plain">Plain</option>
+          <option value="Earthsea">Earthsea</option>
+          <option value="Marsh">Marsh</option>
+          <option value="Under the floorboards">Under the floorboards</option>
+          <option value="TODO">Unknown</option>
+        </select>
       </div>
-      <div class="box-filter2">
+      <div class="box-filter">
         <select name="filter" id="button-filter">
           <option value="">Sort by</option>
           <option value="a-z">A-Z</option>
@@ -133,7 +192,7 @@
 
 
     <main id="main-container" class="tab-content">
-      <div class="movie-container" id="root"></div>
+      <div class="movie-container" id="root"></div>htm
     </main>
 
     <section id="characters-big-container" class="tab-content">

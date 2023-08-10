@@ -6,6 +6,7 @@ export const showTab = (tabName, tabContents) => {
   selectedTab.style.display = "block";
 };
 
+
 export const actives = {
   removerActives: () => {
     document.querySelectorAll('a[data-tab]').forEach(link => {
@@ -17,14 +18,20 @@ export const actives = {
 export const filterImport = {
   // Se crea funcion para recibir data de peliculas y el nombre de productor 
   // para volver a mostrar las peliculas se llama a la funcion createfilms
-  filterForProducers: (films, producerName) => {
-    if (producerName === 'all' || producerName === "") {
+  // el parametro type es para filtrar por productor o director, se captura desde cada option
+  // seleccionada
+  filterForProducersAndDirectors: (films, name, type) => {
+    if (name === 'all' || name === "") {
       return films;
-    } else {
-      const dataFiltered = films.filter(function (film) {
-        return film.producer === producerName
+    }
+    if (type === 'prod') {
+      return films.filter(function (film) {
+        return film.producer === name
       });
-      return dataFiltered;
+    } else {
+      return films.filter(function (film) {
+        return film.director === name
+      });
     }
   },
   filterForCharacterGender: (people, genders) => {
@@ -100,3 +107,46 @@ export const orderImport = {
     }
   },
 }
+
+// Se crea constante searchImport para iniciar una funcion de (filtro busqueda)
+// searchFilmsByTitle esta funcion, tendra por parametro searchString 
+//haciendo referencia al valor que rescatara el input
+// con if diremos "si el largo de este valor es mayor que 2"
+// de la data retorname dicho elemento mayor a 2 string, (dentro de name)
+// con toLowerCase estoy pasando la cadena de texto a una nueva que consta solo de letras minusculas
+//Si no se cumple esta condicion, retornamos la data.
+export const searchImport = {
+  searchFilmsByTitle: (searchString, data) => {
+    if (searchString.length > 2) {
+      return data.filter(element => {
+        return element.title.toLowerCase().includes(searchString.toLowerCase())
+      });
+    }
+    return data;
+  },
+  searchCharacterByName: (searchString, data) => {
+    if (searchString.length > 2) {
+      return data.filter(element => {
+        return element.name.toLowerCase().includes(searchString.toLowerCase())
+      });
+    }
+    return data;
+  },
+  searchVehiclesByName: (searchString, data) => {
+    if (searchString.length > 2) {
+      return data.filter(element => {
+        return element.name.toLowerCase().includes(searchString.toLowerCase())
+      });
+    }
+    return data;
+  },
+  searchLocationsByName: (searchString, data) => {
+    if (searchString.length > 2) {
+      return data.filter(element => {
+        return element.name.toLowerCase().includes(searchString.toLowerCase())
+      });
+    }
+    return data;
+  },
+}
+
