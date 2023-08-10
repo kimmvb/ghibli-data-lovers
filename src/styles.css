@@ -205,8 +205,7 @@ a[data-tab].active {
 #button-filter-vehicle-class,
 #button-filter-character-specie,
 #button-filter-location-climate,
-#button-filter-location-terrain
- {
+#button-filter-location-terrain {
     width: 15rem;
     height: 30px;
     border: 2px solid #aaa;
@@ -302,7 +301,22 @@ main {
 
 }
 
-#characters-big-container, #vehicles-big-container, #directors-big-container, #producers-big-container, #locations-big-container {
+#container-filter-productors-directors {
+    display: flex;
+    align-items: center;
+}
+
+#button-filter-prodirect {
+    margin-left: 10px;
+    width: 15rem;
+    height: 30px;
+}
+
+#characters-big-container,
+#vehicles-big-container,
+#directors-big-container,
+#producers-big-container,
+#locations-big-container {
     display: none;
 }
 

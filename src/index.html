@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -57,20 +57,34 @@
         <li><a href="#" data-tab="characters-big-container">Characters</a></li>
         <li><a href="#" data-tab="vehicles-big-container">Vehicles</a></li>
         <li><a href="#" data-tab="locations-big-container">Locations</a></li>
+        <li><input type="text" placeholder="Search" id="input-search"></li>
       </ul>
+
     </nav>
 
     <div class="filter-container">
       <div class="box-filter">
-        <select name="filter-producer" id="button-filter-producer">
-          <option value="">Producer filter</option>
-          <option value="all">All</option>
-          <option value="Isao Takahata">Isao Takahata</option>
-          <option value="Hayao Miyazaki">Hayao Miyazaki</option>
-          <option value="Toru Hara">Toru Hara</option>
-          <option value="Toshio Suzuki">Toshio Suzuki</option>
-          <option value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
-        </select>
+        <div id="container-filter-productors-directors">
+          <label for="Filtrar">Productor & Director </label>
+          <select name="filter-prodirect" id="button-filter-prodirect">
+            <optgroup label="Productors">
+              <option value="">--</option>
+              <option data-id="prod" value="Isao Takahata">Isao Takahata</option>
+              <option data-id="prod" value="Hayao Miyazaki">Hayao Miyazaki</option>
+              <option data-id="prod" value="Toru Hara">Toru Hara</option>
+              <option data-id="prod" value="Toshio Suzuki">Toshio Suzuki</option>
+              <option data-id="prod" value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
+            </optgroup>
+            <optgroup label="Directors">
+              <option data-id="dir" value="Isao Takahata">Isao Takahata</option>
+              <option data-id="dir" value="Hayao Miyazaki">Hayao Miyazaki</option>
+              <option data-id="dir" value="Hiroyuki Morita">Hiroyuki Morita</option>
+              <option data-id="dir" value="Gorō Miyazaki">Gorō Miyazaki</option>
+              <option data-id="dir" value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
+              <option data-id="dir" value="Hiromasa Yonebayashi">Hiromasa Yonebayashi</option>
+            </optgroup>
+          </select>
+        </div>
         <select name="filter-movie" id="button-filter-movie">
           <option value="">Movie filter</option>
           <option value="all">All</option>
@@ -178,7 +192,7 @@
 
 
     <main id="main-container" class="tab-content">
-      <div class="movie-container" id="root"></div>
+      <div class="movie-container" id="root"></div>htm
     </main>
 
     <section id="characters-big-container" class="tab-content">

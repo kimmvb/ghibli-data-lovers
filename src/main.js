@@ -1,12 +1,23 @@
 import data from "./data/ghibli/ghibli.js";
-import { showTab, filterImport, orderImport, actives } from "./data.js";
+import {
+  showTab,
+  filterImport,
+  orderImport,
+  actives,
+  searchImport,
+} from "./data.js";
 
 const root = document.getElementById("root");
 const containerVehicles = document.getElementById("vehicles-small-container");
 const charactersRoot = document.getElementById("characters-small-container");
 const locationsRoot = document.getElementById("locations-small-container");
 const filter = document.getElementById("button-filter");
-const filterProducer = document.getElementById("button-filter-producer");
+const filterProducerDirector = document.getElementById(
+  "button-filter-prodirect",
+);
+const filterProducerDirectorContainer = document.getElementById(
+  "container-filter-productors-directors",
+);
 const filterMovies = document.getElementById("button-filter-movie");
 const filterCharacterGender = document.getElementById(
   "button-filter-character-gender",
@@ -23,6 +34,7 @@ const filterLocationClimate = document.getElementById(
 const filterLocationTerrain = document.getElementById(
   "button-filter-location-terrain",
 );
+const inputSearch = document.getElementById("input-search");
 
 //Data recogida en un array
 const filmsData = data.films; //Variable que contiene la data del array 'films'.
@@ -69,9 +81,9 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
     showTab(tabName, tabContents);
     // se agrega este if, para lograr que el filtro productor/director solo este disponible en movies
     if (tabName === "main-container") {
-      filterProducer.style.display = "block";
+      filterProducerDirectorContainer.style.display = "flex";
     } else {
-      filterProducer.style.display = "none";
+      filterProducerDirectorContainer.style.display = "none";
     }
     if (tabName === "characters-big-container") {
       filterCharacterGender.style.display = "block";
@@ -115,10 +127,56 @@ enterButton.addEventListener("click", function (event) {
   sectionMovies.classList.add("show");
   document.body.classList.remove("body-blue");
 });
+// Filtro Busqueda/Navegacion
+//se crea la variable inputSearch para hacer referencia al input (linea 13)
+//Se crea evento para "escuchar" cuando se ejecuta un keyup / con la variable tabActive capturamos el tab activo
+//con if le indicamos que si el tab activo es Movies, creamos/mostramos las movies bajo el parametro
+// - searchImport.searchFilmsByTitle(event.target.value, filmsData -
+// (searchImport) es una constante que fue importada desde data.js que ademas es una funcion (searchFilmsByTitle)
+// y a esa funcion le pasamos el valor que se captura del input text y films.Data (data event.target.value, filmsData)
+// filmsData puede variar dependiendo de la ubicacion del dato
+inputSearch.addEventListener("keyup", function (event) {
+  const tabActive =
+    document.querySelectorAll("a[data-tab].active")[0].innerText;
+  if (tabActive === "Movies") {
+    createFilms(searchImport.searchFilmsByTitle(event.target.value, filmsData));
+    return;
+  }
+  if (tabActive === "Characters") {
+    printDataCharacters(
+      searchImport.searchCharacterByName(event.target.value, peopleData),
+    );
+    return;
+  }
+  if (tabActive === "Vehicles") {
+    createVehicles(
+      searchImport.searchVehiclesByName(event.target.value, vehiclesData),
+    );
+    return;
+  }
+  if (tabActive === "Locations") {
+    createLocations(
+      searchImport.searchLocationsByName(event.target.value, locationsData),
+    );
+    return;
+  }
+});
 
 //DOM de filtros
-filterProducer.addEventListener("change", function (event) {
-  createFilms(filterImport.filterForProducers(filmsData, event.target.value));
+
+filterProducerDirector.addEventListener("change", function (event) {
+  createFilms(
+    filterImport.filterForProducersAndDirectors(
+      filmsData,
+      event.target.value,
+      event.target[event.target.selectedIndex].dataset.id,
+    ),
+  );
+  // se captura el data id de cada option para hacer un if en la función que filtra
+  // le pasamos como parametro 3 el option seleccionado del select, es decir el que el
+  //usuario selecciono y eso se hace con el indice de event.target.selectedIndex
+  // sabemos que las options de un select son un arreglo de options por eso es posible acceder
+  // con los corchetes cuadrados
 });
 
 filterMovies.addEventListener("change", function (event) {
