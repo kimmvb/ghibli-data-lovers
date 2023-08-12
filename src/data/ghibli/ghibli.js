@@ -576,7 +576,7 @@ export default {
           "id": "000000000070",
           "name": "kobe ​​city, japan",
           "img": "https://images.squarespace-cdn.com/content/v1/54fc8146e4b02a22841f4df7/1571850401468-9TTOSKJGO49OEAKEJ4O6/Art+of+Only+Yesterday+C+-+8.jpg",
-          "climate": "warm",
+          "climate": "Warm",
           "terrain": "city",
           "surface_water": "70",
           "residents": [
@@ -1714,7 +1714,7 @@ export default {
           "id": "00001289019000",
           "name": "home of howl when i was little",
           "img": "https://cinescopia.com/wp-content/uploads/2020/06/103934419_303050704187443_7376965189271691757_n.jpg",
-          "climate": "warm",
+          "climate": "Warm",
           "terrain": "flowery",
           "surface_water": "30",
           "residents": [
@@ -1725,7 +1725,7 @@ export default {
           "id": "00001289018000",
           "name": "Porthaven",
           "img": "https://pbs.twimg.com/media/ESEI8NJXkAEQTXa?format=webp&name=360x360",
-          "climate": "wet",
+          "climate": "Wet",
           "terrain": "port fishing",
           "surface_water": "30",
           "residents": [

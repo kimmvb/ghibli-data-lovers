@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FanArtStudioGhibli</title>
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Lexend+Giga:wght@100;300;500&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" />
 </head>
 
 <body class="body-blue">
@@ -53,35 +53,58 @@
 
     <nav class="menu">
       <ul class="menu-button">
-        <li><a href="#" data-tab="main-container" class="active">Movies</a></li>
-        <li><a href="#" data-tab="characters-big-container">Characters</a></li>
+        <li>
+          <a href="#" data-tab="main-container" class="active">Movies</a>
+        </li>
+        <li>
+          <a href="#" data-tab="characters-big-container">Characters</a>
+        </li>
         <li><a href="#" data-tab="vehicles-big-container">Vehicles</a></li>
         <li><a href="#" data-tab="locations-big-container">Locations</a></li>
-        <li><input type="text" placeholder="Search" id="input-search"></li>
+        <li><input type="text" placeholder="Search" id="input-search" /></li>
       </ul>
-
     </nav>
 
     <div class="filter-container">
       <div class="box-filter">
         <div id="container-filter-productors-directors">
-          <label for="Filtrar">Productor & Director </label>
+          <label for="Filtrar">Producer and Director </label>
           <select name="filter-prodirect" id="button-filter-prodirect">
-            <optgroup label="Productors">
+            <optgroup label="Producers">
               <option value="">--</option>
-              <option data-id="prod" value="Isao Takahata">Isao Takahata</option>
-              <option data-id="prod" value="Hayao Miyazaki">Hayao Miyazaki</option>
+              <option data-id="prod" value="Isao Takahata">
+                Isao Takahata
+              </option>
+              <option data-id="prod" value="Hayao Miyazaki">
+                Hayao Miyazaki
+              </option>
               <option data-id="prod" value="Toru Hara">Toru Hara</option>
-              <option data-id="prod" value="Toshio Suzuki">Toshio Suzuki</option>
-              <option data-id="prod" value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
+              <option data-id="prod" value="Toshio Suzuki">
+                Toshio Suzuki
+              </option>
+              <option data-id="prod" value="Yoshiaki Nishimura">
+                Yoshiaki Nishimura
+              </option>
             </optgroup>
             <optgroup label="Directors">
-              <option data-id="dir" value="Isao Takahata">Isao Takahata</option>
-              <option data-id="dir" value="Hayao Miyazaki">Hayao Miyazaki</option>
-              <option data-id="dir" value="Hiroyuki Morita">Hiroyuki Morita</option>
-              <option data-id="dir" value="Gorō Miyazaki">Gorō Miyazaki</option>
-              <option data-id="dir" value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
-              <option data-id="dir" value="Hiromasa Yonebayashi">Hiromasa Yonebayashi</option>
+              <option data-id="dir" value="Isao Takahata">
+                Isao Takahata
+              </option>
+              <option data-id="dir" value="Hayao Miyazaki">
+                Hayao Miyazaki
+              </option>
+              <option data-id="dir" value="Hiroyuki Morita">
+                Hiroyuki Morita
+              </option>
+              <option data-id="dir" value="Gorō Miyazaki">
+                Gorō Miyazaki
+              </option>
+              <option data-id="dir" value="Yoshiaki Nishimura">
+                Yoshiaki Nishimura
+              </option>
+              <option data-id="dir" value="Hiromasa Yonebayashi">
+                Hiromasa Yonebayashi
+              </option>
             </optgroup>
           </select>
         </div>
@@ -90,23 +113,35 @@
           <option value="all">All</option>
           <option value="Castle in the Sky">Castle in the Sky</option>
           <option value="My Neighbor Totoro">My Neighbor Totoro</option>
-          <option value="Kiki's Delivery Service">Kiki's Delivery Service</option>
-          <option value="Grave of the Fireflies">Grave of the Fireflies</option>
+          <option value="Kiki's Delivery Service">
+            Kiki's Delivery Service
+          </option>
+          <option value="Grave of the Fireflies">
+            Grave of the Fireflies
+          </option>
           <option value="Only Yesterday">Only Yesterday</option>
           <option value="Porco Rosso">Porco Rosso</option>
           <option value="Pom Poko">Pom Poko</option>
           <option value="Whisper of the Heart">Whisper of the Heart</option>
           <option value="Princess Mononoke">Princess Mononoke</option>
-          <option value="My Neighbors the Yamadas">My Neighbors the Yamadas</option>
+          <option value="My Neighbors the Yamadas">
+            My Neighbors the Yamadas
+          </option>
           <option value="Spirited Away">Spirited Away</option>
           <option value="The Cat Returns">The Cat Returns</option>
           <option value="Howl's Moving Castle">Howl's Moving Castle</option>
           <option value="Tales from Earthsea">Tales from Earthsea</option>
-          <option value="Ponyo on the Cliff by the Sea">Ponyo on the Cliff by the Sea</option>
-          <option value="The Secret World of Arrietty">The Secret World of Arrietty</option>
+          <option value="Ponyo on the Cliff by the Sea">
+            Ponyo on the Cliff by the Sea
+          </option>
+          <option value="The Secret World of Arrietty">
+            The Secret World of Arrietty
+          </option>
           <option value="From Up on Poppy Hill">From Up on Poppy Hill</option>
           <option value="The Wind Rises">The Wind Rises</option>
-          <option value="The Tale of the Princess Kaguya">The Tale of the Princess Kaguya</option>
+          <option value="The Tale of the Princess Kaguya">
+            The Tale of the Princess Kaguya
+          </option>
           <option value="When Marnie Was There">When Marnie Was There</option>
         </select>
         <select name="filter-character-gender" id="button-filter-character-gender">
@@ -132,7 +167,9 @@
           <option value="Fish/Human">Fish/Human</option>
           <option value="Witch/Human">With/Human</option>
           <option value="Demon">Demon</option>
-          <option value="Spirit of The White Fox">Spirit of The White Fox</option>
+          <option value="Spirit of The White Fox">
+            Spirit of The White Fox
+          </option>
           <option value="Bird">Bird</option>
           <option value="Human/Scarecrow">Human/Scarecrow</option>
           <option value="Arch-mage/Human">Arch-mage/Human</option>
@@ -150,6 +187,21 @@
           <option value="Boat">Boat</option>
           <option value="War plane">War plane</option>
           <option value="Battle ship">Battle ship</option>
+          <option value="air vehicles">Air vehicles</option>
+          <option value="railway">Railway</option>
+          <option value="van">Van</option>
+          <option value="Car">Car</option>
+          <option value="trian">Train</option>
+          <option value="maritime, magic">Magical Maritime</option>
+          <option value=" Trucks, Simple truck">Truck</option>
+          <option value="two wheeler">Two wheeler</option>
+          <option value="animal species">Animal species transport</option>
+          <option value="flying">Flying bombers</option>
+          <option value="maritime ship">Maritime ship</option>
+          <option value="flying ships">Flying ships</option>
+          <option value="animal">Animal</option>
+          <option value="magic">Magic</option>
+          <option value="boat">Town boat</option>
         </select>
         <select name="filter-location-climate" id="button-filter-location-climate">
           <option value="">Climate filter</option>
@@ -184,15 +236,14 @@
           <option value="">Sort by</option>
           <option value="a-z">A-Z</option>
           <option value="z-a">Z-A</option>
-          <option value="n-o">Newer to Older</option>
-          <option value="o-n">Older to Newer</option>
+          <option value="n-o" id="desc">Newer to Older</option>
+          <option value="o-n" id="asc">Older to Newer</option>
         </select>
       </div>
     </div>
 
-
     <main id="main-container" class="tab-content">
-      <div class="movie-container" id="root"></div>htm
+      <div class="movie-container" id="root"></div>
     </main>
 
     <section id="characters-big-container" class="tab-content">
@@ -200,25 +251,20 @@
     </section>
 
     <section id="vehicles-big-container" class="tab-content">
-      <div id="vehicles-small-container" class="tab-content2">
-      </div>
+      <div id="vehicles-small-container" class="tab-content2"></div>
     </section>
 
     <section id="locations-big-container" class="tab-content">
-      <div id="locations-small-container" class="tab-content2">
-      </div>
+      <div id="locations-small-container" class="tab-content2"></div>
     </section>
 
     <section id="producers-big-container" class="tab-content">
-      <div id="producers-small-container" class="tab-content2">
-      </div>
+      <div id="producers-small-container" class="tab-content2"></div>
     </section>
 
     <section id="directors-big-container" class="tab-content">
-      <div id="directors-small-container" class="tab-content2">
-      </div>
+      <div id="directors-small-container" class="tab-content2"></div>
     </section>
-
 
     <footer>
       <figure class="image-footer">
