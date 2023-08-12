@@ -233,7 +233,7 @@ a[data-tab].active {
   display: flex;
   justify-content: center;
   border: 1px solid #ccc;
-  font-size: 13px;
+  font-size: 10px;
 }
 
 hr {
