@@ -12,6 +12,8 @@ const containerVehicles = document.getElementById("vehicles-small-container");
 const charactersRoot = document.getElementById("characters-small-container");
 const locationsRoot = document.getElementById("locations-small-container");
 const filter = document.getElementById("button-filter");
+const ascOption = document.getElementById("asc");
+const descOption = document.getElementById("desc");
 const filterProducerDirector = document.getElementById(
   "button-filter-prodirect",
 );
@@ -82,13 +84,18 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
     // se agrega este if, para lograr que el filtro productor/director solo este disponible en movies
     if (tabName === "main-container") {
       filterProducerDirectorContainer.style.display = "flex";
+      ascOption.style.display = "block";
+      descOption.style.display = "block";
     } else {
       filterProducerDirectorContainer.style.display = "none";
+      ascOption.style.display = "none";
+      descOption.style.display = "none";
     }
     if (tabName === "characters-big-container") {
       filterCharacterGender.style.display = "block";
       filterCharacterSpecie.style.display = "block";
       filterMovies.style.display = "block";
+
     } else {
       filterCharacterGender.style.display = "none";
       filterCharacterSpecie.style.display = "none";
@@ -278,15 +285,13 @@ function callOrderZA(tabActive) {
 function callDateAsc(tabActive) {
   if (tabActive === "Movies") {
     createFilms(orderImport.sortRDAsc(filmsData, tabActive));
-  } else if (tabActive === "Characters");
-  printDataCharacters(orderImport.sortRDAsc(peopleData, tabActive));
+  } 
 }
 
 function callDateDesc(tabActive) {
   if (tabActive === "Movies") {
     createFilms(orderImport.sortRDDesc(filmsData, tabActive));
-  } else tabActive === "Characters";
-  printDataCharacters(orderImport.sortRDDesc(peopleData, tabActive));
+  }
 }
 
 //Mostrar data ordenada en página

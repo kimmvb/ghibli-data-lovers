@@ -6,7 +6,6 @@ export const showTab = (tabName, tabContents) => {
   selectedTab.style.display = "block";
 };
 
-
 export const actives = {
   removerActives: () => {
     document.querySelectorAll("a[data-tab]").forEach((link) => {
@@ -21,16 +20,16 @@ export const filterImport = {
   // el parametro type es para filtrar por productor o director, se captura desde cada option
   // seleccionada
   filterForProducersAndDirectors: (films, name, type) => {
-    if (name === 'all' || name === "") {
+    if (name === "all" || name === "") {
       return films;
     }
-    if (type === 'prod') {
+    if (type === "prod") {
       return films.filter(function (film) {
-        return film.producer === name
+        return film.producer === name;
       });
     } else {
       return films.filter(function (film) {
-        return film.director === name
+        return film.director === name;
       });
     }
   },
@@ -40,7 +39,7 @@ export const filterImport = {
     } else {
       const dataFiltered = films.filter(function (film) {
         return film.title === movieTitle;
-      });  
+      });
       return dataFiltered;
     }
   },
@@ -99,47 +98,43 @@ export const filterImport = {
 export const orderImport = {
   sortAToZTitle: (data, tabActive) => {
     if (tabActive === "Movies") {
-      return data.toSorted((a, b) => (a.title < b.title ? -1 : 1));
+      return data.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1));
     } else if (tabActive === "Characters") {
-      return data.toSorted((a, b) => (a.name < b.name ? -1 : 1));
+      return data.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1));
     } else if (tabActive === "Vehicles") {
-      return data.toSorted((a, b) => (a.name < b.name ? -1 : 1));
+      return data.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1));
     } else {
-      return data.toSorted((a, b) => (a.name < b.name ? -1 : 1));
+      return data.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1));
     }
   },
 
   sortZToATitle: (data, tabActive) => {
     if (tabActive === "Movies") {
-      return data.toSorted((a, b) => (a.title > b.title ? -1 : 1));
+      return data.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase() ? -1 : 1));
     } else if (tabActive === "Characters") {
-      return data.toSorted((a, b) => (a.name > b.name ? -1 : 1));
+      return data.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1));
     } else if (tabActive === "Vehicles") {
-      return data.toSorted((a, b) => (a.name > b.name ? -1 : 1));
+      return data.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1));
     } else {
-      return data.toSorted((a, b) => (a.name > b.name ? -1 : 1));
+      return data.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1));
     }
   },
 
   sortRDAsc: (data, tabActive) => {
     if (tabActive === "Movies") {
-      return data.toSorted((a, b) => a.release_date - b.release_date);
-    } else if (tabActive === "Characters") {
-      return data.toSorted((a, b) => a.age - b.age);
-    }
+      return data.sort((a, b) => a.release_date - b.release_date);
+    } 
   },
 
   sortRDDesc: (data, tabActive) => {
     if (tabActive === "Movies") {
-      return data.toSorted((a, b) => b.release_date - a.release_date);
-    } else if (tabActive === "Characters") {
-      return data.toSorted((a, b) => b.age - a.age);
-    }
+      return data.sort((a, b) => b.release_date - a.release_date);
+    } 
   },
-}
+};
 
 // Se crea constante searchImport para iniciar una funcion de (filtro busqueda)
-// searchFilmsByTitle esta funcion, tendra por parametro searchString 
+// searchFilmsByTitle esta funcion, tendra por parametro searchString
 //haciendo referencia al valor que rescatara el input
 // con if diremos "si el largo de este valor es mayor que 2"
 // de la data retorname dicho elemento mayor a 2 string, (dentro de name)
@@ -148,35 +143,34 @@ export const orderImport = {
 export const searchImport = {
   searchFilmsByTitle: (searchString, data) => {
     if (searchString.length > 2) {
-      return data.filter(element => {
-        return element.title.toLowerCase().includes(searchString.toLowerCase())
+      return data.filter((element) => {
+        return element.title.toLowerCase().includes(searchString.toLowerCase());
       });
     }
     return data;
   },
   searchCharacterByName: (searchString, data) => {
     if (searchString.length > 2) {
-      return data.filter(element => {
-        return element.name.toLowerCase().includes(searchString.toLowerCase())
+      return data.filter((element) => {
+        return element.name.toLowerCase().includes(searchString.toLowerCase());
       });
     }
     return data;
   },
   searchVehiclesByName: (searchString, data) => {
     if (searchString.length > 2) {
-      return data.filter(element => {
-        return element.name.toLowerCase().includes(searchString.toLowerCase())
+      return data.filter((element) => {
+        return element.name.toLowerCase().includes(searchString.toLowerCase());
       });
     }
     return data;
   },
   searchLocationsByName: (searchString, data) => {
     if (searchString.length > 2) {
-      return data.filter(element => {
-        return element.name.toLowerCase().includes(searchString.toLowerCase())
+      return data.filter((element) => {
+        return element.name.toLowerCase().includes(searchString.toLowerCase());
       });
     }
     return data;
   },
-}
-
+};
