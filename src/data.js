@@ -63,7 +63,7 @@ export const filterImport = {
       return dataFiltered;
     }
   },
-  filterForVehicleClass: (vehicles, classes) => {
+  /*filterForVehicleClass: (vehicles, classes) => {
     if (classes === "all" || classes === "") {
       return vehicles;
     } else {
@@ -72,7 +72,7 @@ export const filterImport = {
       });
       return dataFiltered;
     }
-  },
+  },*/
   filterForLocationClimate: (locations, climates) => {
     if (climates === "all" || climates === "") {
       return locations;
@@ -88,7 +88,7 @@ export const filterImport = {
       return locations;
     } else {
       const dataFiltered = locations.filter(function (location) {
-        return location.terrain === terrains;
+        return location.terrain.toLowerCase() === terrains.toLowerCase();
       });
       return dataFiltered;
     }

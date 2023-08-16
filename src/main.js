@@ -27,9 +27,7 @@ const filterCharacterGender = document.getElementById(
 const filterCharacterSpecie = document.getElementById(
   "button-filter-character-specie",
 );
-const filterVehicleClass = document.getElementById(
-  "button-filter-vehicle-class",
-);
+//const filterVehicleClass = document.getElementById("button-filter-vehicle-class",);
 const filterLocationClimate = document.getElementById(
   "button-filter-location-climate",
 );
@@ -40,27 +38,34 @@ const inputSearch = document.getElementById("input-search");
 
 //Data recogida en un array
 const filmsData = data.films; //Variable que contiene la data del array 'films'.
+let filmsDataFiltered = filmsData;
 
 const peopleData = []; //Variable con array vacio
+let peopleDataFiltered = [];
 data.films.forEach((element) => {
   element.people.forEach((row) => {
     peopleData.push(row);
   });
 }); //Se para la información por un bucle con el método .forEach. Por cada elemento de la propiedad 'people', se crea otro bucle con .forEach que toma cada uno de los elementos y con el método .push() los añade a a la varible con el array vacío. De esta manera todos los elementos de 'people' quedarían dentro de un array.
+peopleDataFiltered = peopleData;
 
 const vehiclesData = [];
+//let vehiclesDataFiltered = [];
 data.films.forEach((element) => {
   element.vehicles.forEach((row) => {
     vehiclesData.push(row);
   });
 }); //Se repite el procedimiento anterior con los vehículos.
+//vehiclesDataFiltered = vehiclesData;
 
 const locationsData = [];
+let locationsDataFiltered = [];
 data.films.forEach((element) => {
   element.locations.forEach((row) => {
     locationsData.push(row);
   });
 }); //Se repite el procedimiento anterior con las locaciones.
+locationsDataFiltered = locationsData;
 
 //Pestaña a pestaña
 // Con querySelectorAll se llaman a todos los elementos que cumplan con el atrubuto 'data-tab' en las etiquetas 'a'(enlace).
@@ -95,17 +100,16 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
       filterCharacterGender.style.display = "block";
       filterCharacterSpecie.style.display = "block";
       filterMovies.style.display = "block";
-
     } else {
       filterCharacterGender.style.display = "none";
       filterCharacterSpecie.style.display = "none";
       filterMovies.style.display = "none";
     }
-    if (tabName === "vehicles-big-container") {
+    /*if (tabName === "vehicles-big-container") {
       filterVehicleClass.style.display = "block";
     } else {
       filterVehicleClass.style.display = "none";
-    }
+    }*/
     if (tabName === "locations-big-container") {
       filterLocationClimate.style.display = "block";
       filterLocationTerrain.style.display = "block";
@@ -172,13 +176,19 @@ inputSearch.addEventListener("keyup", function (event) {
 //DOM de filtros
 
 filterProducerDirector.addEventListener("change", function (event) {
-  createFilms(
-    filterImport.filterForProducersAndDirectors(
-      filmsData,
-      event.target.value,
-      event.target[event.target.selectedIndex].dataset.id,
-    ),
+  filmsDataFiltered = filterImport.filterForProducersAndDirectors(
+    filmsData,
+    event.target.value,
+    event.target[event.target.selectedIndex].dataset.id,
   );
+  if (filter.selectedIndex > 0) {
+    const changeEvent = new Event("change");
+    filter.dispatchEvent(changeEvent);
+  } else {
+    createFilms(filmsDataFiltered);
+  }
+  // yo debería ser capaz de ordenar de acuerdo a si hay algo seleccionado
+
   // se captura el data id de cada option para hacer un if en la función que filtra
   // le pasamos como parametro 3 el option seleccionado del select, es decir el que el
   //usuario selecciono y eso se hace con el indice de event.target.selectedIndex
@@ -187,39 +197,136 @@ filterProducerDirector.addEventListener("change", function (event) {
 });
 
 filterMovies.addEventListener("change", function (event) {
-  printDataCharacters(
-    filterImport.filterForMovies(filmsData, event.target.value)[0].people,
-  );
+  if (filterMovies.selectedIndex > 1) {
+    peopleDataFiltered = filterImport.filterForMovies(
+      filmsData,
+      event.target.value,
+    )[0].people;
+  } else {
+    peopleDataFiltered = peopleData;
+  }
+  if (filterCharacterGender.selectedIndex > 0) {
+    peopleDataFiltered = filterImport.filterForCharacterGender(
+      peopleDataFiltered,
+      filterCharacterGender.value,
+    );
+  }
+  if (filterCharacterSpecie.selectedIndex > 0) {
+    peopleDataFiltered = filterImport.filterForCharacterSpecie(
+      peopleDataFiltered,
+      filterCharacterSpecie.value,
+    );
+  }
+  if (filter.selectedIndex > 0) {
+    const changeEvent = new Event("change");
+    filter.dispatchEvent(changeEvent);
+  } else {
+    printDataCharacters(peopleDataFiltered);
+  }
 });
 
 filterCharacterGender.addEventListener("change", function (event) {
-  printDataCharacters(
-    filterImport.filterForCharacterGender(peopleData, event.target.value),
+  if (filterMovies.selectedIndex > 1) {
+    peopleDataFiltered = filterImport.filterForMovies(
+      filmsData,
+      filterMovies.value,
+    )[0].people;
+  } else {
+    peopleDataFiltered = peopleData;
+  }
+  if (filterCharacterSpecie.selectedIndex > 0) {
+    peopleDataFiltered = filterImport.filterForCharacterSpecie(
+      peopleDataFiltered,
+      filterCharacterSpecie.value,
+    );
+  }
+  peopleDataFiltered = filterImport.filterForCharacterGender(
+    peopleDataFiltered,
+    event.target.value,
   );
+  if (filter.selectedIndex > 0) {
+    const changeEvent = new Event("change");
+    filter.dispatchEvent(changeEvent);
+  } else {
+    printDataCharacters(peopleDataFiltered);
+  }
 });
 
 filterCharacterSpecie.addEventListener("change", function (event) {
-  printDataCharacters(
-    filterImport.filterForCharacterSpecie(peopleData, event.target.value),
+  if (filterMovies.selectedIndex > 1) {
+    peopleDataFiltered = filterImport.filterForMovies(
+      filmsData,
+      filterMovies.value,
+    )[0].people;
+  } else {
+    peopleDataFiltered = peopleData;
+  }
+  if (filterCharacterGender.selectedIndex > 0) {
+    peopleDataFiltered = filterImport.filterForCharacterGender(
+      peopleDataFiltered,
+      filterCharacterGender.value,
+    );
+  }
+  peopleDataFiltered = filterImport.filterForCharacterSpecie(
+    peopleDataFiltered,
+    event.target.value,
   );
+  if (filter.selectedIndex > 0) {
+    const changeEvent = new Event("change");
+    filter.dispatchEvent(changeEvent);
+  } else {
+    printDataCharacters(peopleDataFiltered);
+  }
 });
 
-filterVehicleClass.addEventListener("change", function (event) {
+/*filterVehicleClass.addEventListener("change", function (event) {
   createVehicles(
     filterImport.filterForVehicleClass(vehiclesData, event.target.value),
   );
-});
+});*/
 
 filterLocationClimate.addEventListener("change", function (event) {
-  createLocations(
-    filterImport.filterForLocationClimate(locationsData, event.target.value),
-  );
+  if (filterLocationClimate.selectedIndex > 1) {
+    locationsDataFiltered = filterImport.filterForLocationClimate(
+      locationsData,
+      event.target.value,
+    );
+  } else {
+    locationsDataFiltered = locationsData;
+  }
+  if (filterLocationTerrain.selectedIndex > 0) {
+    locationsDataFiltered = filterImport.filterForLocationTerrain(
+      locationsDataFiltered,
+      filterLocationTerrain.value,
+    );
+  }
+  if (filter.selectedIndex > 0) {
+    const changeEvent = new Event("change");
+    filter.dispatchEvent(changeEvent);
+  } else {
+    createLocations(locationsDataFiltered);
+  }
 });
 
 filterLocationTerrain.addEventListener("change", function (event) {
-  createLocations(
-    filterImport.filterForLocationTerrain(locationsData, event.target.value),
+  if (filterLocationClimate.selectedIndex > 1) {
+    locationsDataFiltered = filterImport.filterForLocationClimate(
+      locationsData,
+      filterLocationClimate.value,
+    );
+  } else {
+    locationsDataFiltered = locationsData;
+  }
+  locationsDataFiltered = filterImport.filterForLocationTerrain(
+    locationsDataFiltered,
+    event.target.value,
   );
+  if (filter.selectedIndex > 0) {
+    const changeEvent = new Event("change");
+    filter.dispatchEvent(changeEvent);
+  } else {
+    createLocations(locationsDataFiltered);
+  }
 });
 
 //DOM Ordenar
@@ -258,43 +365,166 @@ filter.addEventListener("change", function (event) {
 
 // se crean estas 2 funciones para desacoplar el listener del selector
 // y para saber en que pestaña se encuentra el usuario.
+/*function callOrderAZ(tabActive) {
+  //console.log(emptyLocationsArray);
+
+  if (tabActive === "Movies") {
+    let dataemptyArray = [];
+    if (emptyArray.length === 0) {
+      dataemptyArray = filmsData;
+    } else {
+      dataemptyArray = emptyArray;
+    }
+    createFilms(orderImport.sortAToZTitle(dataemptyArray, tabActive));
+  } else if (tabActive === "Characters") {
+    let dataemptyArray = [];
+    if (emptyCharactersArray.length === 0) {
+      dataemptyArray = peopleData;
+    } else {
+      dataemptyArray = emptyCharactersArray;
+    }
+    printDataCharacters(orderImport.sortAToZTitle(dataemptyArray, tabActive));
+  } else if (tabActive === "Vehicles") {
+    let dataemptyArray = [];
+    if (emptyVehiclesArray.length === 0) {
+      dataemptyArray = vehiclesData;
+    } else {
+      dataemptyArray = emptyVehiclesArray;
+    }
+    createVehicles(orderImport.sortAToZTitle(dataemptyArray, tabActive));
+  } else {
+    let dataemptyArray = [];
+    if (emptyLocationsArray.length === 0) {
+      dataemptyArray = locationsData;
+    } else {
+      dataemptyArray = emptyLocationsArray;
+    }
+    createLocations(orderImport.sortAToZTitle(dataemptyArray, tabActive));
+  }
+}
+
+function callOrderZA(tabActive) {
+  //let dataemptyArray = [];
+  if (tabActive === "Movies") {
+    let dataemptyArray = [];
+    if (emptyArray.length === 0) {
+      dataemptyArray = filmsData;
+    } else {
+      dataemptyArray = emptyArray;
+    }
+    createFilms(orderImport.sortZToATitle(dataemptyArray, tabActive));
+  } else if (tabActive === "Characters") {
+    let dataemptyArray = [];
+    if (emptyCharactersArray.length === 0) {
+      dataemptyArray = peopleData;
+    } else {
+      dataemptyArray = emptyCharactersArray;
+    }
+    printDataCharacters(orderImport.sortZToATitle(dataemptyArray, tabActive));
+  } else if (tabActive === "Vehicles") {
+    let dataemptyArray = [];
+    if (emptyVehiclesArray.length === 0) {
+      dataemptyArray = vehiclesData;
+    } else {
+      dataemptyArray = emptyVehiclesArray;
+    }
+    createVehicles(orderImport.sortZToATitle(dataemptyArray, tabActive));
+  } else {
+    let dataemptyArray = [];
+    if (emptyLocationsArray.length === 0) {
+      dataemptyArray = locationsData;
+    } else {
+      dataemptyArray = emptyLocationsArray;
+    }
+    createLocations(orderImport.sortZToATitle(dataemptyArray, tabActive));
+  }
+}
+
+function callDateAsc(tabActive) {
+  let dataemptyArray = [];
+  if (emptyArray.length === 0) {
+    dataemptyArray = filmsData;
+  } else {
+    dataemptyArray = emptyArray;
+  }
+  if (tabActive === "Movies") {
+    createFilms(orderImport.sortRDAsc(dataemptyArray, tabActive));
+  }
+}
+
+function callDateDesc(tabActive) {
+  let dataemptyArray = [];
+  if (emptyArray.length === 0) {
+    dataemptyArray = filmsData;
+  } else {
+    dataemptyArray = emptyArray;
+  }
+  if (tabActive === "Movies") {
+    createFilms(orderImport.sortRDDesc(dataemptyArray, tabActive));
+  }
+}
+
+//Mostrar data ordenada en página
+function createFilms(films) {
+  root.innerHTML = "";
+  for (let i = 0; i < films.length; i++) {
+    root.innerHTML += `<figure class="poster">
+        <div class="info">
+            <p><b>Rating<b/>: ⭐${films[i].rt_score} / <b>Año:</b> ${films[i].release_date}</p> 
+            <p>${films[i].description}</p>
+            <br>
+            <p>Director: <b>${films[i].director}</b></p> 
+            <p>Productor: <b>${films[i].producer}</b></p> 
+        </div>
+        <img src="${films[i].poster}" alt="${films[i].title}" />
+        <figcaption>${films[i].title}</figcaption> 
+        </figure>`;
+  }
+}*/
 function callOrderAZ(tabActive) {
   if (tabActive === "Movies") {
-    createFilms(orderImport.sortAToZTitle(filmsData, tabActive));
+    createFilms(orderImport.sortAToZTitle(filmsDataFiltered, tabActive));
   } else if (tabActive === "Characters") {
-    printDataCharacters(orderImport.sortAToZTitle(peopleData, tabActive));
+    printDataCharacters(
+      orderImport.sortAToZTitle(peopleDataFiltered, tabActive),
+    );
   } else if (tabActive === "Vehicles") {
     createVehicles(orderImport.sortAToZTitle(vehiclesData, tabActive));
   } else {
-    createLocations(orderImport.sortAToZTitle(locationsData, tabActive));
+    createLocations(
+      orderImport.sortAToZTitle(locationsDataFiltered, tabActive),
+    );
   }
 }
 
 function callOrderZA(tabActive) {
   if (tabActive === "Movies") {
-    createFilms(orderImport.sortZToATitle(filmsData, tabActive));
+    createFilms(orderImport.sortZToATitle(filmsDataFiltered, tabActive));
   } else if (tabActive === "Characters") {
-    printDataCharacters(orderImport.sortZToATitle(peopleData, tabActive));
+    printDataCharacters(
+      orderImport.sortZToATitle(peopleDataFiltered, tabActive),
+    );
   } else if (tabActive === "Vehicles") {
     createVehicles(orderImport.sortZToATitle(vehiclesData, tabActive));
   } else {
-    createLocations(orderImport.sortZToATitle(locationsData, tabActive));
+    createLocations(
+      orderImport.sortZToATitle(locationsDataFiltered, tabActive),
+    );
   }
 }
 
 function callDateAsc(tabActive) {
   if (tabActive === "Movies") {
-    createFilms(orderImport.sortRDAsc(filmsData, tabActive));
-  } 
+    createFilms(orderImport.sortRDAsc(filmsDataFiltered, tabActive));
+  }
 }
 
 function callDateDesc(tabActive) {
   if (tabActive === "Movies") {
-    createFilms(orderImport.sortRDDesc(filmsData, tabActive));
+    createFilms(orderImport.sortRDDesc(filmsDataFiltered, tabActive));
   }
 }
 
-//Mostrar data ordenada en página
 function createFilms(films) {
   root.innerHTML = "";
   for (let i = 0; i < films.length; i++) {
