@@ -200,7 +200,11 @@ filterProducerDirector.addEventListener("change", function (event) {
 });
 
 filterMovies.addEventListener("change", function (event) {
-  peopleDataFiltered = filterImport.filterForMovies(filmsData, event.target.value)[0].people;
+  if (filterMovies.selectedIndex > 1) {
+    peopleDataFiltered = filterImport.filterForMovies(filmsData, event.target.value)[0].people;
+  } else {
+    peopleDataFiltered = peopleData;
+  }
   if (filterCharacterGender.selectedIndex > 0) {
     peopleDataFiltered = filterImport.filterForCharacterGender(
       peopleDataFiltered, filterCharacterGender.value
@@ -220,7 +224,7 @@ filterMovies.addEventListener("change", function (event) {
 });
 
 filterCharacterGender.addEventListener("change", function (event) {
-  if (filterMovies.selectedIndex > 0) {
+  if (filterMovies.selectedIndex > 1) {
     peopleDataFiltered = filterImport.filterForMovies(filmsData, filterMovies.value)[0].people;
   } else {
     peopleDataFiltered = peopleData;
@@ -240,7 +244,7 @@ filterCharacterGender.addEventListener("change", function (event) {
 });
 
 filterCharacterSpecie.addEventListener("change", function (event) {
-  if (filterMovies.selectedIndex > 0) {
+  if (filterMovies.selectedIndex > 1) {
     peopleDataFiltered = filterImport.filterForMovies(filmsData, filterMovies.value)[0].people;
   } else {
     peopleDataFiltered = peopleData;
