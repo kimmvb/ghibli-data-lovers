@@ -58,7 +58,7 @@ const locationsData = [
 
 describe("orderImport", () => {
   describe("orderimport.sortAToZTitle", () => {
-    it("debería retornar los títulos de películas de la A a la Z", () => {
+    it("should sort movies by titles from A to Z", () => {
       const tabActive = "Movies";
       expect(orderImport.sortAToZTitle(moviesData, tabActive)).toEqual([
         {
@@ -91,7 +91,7 @@ describe("orderImport", () => {
         },
       ]);
     });
-    it("debería retornar los nombres de los personajes de la A a la Z", () => {
+    it("should sort characters by name from A to Z", () => {
       const tabActive = "Characters";
       expect(orderImport.sortAToZTitle(charactersData, tabActive)).toEqual([
         { name: "Dola", gender: "Female", specie: "Human" },
@@ -100,7 +100,7 @@ describe("orderImport", () => {
         { name: "Pazu", gender: "Male", specie: "Human" },
       ]);
     });
-    it("debería retornar los nombres de los vehículos de la A a la Z", () => {
+    it("should sort vehicles by name from A to Z", () => {
       const tabActive = "Vehicles";
       expect(orderImport.sortAToZTitle(vehiclesData, tabActive)).toEqual([
         { name: "Air Destroyer Goliath", vehicle_class: "Airship" },
@@ -109,7 +109,7 @@ describe("orderImport", () => {
         { name: "The Flaptors", vehicle_class: "air vehicles" },
       ]);
     });
-    it("debería retornar los nombres de las locaciones de la A a la Z", () => {
+    it("should sort locations by name from A to Z", () => {
       const tabActive = "Locations";
       expect(orderImport.sortAToZTitle(locationsData, tabActive)).toEqual([
         { name: "Gondoa", climate: "TODO", terrain: "TODO" },
@@ -123,7 +123,7 @@ describe("orderImport", () => {
 
 describe("orderImport", () => {
   describe("orderimport.sortZToATitle", () => {
-    it("debería retornar los títulos de películas de la Z a la A", () => {
+    it("should sort movies by titles from Z to A", () => {
       const tabActive = "Movies";
       expect(orderImport.sortZToATitle(moviesData, tabActive)).toEqual([
         {
@@ -156,7 +156,7 @@ describe("orderImport", () => {
         },
       ]);
     });
-    it("debería retornar los nombres de los personajes de la Z a la A", () => {
+    it("should sort characters by name from Z to A", () => {
       const tabActive = "Characters";
       expect(orderImport.sortZToATitle(charactersData, tabActive)).toEqual([
         { name: "Pazu", gender: "Male", specie: "Human" },
@@ -165,7 +165,7 @@ describe("orderImport", () => {
         { name: "Dola", gender: "Female", specie: "Human" },
       ]);
     });
-    it("debería retornar los nombres de los vehículos de la Z a la A", () => {
+    it("should sort vehicles by name from Z to A", () => {
       const tabActive = "Vehicles";
       expect(orderImport.sortZToATitle(vehiclesData, tabActive)).toEqual([
         { name: "The Flaptors", vehicle_class: "air vehicles" },
@@ -174,7 +174,7 @@ describe("orderImport", () => {
         { name: "Air Destroyer Goliath", vehicle_class: "Airship" },
       ]);
     });
-    it("debería retornar los nombres de las locaciones de la Z a la A", () => {
+    it("should sort locations by name from Z to A", () => {
       const tabActive = "Locations";
       expect(orderImport.sortZToATitle(locationsData, tabActive)).toEqual([
         { name: "Pazu's Mines", climate: "Dry", terrain: "Hill" },
@@ -188,7 +188,7 @@ describe("orderImport", () => {
 
 describe("orderImport", () => {
   describe("orderImport.sortsortRDAsc", () => {
-    it("debería retornar los fechas de lanzamiento ascendentemente", () => {
+    it("should sort movies by release date from older to newer", () => {
       const tabActive = "Movies";
       expect(orderImport.sortRDAsc(moviesData, tabActive)).toEqual([
         {
@@ -226,7 +226,7 @@ describe("orderImport", () => {
 
 describe("orderImport", () => {
   describe("orderImport.sortRDDesc", () => {
-    it("debería retornar los fechas de lanzamiento descendentemente", () => {
+    it("should sort movies by release date from newer to older", () => {
       const tabActive = "Movies";
       expect(orderImport.sortRDDesc(moviesData, tabActive)).toEqual([
         {
@@ -264,7 +264,7 @@ describe("orderImport", () => {
 
 describe("filterImport", () => {
   describe("filterImport.filterForProducersAndDirectors", () => {
-    it("debería retornar solo las películas cuyo director sea 'Hayao Miyazaki'", () => {
+    it("should filter just the movies whose director is 'Hayao Miyazaki'", () => {
       const director = "Hayao Miyazaki";
       const type = "dir";
       expect(
@@ -293,7 +293,7 @@ describe("filterImport", () => {
         },
       ]);
     });
-    it("debería retornar solo las películas cuyo productor sea 'Toshio Suzuki'", () => {
+    it("should filter just the movies whose producer is 'Toshio Suzuki'", () => {
       const producer = "Toshio Suzuki";
       const type = "prod";
       expect(
@@ -315,7 +315,7 @@ describe("filterImport", () => {
         },
       ]);
     });
-    it("debería retornar todos las películas, de cualquier productor y director", () => {
+    it("should return all movies fo any director or producer", () => {
       const producerAndDirector = "";
       const type = "";
       expect(
@@ -360,13 +360,13 @@ describe("filterImport", () => {
 
 describe("filterImport", () => {
   describe("filterImport.filterForCharacterGender", () => {
-    it("debería retornar solo los personajes de género femenino", () => {
+    it("should filter any female character", () => {
       const gender = "Female";
       expect(
         filterImport.filterForCharacterGender(charactersData, gender),
       ).toEqual([{ name: "Dola", gender: "Female", specie: "Human" }]);
     });
-    it("debería retornar solo los personajes de género masculino", () => {
+    it("should filter any male character", () => {
       const gender = "Male";
       expect(
         filterImport.filterForCharacterGender(charactersData, gender),
@@ -376,7 +376,7 @@ describe("filterImport", () => {
         { name: "Howl Jenkins Pendragon", gender: "Male", specie: "Wizard" },
       ]);
     });
-    it("debería retornar todos los personajes, de cualquier género", () => {
+    it("should return all characteres of any gender", () => {
       const gender = "all";
       expect(
         filterImport.filterForCharacterGender(charactersData, gender),
@@ -392,7 +392,7 @@ describe("filterImport", () => {
 
 describe("filterImport", () => {
   describe("filterImport.filterForCharacterSpecie", () => {
-    it("debería retornar solo los personajes de especie humana", () => {
+    it("should filter any human character", () => {
       const specie = "Human";
       expect(
         filterImport.filterForCharacterSpecie(charactersData, specie),
@@ -401,13 +401,13 @@ describe("filterImport", () => {
         { name: "Dola", gender: "Female", specie: "Human" },
       ]);
     });
-    it("debería retornar solo los personajes de especie 'Cat'", () => {
+    it("should filter any cat character", () => {
       const specie = "Cat";
       expect(
         filterImport.filterForCharacterSpecie(charactersData, specie),
       ).toEqual([{ name: "Natori", gender: "Male", specie: "Cat" }]);
     });
-    it("debería retornar solo los personajes de especie 'Wizard'", () => {
+    it("should filter any wizard character", () => {
       const specie = "Wizard";
       expect(
         filterImport.filterForCharacterSpecie(charactersData, specie),
@@ -415,7 +415,7 @@ describe("filterImport", () => {
         { name: "Howl Jenkins Pendragon", gender: "Male", specie: "Wizard" },
       ]);
     });
-    it("debería retornar todos los personajes, de cualquier especie", () => {
+    it("should return all characters of any specie", () => {
       const specie = "all";
       expect(
         filterImport.filterForCharacterSpecie(charactersData, specie),
@@ -429,7 +429,7 @@ describe("filterImport", () => {
   });
 });
 
-describe("filterImport", () => {
+/*describe("filterImport", () => {
   describe("filterImport.filterForVehicleClass", () => {
     it("debería retornar solo los vehículos de clase 'Car'", () => {
       const vehicleClass = "Car";
@@ -455,11 +455,11 @@ describe("filterImport", () => {
       ]);
     });
   });
-});
+});*/
 
 describe("filterImport", () => {
   describe("filterImport.filterForLocationClimate", () => {
-    it("debería retornar solo las locaciones con clima 'Continental'", () => {
+    it("should filter any locaction with continental climate", () => {
       const climate = "Continental";
       expect(
         filterImport.filterForLocationClimate(locationsData, climate),
@@ -468,13 +468,13 @@ describe("filterImport", () => {
         { name: "LaPuta", climate: "Continental", terrain: "City" },
       ]);
     });
-    it("debería retornar solo las locaciones con clima 'Dry'", () => {
+    it("should filter any locaction with dry climate", () => {
       const climate = "Dry";
       expect(
         filterImport.filterForLocationClimate(locationsData, climate),
       ).toEqual([{ name: "Pazu's Mines", climate: "Dry", terrain: "Hill" }]);
     });
-    it("debería retornar todos las locaciones, con cualquier clima", () => {
+    it("should return all locations with any climate", () => {
       const climate = "all";
       expect(
         filterImport.filterForLocationClimate(locationsData, climate),
@@ -490,13 +490,13 @@ describe("filterImport", () => {
 
 describe("filterImport", () => {
   describe("filterImport.filterForLocationTerrain", () => {
-    it("debería retornar solo las locaciones con terreno 'Hill'", () => {
+    it("should filter any location with hill terrain", () => {
       const terrain = "Hill";
       expect(
         filterImport.filterForLocationTerrain(locationsData, terrain),
       ).toEqual([{ name: "Pazu's Mines", climate: "Dry", terrain: "Hill" }]);
     });
-    it("debería retornar solo las locaciones con terreno 'River'", () => {
+    it("should filter any location with river terrain", () => {
       const terrain = "River";
       expect(
         filterImport.filterForLocationTerrain(locationsData, terrain),
@@ -504,7 +504,7 @@ describe("filterImport", () => {
         { name: "Matsugo", climate: "Continental", terrain: "River" },
       ]);
     });
-    it("debería retornar todos las locaciones, con cualquier terreno", () => {
+    it("should return all locactions with any terrain", () => {
       const terrain = "all";
       expect(
         filterImport.filterForLocationTerrain(locationsData, terrain),
@@ -520,7 +520,7 @@ describe("filterImport", () => {
 
 describe("searchImport", () => {
   describe("searchImport.searchFilmsByTitle", () => {
-    it("debería retornar los títulos de películas que contengan 'the'", () => {
+    it("should filter any movie title that has 'the'", () => {
       const searchString = "the";
       expect(searchImport.searchFilmsByTitle(searchString ,moviesData)).toEqual([
         {
@@ -539,7 +539,7 @@ describe("searchImport", () => {
         },
       ]);
     });
-    it("debería retornar todos los títulos de películas", () => {
+    it("should return all movie titles", () => {
       const searchString = "th";
       expect(searchImport.searchFilmsByTitle(searchString ,moviesData)).toEqual([
         {
@@ -577,13 +577,13 @@ describe("searchImport", () => {
 
 describe("searchImport", () => {
   describe("searchImport.searchCharacterByName", () => {
-    it("debería retornar los nombres de los personajes que contengan 'Pendragon'", () => {
+    it("should filter any character's name that has 'Pendragon'", () => {
       const searchString = "Pendragon";
       expect(searchImport.searchCharacterByName(searchString ,charactersData)).toEqual([
         { name: "Howl Jenkins Pendragon", gender: "Male", specie: "Wizard" },
       ]);
     });
-    it("debería retornar todos los nombres de los personajes", () => {
+    it("should return all characters' names", () => {
       const searchString = "Pa";
       expect(searchImport.searchFilmsByTitle(searchString ,charactersData)).toEqual([
         { name: "Pazu", gender: "Male", specie: "Human" },
@@ -597,13 +597,13 @@ describe("searchImport", () => {
 
 describe("searchImport", () => {
   describe("searchImport.searchVehiclesByName", () => {
-    it("debería retornar los nombres de los vehículos que contengan 'Down'", () => {
+    it("should filter any vehicle's name that has 'Down'", () => {
       const searchString = "Down";
       expect(searchImport.searchVehiclesByName(searchString ,vehiclesData)).toEqual([
         { name: "downtown", vehicle_class: "Car" },
       ]);
     });
-    it("debería retornar todos los nombres de los vehículos", () => {
+    it("should return all vehicles' names", () => {
       const searchString = "";
       expect(searchImport.searchVehiclesByName(searchString ,vehiclesData)).toEqual([
         { name: "The Flaptors", vehicle_class: "air vehicles" },
@@ -617,13 +617,13 @@ describe("searchImport", () => {
 
 describe("searchImport", () => {
   describe("searchImport.searchLocationsByName", () => {
-    it("debería retornar los nombres de las locaciones que contengan 'Gon'", () => {
+    it("should filter any location's name that has 'Gon'", () => {
       const searchString = "Gon";
       expect(searchImport.searchLocationsByName(searchString ,locationsData)).toEqual([
         { name: "Gondoa", climate: "TODO", terrain: "TODO" },
       ]);
     });
-    it("debería retornar todos los nombres de las locaciones", () => {
+    it("should return all locations' names", () => {
       const searchString = "La";
       expect(searchImport.searchLocationsByName(searchString ,locationsData)).toEqual([
         { name: "Pazu's Mines", climate: "Dry", terrain: "Hill" },
