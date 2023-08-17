@@ -577,3 +577,40 @@ function printDataCharacters(people) {
         </figure>`;
   }
 }
+
+function calcularDirectores() {
+  let directores = {};
+
+  filmsData.forEach(element => {
+    if (directores.hasOwnProperty(element.director)) {
+      directores[element.director]++;
+    } else {
+      directores[element.director] = 1;
+    }
+  });
+
+  return directores;
+}
+
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  var directoresData = calcularDirectores();
+  var dataTable = new google.visualization.DataTable();
+  dataTable.addColumn('string', 'Director');
+  dataTable.addColumn('number', 'Cantidad de Películas');
+
+  Object.keys(directoresData).forEach(director => {
+    dataTable.addRow([director, directoresData[director]]);
+  });
+
+  var options = {
+    title: 'Porcentaje de Películas por Director',
+    pieHole: 0.4 // Para crear un "agujero" en el centro del gráfico de pastel
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(dataTable, options);
+}
+
