@@ -13,38 +13,9 @@
     rel="stylesheet" />
 </head>
 
-<body class="body-blue">
-  <!--INICIO DE PAGINA -->
-  <section id="index" class="show">
-    <header>
-      <figure class="index-title">
-        <img src="./img/Logo.Titulo.png" alt="" />
-      </figure>
-    </header>
-    <main>
-      <a href="#" id="action-enter">
-        <div class="letter">
-          <div class="p1">E</div>
-          <div class="p2">N</div>
-          <div class="p3">T</div>
-          <div class="p4">R</div>
-          <div class="letter2">
-            <div class="p5">A</div>
-            <div class="p6">R</div>
-          </div>
-        </div>
-        <figure class="cartoon-enter">
-          <img src="./img/Susuwataris.png" alt="" />
-        </figure>
-      </a>
-      <figure class="rabbit-footer">
-        <img src="./img/chibi&susuwatari.png" alt="" />
-      </figure>
-    </main>
-  </section>
-  <!--INICIO DE PAGINA -->
+<body>
 
-  <section id="movies" class="hidden">
+  <section id="movies">
     <header>
       <figure>
         <img class="logo-tittle" src="./img/Logotitulo00.png" alt="Logo" />
@@ -61,7 +32,7 @@
         </li>
         <li><a href="#" data-tab="vehicles-big-container">Vehicles</a></li>
         <li><a href="#" data-tab="locations-big-container">Locations</a></li>
-        <li><a href="#" data-tab="locations-big-container">curiosidad</a></li>
+        <li><a href="#" data-tab="curiosidad-big-container">curiosidad</a></li>
         <li><input type="text" placeholder="Search" id="input-search" /></li>
       </ul>
     </nav>
@@ -240,9 +211,18 @@
       <div id="directors-small-container" class="tab-content2"></div>
     </section>
 
-    <section id="grafica" class="tab-content">
-      <div id="chart_div" class="tab-content2"></div>
-      <div id="producer_chart_div" class="tab-content2"></div>
+
+    <section id="curiosidad-big-container" class="tab-content">
+      <h1>Dato curioso</h1>
+      <br><br><br><br><br><br>
+      <p>Agregamos estos datos para que tengas mas informacion sobre la produccion y direccion
+        de las peliculas del studio ghibli, ademas te damos la estadistica del porcentaje de rating de cada una de ellas
+      </p>
+      <br><br><br><br><br><br>
+
+      <div id="director_chart_div"></div>
+      <div id="productor_chart_div"></div>
+
     </section>
 
 
@@ -255,6 +235,7 @@
         <li>Contact Us</li>
         <li>© 2023 The Studio Ghibli Collection. All Rights Reserved.</li>
       </ul>
+
     </footer>
   </section>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

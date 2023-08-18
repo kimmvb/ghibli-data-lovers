@@ -105,11 +105,7 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
       filterCharacterSpecie.style.display = "none";
       filterMovies.style.display = "none";
     }
-    /*if (tabName === "vehicles-big-container") {
-      filterVehicleClass.style.display = "block";
-    } else {
-      filterVehicleClass.style.display = "none";
-    }*/
+
     if (tabName === "locations-big-container") {
       filterLocationClimate.style.display = "block";
       filterLocationTerrain.style.display = "block";
@@ -125,21 +121,8 @@ createVehicles(vehiclesData);
 printDataCharacters(peopleData);
 createLocations(locationsData);
 
-//Index a home
-const sectionHome = document.getElementById("index");
-const sectionMovies = document.getElementById("movies");
-const enterButton = document.getElementById("action-enter");
 
-enterButton.addEventListener("click", function (event) {
-  event.preventDefault();
-  sectionHome.classList.remove("show");
-  sectionHome.classList.add("hidden");
-  sectionMovies.classList.remove("hidden");
-  sectionMovies.classList.add("show");
-  document.body.classList.remove("body-blue");
-});
-// Filtro Busqueda/Navegacion
-//se crea la variable inputSearch para hacer referencia al input (linea 13)
+
 //Se crea evento para "escuchar" cuando se ejecuta un keyup / con la variable tabActive capturamos el tab activo
 //con if le indicamos que si el tab activo es Movies, creamos/mostramos las movies bajo el parametro
 // - searchImport.searchFilmsByTitle(event.target.value, filmsData -
@@ -279,12 +262,6 @@ filterCharacterSpecie.addEventListener("change", function (event) {
   }
 });
 
-/*filterVehicleClass.addEventListener("change", function (event) {
-  createVehicles(
-    filterImport.filterForVehicleClass(vehiclesData, event.target.value),
-  );
-});*/
-
 filterLocationClimate.addEventListener("change", function (event) {
   if (filterLocationClimate.selectedIndex > 1) {
     locationsDataFiltered = filterImport.filterForLocationClimate(
@@ -367,118 +344,7 @@ filter.addEventListener("change", function (event) {
 /*function callOrderAZ(tabActive) {
   //console.log(emptyLocationsArray);
 
-  if (tabActive === "Movies") {
-    let dataemptyArray = [];
-    if (emptyArray.length === 0) {
-      dataemptyArray = filmsData;
-    } else {
-      dataemptyArray = emptyArray;
-    }
-    createFilms(orderImport.sortAToZTitle(dataemptyArray, tabActive));
-  } else if (tabActive === "Characters") {
-    let dataemptyArray = [];
-    if (emptyCharactersArray.length === 0) {
-      dataemptyArray = peopleData;
-    } else {
-      dataemptyArray = emptyCharactersArray;
-    }
-    printDataCharacters(orderImport.sortAToZTitle(dataemptyArray, tabActive));
-  } else if (tabActive === "Vehicles") {
-    let dataemptyArray = [];
-    if (emptyVehiclesArray.length === 0) {
-      dataemptyArray = vehiclesData;
-    } else {
-      dataemptyArray = emptyVehiclesArray;
-    }
-    createVehicles(orderImport.sortAToZTitle(dataemptyArray, tabActive));
-  } else {
-    let dataemptyArray = [];
-    if (emptyLocationsArray.length === 0) {
-      dataemptyArray = locationsData;
-    } else {
-      dataemptyArray = emptyLocationsArray;
-    }
-    createLocations(orderImport.sortAToZTitle(dataemptyArray, tabActive));
-  }
-}
 
-function callOrderZA(tabActive) {
-  //let dataemptyArray = [];
-  if (tabActive === "Movies") {
-    let dataemptyArray = [];
-    if (emptyArray.length === 0) {
-      dataemptyArray = filmsData;
-    } else {
-      dataemptyArray = emptyArray;
-    }
-    createFilms(orderImport.sortZToATitle(dataemptyArray, tabActive));
-  } else if (tabActive === "Characters") {
-    let dataemptyArray = [];
-    if (emptyCharactersArray.length === 0) {
-      dataemptyArray = peopleData;
-    } else {
-      dataemptyArray = emptyCharactersArray;
-    }
-    printDataCharacters(orderImport.sortZToATitle(dataemptyArray, tabActive));
-  } else if (tabActive === "Vehicles") {
-    let dataemptyArray = [];
-    if (emptyVehiclesArray.length === 0) {
-      dataemptyArray = vehiclesData;
-    } else {
-      dataemptyArray = emptyVehiclesArray;
-    }
-    createVehicles(orderImport.sortZToATitle(dataemptyArray, tabActive));
-  } else {
-    let dataemptyArray = [];
-    if (emptyLocationsArray.length === 0) {
-      dataemptyArray = locationsData;
-    } else {
-      dataemptyArray = emptyLocationsArray;
-    }
-    createLocations(orderImport.sortZToATitle(dataemptyArray, tabActive));
-  }
-}
-
-function callDateAsc(tabActive) {
-  let dataemptyArray = [];
-  if (emptyArray.length === 0) {
-    dataemptyArray = filmsData;
-  } else {
-    dataemptyArray = emptyArray;
-  }
-  if (tabActive === "Movies") {
-    createFilms(orderImport.sortRDAsc(dataemptyArray, tabActive));
-  }
-}
-
-function callDateDesc(tabActive) {
-  let dataemptyArray = [];
-  if (emptyArray.length === 0) {
-    dataemptyArray = filmsData;
-  } else {
-    dataemptyArray = emptyArray;
-  }
-  if (tabActive === "Movies") {
-    createFilms(orderImport.sortRDDesc(dataemptyArray, tabActive));
-  }
-}
-
-//Mostrar data ordenada en página
-function createFilms(films) {
-  root.innerHTML = "";
-  for (let i = 0; i < films.length; i++) {
-    root.innerHTML += `<figure class="poster">
-        <div class="info">
-            <p><b>Rating<b/>: ⭐${films[i].rt_score} / <b>Año:</b> ${films[i].release_date}</p> 
-            <p>${films[i].description}</p>
-            <br>
-            <p>Director: <b>${films[i].director}</b></p> 
-            <p>Productor: <b>${films[i].producer}</b></p> 
-        </div>
-        <img src="${films[i].poster}" alt="${films[i].title}" />
-        <figcaption>${films[i].title}</figcaption> 
-        </figure>`;
-  }
 }*/
 function callOrderAZ(tabActive) {
   if (tabActive === "Movies") {
@@ -683,8 +549,8 @@ function drawBasic() {
   var directoresData = calcularDirectores();
   var data = new google.visualization.DataTable();
   data.addColumn('string');
-  data.addColumn('number', 'films');
-  data.addColumn('number', 'rt_score');
+  data.addColumn('number', 'Films');
+  data.addColumn('number', 'Rating');
 
   Object.keys(directoresData).forEach(director => {
     var cantidad = directoresData[director].cantidad;
@@ -694,10 +560,11 @@ function drawBasic() {
   });
 
   var options = {
+    tooltip: { isHtml: true },
     addColumn: { fontSize: 8 },
     width: 1000,
     heigth: 2000,
-    title: 'Cantidad de Películas y Porcentaje de rt_score por Director',
+    title: 'Films por por Director',
     hAxis: {
       title: '',
     },
@@ -715,7 +582,7 @@ function drawBasic() {
   };
 
   var chart = new google.visualization.BarChart(
-    document.getElementById('chart_div'));
+    document.getElementById('director_chart_div'));
 
   chart.draw(data, options);
 }
@@ -726,23 +593,25 @@ google.charts.setOnLoadCallback(drawProducerChart);
 function drawProducerChart() {
   var producersData = calcularProducer(); // Llama a tu función para obtener los datos
   var data = new google.visualization.DataTable();
+
   data.addColumn('string', 'Productor');
-  data.addColumn('number', 'Cantidad de Películas');
-  data.addColumn('number', 'rt_score');
+  data.addColumn('number', 'Films');
+  data.addColumn('number', 'Rating');
 
   Object.keys(producersData).forEach(producer => {
     var cantidad = producersData[producer].cantidad;
     var totalRtScore = producersData[producer].totalRtScore;
     var porcentajeRtScore = cantidad > 0 ? (totalRtScore / cantidad) : 0;
-
     data.addRow([producer, cantidad, porcentajeRtScore]);
   });
 
   var options = {
+    bars: { groupWidth: "50%" },
+    tooltip: { isHtml: true },
     addColumn: { fontSize: 8 },
-    width: 700,
-    height: 700,
-    title: 'Cantidad y Porcentaje de Películas por Productor',
+    width: 1000,
+    heigth: 2000,
+    title: 'Films por por Productor',
     hAxis: {
       title: '',
     },
@@ -750,16 +619,16 @@ function drawProducerChart() {
       title: ''
     },
     bars: 'horizontal',
+
     axes: {
       y: {
         0: { side: 'right' }
       }
     },
     bar: { groupWidth: "90%" }
+
   };
 
-  var chart = new google.visualization.BarChart(
-    document.getElementById('producer_chart_div'));
-
+  var chart = new google.visualization.BarChart(document.getElementById('productor_chart_div'));
   chart.draw(data, options);
 }
