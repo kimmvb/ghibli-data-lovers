@@ -15,13 +15,11 @@
 
 <body>
 
-  <section id="movies">
-    <header>
-      <figure>
-        <img class="logo-tittle" src="./img/Logotitulo00.png" alt="Logo" />
-      </figure>
-    </header>
 
+  <header>
+    <figure>
+      <img class="logo-tittle" src="./img/LogoHeader.png" alt="Logo" />
+    </figure>
     <nav class="menu">
       <ul class="menu-button">
         <li>
@@ -36,6 +34,9 @@
         <li><input type="text" placeholder="Search" id="input-search" /></li>
       </ul>
     </nav>
+  </header>
+
+  <section id="movies">
 
     <div class="filter-container">
       <div class="box-filter">
@@ -44,6 +45,9 @@
           <select name="filter-prodirect" id="button-filter-prodirect">
             <optgroup label="Producers">
               <option value="">--</option>
+              <option data-id="prod" value="Yoshifumi Kondo">
+                Yoshifumi Kondo
+              </option>
               <option data-id="prod" value="Isao Takahata">
                 Isao Takahata
               </option>
@@ -227,9 +231,6 @@
 
 
     <footer>
-      <figure class="image-footer">
-        <img src="./img/chibi&totoroazul.png" alt="" />
-      </figure>
       <ul>
         <li>Filmography</li>
         <li>Contact Us</li>

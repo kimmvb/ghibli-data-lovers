@@ -5,141 +5,49 @@
   padding: 0;
 }
 
-body {
-  overflow-x: hidden;
-}
 
-.body-blue {
-  background-color: #109ceb;
-}
+
+
 
 header {
   text-align: center;
   background-color: #109ceb;
-  height: 40%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  /* backdrop-filter: blur(5px);
+  position: sticky;
+  top: 0px;
+  animation-timeline: scroll();
+  animation-range: 0 200px; */
+  transition: 0.5s linear 0.1s;
 }
 
-.index-title {
-  text-align: center;
-}
-
-.index-title img {
-  width: 25%;
-}
-
-#index {
-  display: block;
-  background-color: #109ceb;
+header .off {
+  transform: translate(-300px);
 }
 
 
-.hidden {
-  display: none !important;
-}
-
-.show {
-  display: block !important;
-}
+/* @keyframes adjust-header {
+  to {
+    background: #000000;
+    font-size: 12px;
+    height: 24px;
+  }
+} */
 
 .logo-title {
   text-align: center;
   margin-top: 40px;
 }
 
-.letter {
-  display: flex;
-  justify-content: center;
-  height: 95px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin-top: 190px;
-  color: white;
-
-  font-size: 40px;
-  text-shadow: 2px 1px 0px black;
-}
-
-.letter2 {
-  display: flex;
-  gap: 23px;
-  padding: 26px;
-  margin-top: -28px;
-}
-
-.p1 {
-  animation: subir 3s infinite;
-  padding: 25px;
-  transform: rotate(325deg);
-}
-
-.p2 {
-  animation: subir 3s infinite;
-  transform: rotate(343deg);
-}
-
-.p3 {
-  animation: subir 3s infinite;
-  transform: rotate(3deg);
-}
-
-.p4 {
-  animation: subir 3s infinite;
-  transform: rotate(-345deg);
-}
-
-.p5 {
-  animation: subir 3s infinite;
-  transform: rotate(350deg);
-}
-
-.p6 {
-  animation: subir 3s infinite;
-  transform: rotate(326deg);
-}
-
-@keyframes subir {
-  0% {
-    margin-top: 28;
-  }
-
-  20% {
-    margin-top: 5;
-  }
-
-  25% {
-    margin-top: -8px;
-  }
-}
-
-.cartoon-enter {
-  text-align: center;
-}
-
-.cartoon-enter img {
-  width: 20%;
-}
-
-.rabbit-footer {
-  text-align: left;
-  margin: 0;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.rabbit-footer img {
-  margin: 0;
-  width: 38%;
-}
-
 .menu {
   background-color: black;
-  height: 80px;
+  height: 51px;
   width: 100%;
-  padding-top: 30px;
+  margin-top: 30px;
 }
 
 .menu-button {
@@ -315,16 +223,9 @@ main {
   border: 2px solid #ccc;
 }
 
-footer {
-  display: flex;
-  background-color: rgba(235, 223, 223, 0.363);
-  text-align: center;
-  height: 50%;
-  font-size: 13px;
-}
-
-footer ul {
+footer ul li {
   list-style: none;
+  text-align: center;
 }
 
 .imagen-footer img {

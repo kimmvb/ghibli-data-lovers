@@ -14,27 +14,29 @@ const locationsRoot = document.getElementById("locations-small-container");
 const filter = document.getElementById("button-filter");
 const ascOption = document.getElementById("asc");
 const descOption = document.getElementById("desc");
-const filterProducerDirector = document.getElementById(
-  "button-filter-prodirect",
-);
-const filterProducerDirectorContainer = document.getElementById(
-  "container-filter-productors-directors",
-);
+const filterProducerDirector = document.getElementById("button-filter-prodirect",);
+const filterProducerDirectorContainer = document.getElementById("container-filter-productors-directors",);
 const filterMovies = document.getElementById("button-filter-movie");
-const filterCharacterGender = document.getElementById(
-  "button-filter-character-gender",
-);
-const filterCharacterSpecie = document.getElementById(
-  "button-filter-character-specie",
-);
-//const filterVehicleClass = document.getElementById("button-filter-vehicle-class",);
-const filterLocationClimate = document.getElementById(
-  "button-filter-location-climate",
-);
-const filterLocationTerrain = document.getElementById(
-  "button-filter-location-terrain",
-);
+const filterCharacterGender = document.getElementById("button-filter-character-gender",);
+const filterCharacterSpecie = document.getElementById("button-filter-character-specie",);
+const filterLocationClimate = document.getElementById("button-filter-location-climate",);
+const filterLocationTerrain = document.getElementById("button-filter-location-terrain",);
 const inputSearch = document.getElementById("input-search");
+const header = document.querySelector("header");
+
+
+
+let prevY = window.scrollY;
+window.addEventListener("scroll", function () {
+  if (prevY > window.scrollY) {
+    console.log('volver al top');
+  } else {
+    header.classList.add
+    console.log('bajando');
+  }
+  prevY = window.scrollY;
+});
+
 
 //Data recogida en un array
 const filmsData = data.films; //Variable que contiene la data del array 'films'.
