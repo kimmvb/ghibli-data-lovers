@@ -24,15 +24,20 @@ const filterLocationTerrain = document.getElementById("button-filter-location-te
 const inputSearch = document.getElementById("input-search");
 const header = document.querySelector("header");
 
+window.onscroll = scroll_listener;
 
-
+function scroll_listener() {
+  let scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
+  let maxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let totalScrolled = scrollPosition * 100 / maxHeight;
+  document.querySelector("#progress-bar span").style.width = totalScrolled + '%';
+}
 let prevY = window.scrollY;
 window.addEventListener("scroll", function () {
   if (prevY > window.scrollY) {
-    console.log('volver al top');
+    header.classList.remove("off")
   } else {
-    header.classList.add
-    console.log('bajando');
+    header.classList.add("off")
   }
   prevY = window.scrollY;
 });
@@ -114,6 +119,13 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
     } else {
       filterLocationClimate.style.display = "none";
       filterLocationTerrain.style.display = "none";
+    }
+    if (tabName === "curiosidad-big-container") {
+      filter.style.display = "none";
+
+    } else {
+      filter.style.display = "block";
+
     }
   });
 });

@@ -5,10 +5,6 @@
   padding: 0;
 }
 
-
-
-
-
 header {
   text-align: center;
   background-color: #109ceb;
@@ -16,27 +12,30 @@ header {
   top: 0;
   left: 0;
   right: 0;
-
-  /* backdrop-filter: blur(5px);
-  position: sticky;
-  top: 0px;
-  animation-timeline: scroll();
-  animation-range: 0 200px; */
+  z-index: 10;
   transition: 0.5s linear 0.1s;
 }
 
-header .off {
-  transform: translate(-300px);
+header.off {
+  transform: translateY(-300px);
 }
 
+#progress-bar {
+  background-color: #109ceb;
+  height: 8px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 
-/* @keyframes adjust-header {
-  to {
-    background: #000000;
-    font-size: 12px;
-    height: 24px;
-  }
-} */
+#progress-bar span {
+  background-color: #109ceb;
+  width: 0%;
+  height: 8px;
+  display: block;
+  transition: 0.2s;
+}
 
 .logo-title {
   text-align: center;
@@ -63,8 +62,6 @@ header .off {
   text-align: center;
   font-size: 15px;
 }
-
-
 
 .menu-button li {
   margin-top: 26px;
@@ -159,12 +156,6 @@ main {
   display: none;
 }
 
-/* .tab-content {
-  width: 100%;
-  margin-top: 100px;
-  text-align: center;
-} */
-
 .tab-content2 {
   display: grid;
   grid-template-columns: repeat(auto-fill, 302px);
@@ -239,9 +230,7 @@ footer ul li {
   position: absolute;
   width: 300px;
   border-radius: 0 6px 6px 6px;
-  margin-left: 100px;
   border: 1px solid #000000;
-  padding: 5px;
   text-align: left;
   background: rgba(255, 255, 255, 0.904);
   padding: 10px;
@@ -256,4 +245,11 @@ footer ul li {
 
 #root .poster:hover div.info {
   display: block;
+}
+
+
+#curiosidad-big-container P {
+  text-align: center;
+  padding: 30PX;
+  margin-top: 50px;
 }
