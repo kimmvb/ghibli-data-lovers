@@ -120,7 +120,7 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
       filterLocationClimate.style.display = "none";
       filterLocationTerrain.style.display = "none";
     }
-    if (tabName === "curiosidad-big-container") {
+    if (tabName === "trivia-big-container") {
       filter.style.display = "none";
 
     } else {
@@ -503,7 +503,7 @@ function drawBasic() {
   var data = new google.visualization.DataTable();
   data.addColumn('string');
   data.addColumn('number', 'Films');
-  data.addColumn('number', 'Rating');
+  data.addColumn('number', '% Rating');
 
   Object.keys(directoresData).forEach(director => {
     var cantidad = directoresData[director].cantidad;
@@ -513,17 +513,15 @@ function drawBasic() {
   });
 
   var options = {
+    bars: { groupWidth: "50%" },
     tooltip: { isHtml: true },
     addColumn: { fontSize: 8 },
-    width: 1000,
-    heigth: 2000,
-    title: 'Films por por Director',
-    hAxis: {
-      title: '',
+    width: '100%',
+    heigth: '500px',
+    chartArea: {
+      'width': '50%'
     },
-    vAxis: {
-      title: ''
-    },
+    title: 'Films por por Productor',
     bars: 'horizontal',
     axes: {
       y: {
@@ -549,7 +547,7 @@ function drawProducerChart() {
 
   data.addColumn('string', 'Productor');
   data.addColumn('number', 'Films');
-  data.addColumn('number', 'Rating');
+  data.addColumn('number', '% Rating');
 
   Object.keys(producersData).forEach(producer => {
     var cantidad = producersData[producer].cantidad;
@@ -562,17 +560,13 @@ function drawProducerChart() {
     bars: { groupWidth: "50%" },
     tooltip: { isHtml: true },
     addColumn: { fontSize: 8 },
-    width: 1000,
-    heigth: 2000,
+    width: '100%',
+    heigth: '500px',
+    chartArea: {
+      'width': '50%'
+    },
     title: 'Films por por Productor',
-    hAxis: {
-      title: '',
-    },
-    vAxis: {
-      title: ''
-    },
     bars: 'horizontal',
-
     axes: {
       y: {
         0: { side: 'right' }
