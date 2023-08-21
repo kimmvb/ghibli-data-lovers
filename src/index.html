@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FanArtStudioGhibli</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,176 +38,174 @@
     <div id="progress-bar"><span></span></div>
   </header>
 
-  <section id="movies">
+  <section class="filter-container">
 
-    <div class="filter-container">
-      <div class="box-filter">
-        <div id="container-filter-productors-directors">
-          <label for="Filtrar">Producer and Director </label>
-          <select name="filter-prodirect" id="button-filter-prodirect">
-            <optgroup label="Producers">
-              <option value="">--</option>
-              <option data-id="prod" value="Isao Takahata">Isao Takahata</option>
-              <option data-id="prod" value="Hayao Miyazaki">Hayao Miyazaki</option>
-              <option data-id="prod" value="Toru Hara">Toru Hara</option>
-              <option data-id="prod" value="Toshio Suzuki">Toshio Suzuki</option>
-              <option data-id="prod" value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
-            </optgroup>
-            <optgroup label="Directors">
-              <option data-id="dir" value="Yoshifumi Kondo">Yoshifumi Kondo</option>
-              <option data-id="dir" value="Isao Takahata">Isao Takahata</option>
-              <option data-id="dir" value="Hayao Miyazaki"> Hayao Miyazaki</option>
-              <option data-id="dir" value="Hiroyuki Morita">Hiroyuki Morita</option>
-              <option data-id="dir" value="Gorō Miyazaki">Gorō Miyazaki</option>
-              <option data-id="dir" value="Hiromasa Yonebayashi">Hiromasa Yonebayashi</option>
-            </optgroup>
-          </select>
-        </div>
-        <select name="filter-movie" id="button-filter-movie">
-          <option value="">Movie filter</option>
-          <option value="all">All</option>
-          <option value="Castle in the Sky">Castle in the Sky</option>
-          <option value="My Neighbor Totoro">My Neighbor Totoro</option>
-          <option value="Kiki's Delivery Service">Kiki's Delivery Service</option>
-          <option value="Grave of the Fireflies">Grave of the Fireflies</option>
-          <option value="Only Yesterday">Only Yesterday</option>
-          <option value="Porco Rosso">Porco Rosso</option>
-          <option value="Pom Poko">Pom Poko</option>
-          <option value="Whisper of the Heart">Whisper of the Heart</option>
-          <option value="Princess Mononoke">Princess Mononoke</option>
-          <option value="My Neighbors the Yamadas">My Neighbors the Yamadas</option>
-          <option value="Spirited Away">Spirited Away</option>
-          <option value="The Cat Returns">The Cat Returns</option>
-          <option value="Howl's Moving Castle">Howl's Moving Castle</option>
-          <option value="Tales from Earthsea">Tales from Earthsea</option>
-          <option value="Ponyo on the Cliff by the Sea">Ponyo on the Cliff by the Sea</option>
-          <option value="The Secret World of Arrietty">The Secret World of Arrietty</option>
-          <option value="From Up on Poppy Hill">From Up on Poppy Hill</option>
-          <option value="The Wind Rises">The Wind Rises</option>
-          <option value="The Tale of the Princess Kaguya">The Tale of the Princess Kaguya</option>
-          <option value="When Marnie Was There">When Marnie Was There</option>
-        </select>
-        <select name="filter-character-gender" id="button-filter-character-gender">
-          <option value="">Gender filter</option>
-          <option value="all">All</option>
-          <option value="Female">Female</option>
-          <option value="Male">Male</option>
-          <option value="NA">Unknown</option>
-        </select>
-        <select name="filter-character-specie" id="button-filter-character-specie">
-          <option value="">Specie filter</option>
-          <option value="all">All</option>
-          <option value="Human">Human</option>
-          <option value="Cat">Cat</option>
-          <option value="Raccoon Dog">Raccoon Dog</option>
-          <option value="Borrower">Borrower</option>
-          <option value="Spirit">Spirit</option>
-          <option value="Witch">Witch</option>
-          <option value="Totoro">Totoro</option>
-          <option value="Deity">Deity</option>
-          <option value="Wizard">Wizard</option>
-          <option value="Deity, Dragon">Deity, Dragon</option>
-          <option value="Fish/Human">Fish/Human</option>
-          <option value="Witch/Human">With/Human</option>
-          <option value="Demon">Demon</option>
-          <option value="Spirit of The White Fox">Spirit of The White Fox</option>
-          <option value="Bird">Bird</option>
-          <option value="Human/Scarecrow">Human/Scarecrow</option>
-          <option value="Arch-mage/Human">Arch-mage/Human</option>
-          <option value="Red elk">Red elk</option>
-          <option value="Dog">Dog</option>
-          <option value="Wolf">Wolf</option>
-          <option value="unknown">Unknown</option>
-        </select>
-
-        <select name="filter-location-climate" id="button-filter-location-climate">
-          <option value="">Climate filter</option>
-          <option value="all">All</option>
-          <option value="Continental">Continental</option>
-          <option value="Mild">Mild</option>
-          <option value="Warm">Warm</option>
-          <option value="Wet">Wet</option>
-          <option value="Tropical">Tropical</option>
-          <option value="Damp">Damp</option>
-          <option value="Dry">Dry</option>
-          <option value="TODO">Unknown</option>
-        </select>
-        <select name="filter-location-terrain" id="button-filter-location-terrain">
-          <option value="">Terrain filter</option>
-          <option value="all">All</option>
-          <option value="Hill">Hill</option>
-          <option value="River">River</option>
-          <option value="City">City</option>
-          <option value="Forest">Forest</option>
-          <option value="Ocean">Ocean</option>
-          <option value="Mountain">Mountain</option>
-          <option value="Plain">Plain</option>
-          <option value="Earthsea">Earthsea</option>
-          <option value="Marsh">Marsh</option>
-          <option value="Under the floorboards">Under the floorboards</option>
-          <option value="TODO">Unknown</option>
+    <div class="box-filter">
+      <div id="container-filter-productors-directors">
+        <select name="filter-prodirect" id="button-filter-prodirect">
+          <option value="">Producer and Director</option>
+          <optgroup label="Producers">
+            <option data-id="prod" value="Isao Takahata">Isao Takahata</option>
+            <option data-id="prod" value="Hayao Miyazaki">Hayao Miyazaki</option>
+            <option data-id="prod" value="Toru Hara">Toru Hara</option>
+            <option data-id="prod" value="Toshio Suzuki">Toshio Suzuki</option>
+            <option data-id="prod" value="Yoshiaki Nishimura">Yoshiaki Nishimura</option>
+          </optgroup>
+          <optgroup label="Directors">
+            <option data-id="dir" value="Yoshifumi Kondo">Yoshifumi Kondo</option>
+            <option data-id="dir" value="Isao Takahata">Isao Takahata</option>
+            <option data-id="dir" value="Hayao Miyazaki"> Hayao Miyazaki</option>
+            <option data-id="dir" value="Hiroyuki Morita">Hiroyuki Morita</option>
+            <option data-id="dir" value="Gorō Miyazaki">Gorō Miyazaki</option>
+            <option data-id="dir" value="Hiromasa Yonebayashi">Hiromasa Yonebayashi</option>
+          </optgroup>
         </select>
       </div>
-      <div class="box-filter">
-        <select name="filter" id="button-filter">
-          <option value="">Sort by</option>
-          <option value="a-z">A-Z</option>
-          <option value="z-a">Z-A</option>
-          <option value="n-o" id="desc">Newer to Older</option>
-          <option value="o-n" id="asc">Older to Newer</option>
-        </select>
-      </div>
+      <select name="filter-movie" id="button-filter-movie">
+        <option value="">Movie filter</option>
+        <option value="all">All</option>
+        <option value="Castle in the Sky">Castle in the Sky</option>
+        <option value="My Neighbor Totoro">My Neighbor Totoro</option>
+        <option value="Kiki's Delivery Service">Kiki's Delivery Service</option>
+        <option value="Grave of the Fireflies">Grave of the Fireflies</option>
+        <option value="Only Yesterday">Only Yesterday</option>
+        <option value="Porco Rosso">Porco Rosso</option>
+        <option value="Pom Poko">Pom Poko</option>
+        <option value="Whisper of the Heart">Whisper of the Heart</option>
+        <option value="Princess Mononoke">Princess Mononoke</option>
+        <option value="My Neighbors the Yamadas">My Neighbors the Yamadas</option>
+        <option value="Spirited Away">Spirited Away</option>
+        <option value="The Cat Returns">The Cat Returns</option>
+        <option value="Howl's Moving Castle">Howl's Moving Castle</option>
+        <option value="Tales from Earthsea">Tales from Earthsea</option>
+        <option value="Ponyo on the Cliff by the Sea">Ponyo on the Cliff by the Sea</option>
+        <option value="The Secret World of Arrietty">The Secret World of Arrietty</option>
+        <option value="From Up on Poppy Hill">From Up on Poppy Hill</option>
+        <option value="The Wind Rises">The Wind Rises</option>
+        <option value="The Tale of the Princess Kaguya">The Tale of the Princess Kaguya</option>
+        <option value="When Marnie Was There">When Marnie Was There</option>
+      </select>
+      <select name="filter-character-gender" id="button-filter-character-gender">
+        <option value="">Gender filter</option>
+        <option value="all">All</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+        <option value="NA">Unknown</option>
+      </select>
+      <select name="filter-character-specie" id="button-filter-character-specie">
+        <option value="">Specie filter</option>
+        <option value="all">All</option>
+        <option value="Human">Human</option>
+        <option value="Cat">Cat</option>
+        <option value="Raccoon Dog">Raccoon Dog</option>
+        <option value="Borrower">Borrower</option>
+        <option value="Spirit">Spirit</option>
+        <option value="Witch">Witch</option>
+        <option value="Totoro">Totoro</option>
+        <option value="Deity">Deity</option>
+        <option value="Wizard">Wizard</option>
+        <option value="Deity, Dragon">Deity, Dragon</option>
+        <option value="Fish/Human">Fish/Human</option>
+        <option value="Witch/Human">With/Human</option>
+        <option value="Demon">Demon</option>
+        <option value="Spirit of The White Fox">Spirit of The White Fox</option>
+        <option value="Bird">Bird</option>
+        <option value="Human/Scarecrow">Human/Scarecrow</option>
+        <option value="Arch-mage/Human">Arch-mage/Human</option>
+        <option value="Red elk">Red elk</option>
+        <option value="Dog">Dog</option>
+        <option value="Wolf">Wolf</option>
+        <option value="unknown">Unknown</option>
+      </select>
+
+      <select name="filter-location-climate" id="button-filter-location-climate">
+        <option value="">Climate filter</option>
+        <option value="all">All</option>
+        <option value="Continental">Continental</option>
+        <option value="Mild">Mild</option>
+        <option value="Warm">Warm</option>
+        <option value="Wet">Wet</option>
+        <option value="Tropical">Tropical</option>
+        <option value="Damp">Damp</option>
+        <option value="Dry">Dry</option>
+        <option value="TODO">Unknown</option>
+      </select>
+      <select name="filter-location-terrain" id="button-filter-location-terrain">
+        <option value="">Terrain filter</option>
+        <option value="all">All</option>
+        <option value="Hill">Hill</option>
+        <option value="River">River</option>
+        <option value="City">City</option>
+        <option value="Forest">Forest</option>
+        <option value="Ocean">Ocean</option>
+        <option value="Mountain">Mountain</option>
+        <option value="Plain">Plain</option>
+        <option value="Earthsea">Earthsea</option>
+        <option value="Marsh">Marsh</option>
+        <option value="Under the floorboards">Under the floorboards</option>
+        <option value="TODO">Unknown</option>
+      </select>
+
+      <select name="filter" id="button-filter">
+        <option value="">Sort by</option>
+        <option value="a-z">A-Z</option>
+        <option value="z-a">Z-A</option>
+        <option value="n-o" id="desc">Newer to Older</option>
+        <option value="o-n" id="asc">Older to Newer</option>
+      </select>
     </div>
 
-    <main id="main-container" class="tab-content">
-      <div class="movie-container" id="root"></div>
-    </main>
-
-    <section id="characters-big-container" class="tab-content">
-      <div id="characters-small-container" class="tab-content2"></div>
-    </section>
-
-    <section id="vehicles-big-container" class="tab-content">
-      <div id="vehicles-small-container" class="tab-content2"></div>
-    </section>
-
-    <section id="locations-big-container" class="tab-content">
-      <div id="locations-small-container" class="tab-content2"></div>
-    </section>
-
-    <section id="producers-big-container" class="tab-content">
-      <div id="producers-small-container" class="tab-content2"></div>
-    </section>
-
-    <section id="directors-big-container" class="tab-content">
-      <div id="directors-small-container" class="tab-content2"></div>
-    </section>
-
-
-    <section id="curiosidad-big-container" class="tab-content">
-
-
-      <p>Aqui te contamos como les fue a cada director y productor
-        en relacion a la cantidad de films
-        y su valoracion en exito.
-      </p>
-      <br><br><br><br><br><br>
-
-      <div id="director_chart_div"></div>
-      <div id="productor_chart_div"></div>
-
-    </section>
-
-
-    <footer>
-      <ul>
-        <li>Filmography</li>
-        <li>Contact Us</li>
-        <li>© 2023 The Studio Ghibli Collection. All Rights Reserved.</li>
-      </ul>
-
-    </footer>
   </section>
+
+  <section id="main-container" class="tab-content">
+    <div class="movie-container" id="root"></div>
+  </section>
+
+  <section id="characters-big-container" class="tab-content">
+    <div id="characters-small-container" class="tab-content2"></div>
+  </section>
+
+  <section id="vehicles-big-container" class="tab-content">
+    <div id="vehicles-small-container" class="tab-content2"></div>
+  </section>
+
+  <section id="locations-big-container" class="tab-content">
+    <div id="locations-small-container" class="tab-content2"></div>
+  </section>
+
+  <section id="producers-big-container" class="tab-content">
+    <div id="producers-small-container" class="tab-content2"></div>
+  </section>
+
+  <section id="directors-big-container" class="tab-content">
+    <div id="directors-small-container" class="tab-content2"></div>
+  </section>
+
+
+  <section id="curiosidad-big-container" class="tab-content">
+
+
+    <p>Aqui te contamos como les fue a cada director y productor
+      en relacion a la cantidad de films
+      y su valoracion en exito.
+    </p>
+    <br><br><br><br><br><br>
+
+    <div id="director_chart_div"></div>
+    <div id="productor_chart_div"></div>
+
+  </section>
+
+
+  <footer>
+    <ul>
+      <li>Filmography</li>
+      <li>Contact Us</li>
+      <li>© 2023 The Studio Ghibli Collection. All Rights Reserved.</li>
+    </ul>
+
+  </footer>
+
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="main.js" type="module"></script>
 </body>

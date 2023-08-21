@@ -458,19 +458,7 @@ function printDataCharacters(people) {
   }
 }
 
-// function calcularDirectores() {
-//   let directores = {};
 
-//   filmsData.forEach(element => {
-//     if (directores.hasOwnProperty(element.director)) {
-//       directores[element.director]++;
-//     } else {
-//       directores[element.director] = 1;
-//     }
-//   });
-
-//   return directores;
-// }
 function calcularDirectores() {
   let directores = {};
 
@@ -505,55 +493,6 @@ function calcularProducer() {
 
   return producers;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 
-
-// google.charts.load("current", { packages: ["corechart"] });
-// google.charts.setOnLoadCallback(drawChart);
-
-// function drawChart() {
-//   var directoresData = calcularDirectores();
-//   var dataTable = new google.visualization.DataTable();
-//   dataTable.addColumn('string', 'Director');
-//   dataTable.addColumn('number', 'Películas');
-//   dataTable.addColumn('number', 'rt_score');
-
-//   Object.keys(directoresData).forEach(director => {
-//     var cantidad = directoresData[director].cantidad;
-//     var totalRtScore = directoresData[director].totalRtScore;
-
-//     // Calcular el porcentaje de rt_score
-//     var porcentajeRtScore = cantidad > 0 ? totalRtScore / cantidad : 0;
-
-//     dataTable.addRow([director, cantidad, porcentajeRtScore]);
-//   });
-
-//   var options = {
-//     title: 'Porcentaje de Películas por Director',
-//     pieHole: 0.4,
-//     width: 1000,
-//     height: 800,
-//     tooltip: { textStyle: { color: "red" }, showColorCode: true },
-//     pieSliceText: { fontSize: 12 },
-//     pieStartAngle: 100,
-//   };
-
-//   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-//   chart.draw(dataTable, options);
-// }
 
 
 google.charts.load("current", { packages: ["corechart", "bar"] });

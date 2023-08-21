@@ -44,7 +44,7 @@ header.off {
 
 .menu {
   background-color: black;
-  height: 51px;
+  height: auto;
   width: 100%;
   margin-top: 30px;
 }
@@ -52,7 +52,7 @@ header.off {
 .menu-button {
   list-style: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -75,21 +75,27 @@ a[data-tab].active {
   color: #109ceb !important;
 }
 
-.filter-container {
-  display: flex;
-  justify-content: end;
+#input-search {
+  border: solid #ccc 2px;
+  margin-bottom: 12px;
+}
+
+.filter-container select {
+  border: solid #ccc 2px;
+
 }
 
 .box-filter {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   padding: 15px;
   margin-top: 25px;
-  gap: 30px;
+  gap: 12px;
 }
 
 #button-filter,
-#button-filter-producer,
+#button-filter-pro-direct,
 #button-filter-movie,
 #button-filter-character-gender,
 #button-filter-vehicle-class,
@@ -98,24 +104,17 @@ a[data-tab].active {
 #button-filter-location-terrain {
   width: 15rem;
   height: 30px;
-  border: 2px solid #aaa;
   margin-bottom: 20px;
   margin-top: 20px;
 }
 
-#button-filter-movie,
-#button-filter-character-gender,
-#button-filter-vehicle-class,
-#button-filter-character-specie,
-#button-filter-location-climate,
-#button-filter-location-terrain {
-  display: none;
-}
+
 
 #main-container {
-  width: 100%;
-  margin-top: 100px;
+  max-width: 100%;
+  margin: auto;
   text-align: center;
+  margin-top: 80px;
 }
 
 .movie-container {
@@ -143,19 +142,6 @@ hr {
   border: 1px solid #ccc;
 }
 
-main {
-  text-align: center;
-  margin-top: 90px;
-}
-
-#characters-big-container,
-#vehicles-big-container,
-#directors-big-container,
-#producers-big-container,
-#locations-big-container {
-  display: none;
-}
-
 .tab-content2 {
   display: grid;
   grid-template-columns: repeat(auto-fill, 302px);
@@ -181,15 +167,12 @@ main {
   font-size: 15px;
 }
 
-#container-filter-productors-directors {
-  display: flex;
-  align-items: center;
-}
+
 
 #button-filter-prodirect {
-  margin-left: 10px;
   width: 15rem;
   height: 30px;
+  border: 2px solid #ccc;
 }
 
 #characters-big-container,
@@ -198,6 +181,23 @@ main {
 #producers-big-container,
 #locations-big-container,
 #curiosidad-big-container {
+  display: none;
+}
+
+#button-filter-movie,
+#button-filter-character-gender,
+#button-filter-vehicle-class,
+#button-filter-character-specie,
+#button-filter-location-climate,
+#button-filter-location-terrain {
+  display: none;
+}
+
+#characters-big-container,
+#vehicles-big-container,
+#directors-big-container,
+#producers-big-container,
+#locations-big-container {
   display: none;
 }
 
@@ -228,7 +228,7 @@ footer ul li {
 .info {
   display: none;
   position: absolute;
-  width: 300px;
+  max-width: 235px;
   border-radius: 0 6px 6px 6px;
   border: 1px solid #000000;
   text-align: left;
@@ -241,6 +241,7 @@ footer ul li {
 .title-tooltip {
   font-size: 20px;
   margin-bottom: 10px;
+
 }
 
 #root .poster:hover div.info {
@@ -252,4 +253,56 @@ footer ul li {
   text-align: center;
   padding: 30PX;
   margin-top: 50px;
+}
+
+@media (max-width:900) {
+  .movie-container {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-content2 {
+    grid-template-columns: 1fr;
+  }
+
+  .box-filter,
+  .menu {
+    max-width: 45%;
+  }
+
+  #director_chart_div {
+    max-width: 45%;
+
+  }
+
+  .filter-container {
+    max-width: 45%;
+
+  }
+}
+
+@media (max-width: 600px) {
+  .box-filter {
+    flex-direction: column;
+  }
+
+  #director_chart_div,
+  #productor_chart_div {
+    max-width: 95%;
+  }
+
+  .menu-button {
+    flex-direction: column;
+  }
+
+  #button-filter-container,
+  #button-filter-character-gender,
+  #button-filter-character-specie,
+  #button-movie-filter,
+  #button-filter,
+  #button-filter-pro-direct {
+    flex-direction: column;
+    align-items: center;
+  }
+
+
 }
