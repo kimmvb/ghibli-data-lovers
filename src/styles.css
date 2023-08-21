@@ -239,6 +239,7 @@ footer ul li {
   display: block;
 }
 
+
 .graficos {
   display: grid;
   grid-template-columns: repeat(auto-fill, 480px);

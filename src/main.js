@@ -143,29 +143,69 @@ createLocations(locationsData);
 // (searchImport) es una constante que fue importada desde data.js que ademas es una funcion (searchFilmsByTitle)
 // y a esa funcion le pasamos el valor que se captura del input text y films.Data (data event.target.value, filmsData)
 // filmsData puede variar dependiendo de la ubicacion del dato
+
 inputSearch.addEventListener("keyup", function (event) {
   const tabActive =
     document.querySelectorAll("a[data-tab].active")[0].innerText;
+  const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another word</strong> &#128269</p>`;
   if (tabActive === "Movies") {
-    createFilms(searchImport.searchFilmsByTitle(event.target.value, filmsData));
+    const moviesResult = searchImport.searchFilmsByTitle(
+      event.target.value,
+      filmsData,
+    );
+    const showNoResult = document.getElementById("root");
+    if (moviesResult.length === 0) {
+      showNoResult.style.display = "block";
+      showNoResult.innerHTML = noResults;
+    } else {
+      showNoResult.style.display = "grid";
+      createFilms(moviesResult);
+    }
     return;
   }
   if (tabActive === "Characters") {
-    printDataCharacters(
-      searchImport.searchCharacterByName(event.target.value, peopleData),
+    const charactersResult = searchImport.searchCharacterByName(
+      event.target.value,
+      peopleData,
     );
+    const showNoResult = document.getElementById("characters-small-container");
+    if (charactersResult.length === 0) {
+      showNoResult.style.display = "block";
+      showNoResult.innerHTML = noResults;
+    } else {
+      showNoResult.style.display = "grid";
+      printDataCharacters(charactersResult);
+    }
     return;
   }
   if (tabActive === "Vehicles") {
-    createVehicles(
-      searchImport.searchVehiclesByName(event.target.value, vehiclesData),
+    const vehiclesResult = searchImport.searchVehiclesByName(
+      event.target.value,
+      vehiclesData,
     );
+    const showNoResult = document.getElementById("vehicles-small-container");
+    if (vehiclesResult.length === 0) {
+      showNoResult.style.display = "block";
+      showNoResult.innerHTML = noResults;
+    } else {
+      showNoResult.style.display = "grid";
+      createVehicles(vehiclesResult);
+    }
     return;
   }
   if (tabActive === "Locations") {
-    createLocations(
-      searchImport.searchLocationsByName(event.target.value, locationsData),
+    const locationsResult = searchImport.searchLocationsByName(
+      event.target.value,
+      locationsData,
     );
+    const showNoResult = document.getElementById("locations-small-container");
+    if (locationsResult.length === 0) {
+      showNoResult.style.display = "block";
+      showNoResult.innerHTML = noResults;
+    } else {
+      showNoResult.style.display = "grid";
+      createLocations(locationsResult);
+    }
     return;
   }
 });
@@ -217,7 +257,14 @@ filterMovies.addEventListener("change", function (event) {
   if (filter.selectedIndex > 0) {
     const changeEvent = new Event("change");
     filter.dispatchEvent(changeEvent);
+  }
+  const showNoResult = document.getElementById("characters-small-container");
+  if (peopleDataFiltered.length === 0) {
+    const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+    showNoResult.style.display = "block";
+    showNoResult.innerHTML = noResults;
   } else {
+    showNoResult.style.display = "grid";
     printDataCharacters(peopleDataFiltered);
   }
 });
@@ -244,7 +291,14 @@ filterCharacterGender.addEventListener("change", function (event) {
   if (filter.selectedIndex > 0) {
     const changeEvent = new Event("change");
     filter.dispatchEvent(changeEvent);
+  }
+  const showNoResult = document.getElementById("characters-small-container");
+  if (peopleDataFiltered.length === 0) {
+    const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+    showNoResult.style.display = "block";
+    showNoResult.innerHTML = noResults;
   } else {
+    showNoResult.style.display = "grid";
     printDataCharacters(peopleDataFiltered);
   }
 });
@@ -271,7 +325,14 @@ filterCharacterSpecie.addEventListener("change", function (event) {
   if (filter.selectedIndex > 0) {
     const changeEvent = new Event("change");
     filter.dispatchEvent(changeEvent);
+  }
+  const showNoResult = document.getElementById("characters-small-container");
+  if (peopleDataFiltered.length === 0) {
+    const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+    showNoResult.style.display = "block";
+    showNoResult.innerHTML = noResults;
   } else {
+    showNoResult.style.display = "grid";
     printDataCharacters(peopleDataFiltered);
   }
 });
@@ -294,7 +355,14 @@ filterLocationClimate.addEventListener("change", function (event) {
   if (filter.selectedIndex > 0) {
     const changeEvent = new Event("change");
     filter.dispatchEvent(changeEvent);
+  }
+  const showNoResult = document.getElementById("locations-small-container");
+  if (locationsDataFiltered.length === 0) {
+    const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+    showNoResult.style.display = "block";
+    showNoResult.innerHTML = noResults;
   } else {
+    showNoResult.style.display = "grid";
     createLocations(locationsDataFiltered);
   }
 });
@@ -315,7 +383,14 @@ filterLocationTerrain.addEventListener("change", function (event) {
   if (filter.selectedIndex > 0) {
     const changeEvent = new Event("change");
     filter.dispatchEvent(changeEvent);
+  }
+  const showNoResult = document.getElementById("locations-small-container");
+  if (locationsDataFiltered.length === 0) {
+    const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+    showNoResult.style.display = "block";
+    showNoResult.innerHTML = noResults;
   } else {
+    showNoResult.style.display = "grid";
     createLocations(locationsDataFiltered);
   }
 });
@@ -364,15 +439,35 @@ function callOrderAZ(tabActive) {
   if (tabActive === "Movies") {
     createFilms(orderImport.sortAToZTitle(filmsDataFiltered, tabActive));
   } else if (tabActive === "Characters") {
-    printDataCharacters(
-      orderImport.sortAToZTitle(peopleDataFiltered, tabActive),
+    const orderCharacters = orderImport.sortAToZTitle(
+      peopleDataFiltered,
+      tabActive,
     );
+    const showNoResult = document.getElementById("characters-small-container");
+    if (orderCharacters.length === 0) {
+      const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+      showNoResult.style.display = "block";
+      showNoResult.innerHTML = noResults;
+    } else {
+      showNoResult.style.display = "grid";
+      printDataCharacters(orderCharacters);
+    }
   } else if (tabActive === "Vehicles") {
     createVehicles(orderImport.sortAToZTitle(vehiclesData, tabActive));
   } else {
-    createLocations(
-      orderImport.sortAToZTitle(locationsDataFiltered, tabActive),
+    const orderLocations = orderImport.sortAToZTitle(
+      locationsDataFiltered,
+      tabActive,
     );
+    const showNoResult = document.getElementById("locations-small-container");
+    if (orderLocations.length === 0) {
+      const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+      showNoResult.style.display = "block";
+      showNoResult.innerHTML = noResults;
+    } else {
+      showNoResult.style.display = "grid";
+      createLocations(orderLocations);
+    }
   }
 }
 
@@ -380,15 +475,35 @@ function callOrderZA(tabActive) {
   if (tabActive === "Movies") {
     createFilms(orderImport.sortZToATitle(filmsDataFiltered, tabActive));
   } else if (tabActive === "Characters") {
-    printDataCharacters(
-      orderImport.sortZToATitle(peopleDataFiltered, tabActive),
+    const orderCharacters = orderImport.sortZToATitle(
+      peopleDataFiltered,
+      tabActive,
     );
+    const showNoResult = document.getElementById("characters-small-container");
+    if (orderCharacters.length === 0) {
+      const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+      showNoResult.style.display = "block";
+      showNoResult.innerHTML = noResults;
+    } else {
+      showNoResult.style.display = "grid";
+      printDataCharacters(orderCharacters);
+    }
   } else if (tabActive === "Vehicles") {
     createVehicles(orderImport.sortZToATitle(vehiclesData, tabActive));
   } else {
-    createLocations(
-      orderImport.sortZToATitle(locationsDataFiltered, tabActive),
+    const orderLocations = orderImport.sortZToATitle(
+      locationsDataFiltered,
+      tabActive,
     );
+    const showNoResult = document.getElementById("locations-small-container");
+    if (orderLocations.length === 0) {
+      const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+      showNoResult.style.display = "block";
+      showNoResult.innerHTML = noResults;
+    } else {
+      showNoResult.style.display = "grid";
+      createLocations(orderLocations);
+    }
   }
 }
 
