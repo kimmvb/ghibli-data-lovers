@@ -27,9 +27,9 @@ const header = document.querySelector("header");
 window.onscroll = scroll_listener;
 
 function scroll_listener() {
-  let scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
-  let maxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  let totalScrolled = scrollPosition * 100 / maxHeight;
+  const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
+  const maxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const totalScrolled = scrollPosition * 100 / maxHeight;
   document.querySelector("#progress-bar span").style.width = totalScrolled + '%';
 }
 let prevY = window.scrollY;
@@ -574,11 +574,12 @@ function printDataCharacters(people) {
 }
 
 
+
 function calcularDirectores() {
-  let directores = {};
+  const directores = {};
 
   filmsData.forEach(element => {
-    if (directores.hasOwnProperty(element.director)) {
+    if ((element.director in directores)) {
       directores[element.director].cantidad++;
       directores[element.director].totalRtScore += parseFloat(element.rt_score);
     } else {
@@ -592,10 +593,10 @@ function calcularDirectores() {
   return directores;
 }
 function calcularProducer() {
-  let producers = {}; // Cambiado de 'producer' a 'producers'
+  const producers = {}; // Cambiado de 'producer' a 'producers'
 
   filmsData.forEach(element => {
-    if (producers.hasOwnProperty(element.producer)) {
+    if ((element.producer in producers)) {
       producers[element.producer].cantidad++;
       producers[element.producer].totalRtScore += parseFloat(element.rt_score);
     } else {
@@ -609,26 +610,25 @@ function calcularProducer() {
   return producers;
 }
 
-
+let google;
 google.charts.load("current", { packages: ["corechart", "bar"] });
 google.charts.setOnLoadCallback(drawBasic);
 
 function drawBasic() {
-  var directoresData = calcularDirectores();
-  var data = new google.visualization.DataTable();
+  const directoresData = calcularDirectores();
+  const data = new google.visualization.DataTable();
   data.addColumn('string');
   data.addColumn('number', 'Films');
   data.addColumn('number', '% Rating');
 
   Object.keys(directoresData).forEach(director => {
-    var cantidad = directoresData[director].cantidad;
-    var totalRtScore = directoresData[director].totalRtScore;
-    var porcentajeRtScore = cantidad > 0 ? totalRtScore / cantidad : 0;
+    const cantidad = directoresData[director].cantidad;
+    const totalRtScore = directoresData[director].totalRtScore;
+    const porcentajeRtScore = cantidad > 0 ? totalRtScore / cantidad : 0;
     data.addRow([director, cantidad, porcentajeRtScore]);
   });
 
-  var options = {
-    bars: { groupWidth: "50%" },
+  const options = {
     tooltip: { isHtml: true },
     addColumn: { fontSize: 8 },
     width: '100%',
@@ -647,7 +647,7 @@ function drawBasic() {
 
   };
 
-  var chart = new google.visualization.BarChart(
+  const chart = new google.visualization.BarChart(
     document.getElementById('director_chart_div'));
 
   chart.draw(data, options);
@@ -657,22 +657,21 @@ google.charts.load("current", { packages: ["corechart", "bar"] });
 google.charts.setOnLoadCallback(drawProducerChart);
 
 function drawProducerChart() {
-  var producersData = calcularProducer(); // Llama a tu función para obtener los datos
-  var data = new google.visualization.DataTable();
+  const producersData = calcularProducer();
+  const data = new google.visualization.DataTable();
 
   data.addColumn('string', 'Productor');
   data.addColumn('number', 'Films');
   data.addColumn('number', '% Rating');
 
   Object.keys(producersData).forEach(producer => {
-    var cantidad = producersData[producer].cantidad;
-    var totalRtScore = producersData[producer].totalRtScore;
-    var porcentajeRtScore = cantidad > 0 ? (totalRtScore / cantidad) : 0;
+    const cantidad = producersData[producer].cantidad;
+    const totalRtScore = producersData[producer].totalRtScore;
+    const porcentajeRtScore = cantidad > 0 ? (totalRtScore / cantidad) : 0;
     data.addRow([producer, cantidad, porcentajeRtScore]);
   });
 
-  var options = {
-    bars: { groupWidth: "50%" },
+  const options = {
     tooltip: { isHtml: true },
     addColumn: { fontSize: 8 },
     width: '100%',
@@ -691,6 +690,6 @@ function drawProducerChart() {
 
   };
 
-  var chart = new google.visualization.BarChart(document.getElementById('productor_chart_div'));
-  chart.draw(data, options);
+  const chartProducer = new google.visualization.BarChart(document.getElementById('productor_chart_div'));
+  chartProducer.draw(data, options);
 }

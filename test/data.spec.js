@@ -2,8 +2,7 @@ import {
   orderImport,
   filterImport,
   searchImport,
-} from "/Users/Usuario/ghibli-data-lovers/src/data.js";
-
+} from "/Users/karla/Desktop/Proyectos Laboratoria/ghibli-datalovers/src/data.js"
 const moviesData = [
   {
     title: "Castle in the Sky",
