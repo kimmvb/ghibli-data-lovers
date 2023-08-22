@@ -367,7 +367,7 @@ filterLocationClimate.addEventListener("change", function (event) {
   }
   const showNoResult = document.getElementById("locations-small-container");
   if (locationsDataFiltered.length === 0) {
-    const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+    const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another</strong> &#128269</p>`;
     showNoResult.style.display = "block";
     showNoResult.innerHTML = noResults;
   } else {
@@ -395,7 +395,7 @@ filterLocationTerrain.addEventListener("change", function (event) {
   }
   const showNoResult = document.getElementById("locations-small-container");
   if (locationsDataFiltered.length === 0) {
-    const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+    const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another</strong> &#128269</p>`;
     showNoResult.style.display = "block";
     showNoResult.innerHTML = noResults;
   } else {
@@ -582,7 +582,7 @@ function callOrderAZ(tabActive) {
     );
     const showNoResult = document.getElementById("locations-small-container");
     if (orderLocations.length === 0) {
-      const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+      const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another</strong> &#128269</p>`;
       showNoResult.style.display = "block";
       showNoResult.innerHTML = noResults;
     } else {
@@ -618,7 +618,7 @@ function callOrderZA(tabActive) {
     );
     const showNoResult = document.getElementById("locations-small-container");
     if (orderLocations.length === 0) {
-      const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another filter</strong> &#128269</p>`;
+      const noResults = `<p style = "font-size: large;">No results found, you should try with <strong>another</strong> &#128269</p>`;
       showNoResult.style.display = "block";
       showNoResult.innerHTML = noResults;
     } else {
