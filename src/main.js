@@ -14,27 +14,34 @@ const locationsRoot = document.getElementById("locations-small-container");
 const filter = document.getElementById("button-filter");
 const ascOption = document.getElementById("asc");
 const descOption = document.getElementById("desc");
-const filterProducerDirector = document.getElementById(
-  "button-filter-prodirect",
-);
-const filterProducerDirectorContainer = document.getElementById(
-  "container-filter-productors-directors",
-);
+const filterProducerDirector = document.getElementById("button-filter-prodirect",);
+const filterProducerDirectorContainer = document.getElementById("container-filter-productors-directors",);
 const filterMovies = document.getElementById("button-filter-movie");
-const filterCharacterGender = document.getElementById(
-  "button-filter-character-gender",
-);
-const filterCharacterSpecie = document.getElementById(
-  "button-filter-character-specie",
-);
-//const filterVehicleClass = document.getElementById("button-filter-vehicle-class",);
-const filterLocationClimate = document.getElementById(
-  "button-filter-location-climate",
-);
-const filterLocationTerrain = document.getElementById(
-  "button-filter-location-terrain",
-);
+const filterCharacterGender = document.getElementById("button-filter-character-gender",);
+const filterCharacterSpecie = document.getElementById("button-filter-character-specie",);
+const filterLocationClimate = document.getElementById("button-filter-location-climate",);
+const filterLocationTerrain = document.getElementById("button-filter-location-terrain",);
 const inputSearch = document.getElementById("input-search");
+const header = document.querySelector("header");
+
+window.onscroll = scroll_listener;
+
+function scroll_listener() {
+  const scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
+  const maxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const totalScrolled = scrollPosition * 100 / maxHeight;
+  document.querySelector("#progress-bar span").style.width = totalScrolled + '%';
+}
+let prevY = window.scrollY;
+window.addEventListener("scroll", function () {
+  if (prevY > window.scrollY) {
+    header.classList.remove("off")
+  } else {
+    header.classList.add("off")
+  }
+  prevY = window.scrollY;
+});
+
 
 //Data recogida en un array
 const filmsData = data.films; //Variable que contiene la data del array 'films'.
@@ -105,17 +112,20 @@ document.querySelectorAll("a[data-tab]").forEach((link) => {
       filterCharacterSpecie.style.display = "none";
       filterMovies.style.display = "none";
     }
-    /*if (tabName === "vehicles-big-container") {
-      filterVehicleClass.style.display = "block";
-    } else {
-      filterVehicleClass.style.display = "none";
-    }*/
+
     if (tabName === "locations-big-container") {
       filterLocationClimate.style.display = "block";
       filterLocationTerrain.style.display = "block";
     } else {
       filterLocationClimate.style.display = "none";
       filterLocationTerrain.style.display = "none";
+    }
+    if (tabName === "trivia-big-container") {
+      filter.style.display = "none";
+
+    } else {
+      filter.style.display = "block";
+
     }
   });
 });
@@ -125,21 +135,8 @@ createVehicles(vehiclesData);
 printDataCharacters(peopleData);
 createLocations(locationsData);
 
-//Index a home
-const sectionHome = document.getElementById("index");
-const sectionMovies = document.getElementById("movies");
-const enterButton = document.getElementById("action-enter");
 
-enterButton.addEventListener("click", function (event) {
-  event.preventDefault();
-  sectionHome.classList.remove("show");
-  sectionHome.classList.add("hidden");
-  sectionMovies.classList.remove("hidden");
-  sectionMovies.classList.add("show");
-  document.body.classList.remove("body-blue");
-});
-// Filtro Busqueda/Navegacion
-//se crea la variable inputSearch para hacer referencia al input (linea 13)
+
 //Se crea evento para "escuchar" cuando se ejecuta un keyup / con la variable tabActive capturamos el tab activo
 //con if le indicamos que si el tab activo es Movies, creamos/mostramos las movies bajo el parametro
 // - searchImport.searchFilmsByTitle(event.target.value, filmsData -
@@ -340,12 +337,6 @@ filterCharacterSpecie.addEventListener("change", function (event) {
   }
 });
 
-/*filterVehicleClass.addEventListener("change", function (event) {
-  createVehicles(
-    filterImport.filterForVehicleClass(vehiclesData, event.target.value),
-  );
-});*/
-
 filterLocationClimate.addEventListener("change", function (event) {
   if (filterLocationClimate.selectedIndex > 1) {
     locationsDataFiltered = filterImport.filterForLocationClimate(
@@ -412,8 +403,7 @@ filterLocationTerrain.addEventListener("change", function (event) {
 // Target es atributo de select al igual que value, los que capturan el valor
 
 filter.addEventListener("change", function (event) {
-  const tabActive =
-    document.querySelectorAll("a[data-tab].active")[0].innerText;
+  const tabActive = document.querySelectorAll("a[data-tab].active")[0].innerText;
   if (event.target.value === "") {
     // si el valor que obtengo es "nada"
     // validar que debemos hacer cuando no seleccione nada
@@ -443,118 +433,7 @@ filter.addEventListener("change", function (event) {
 /*function callOrderAZ(tabActive) {
   //console.log(emptyLocationsArray);
 
-  if (tabActive === "Movies") {
-    let dataemptyArray = [];
-    if (emptyArray.length === 0) {
-      dataemptyArray = filmsData;
-    } else {
-      dataemptyArray = emptyArray;
-    }
-    createFilms(orderImport.sortAToZTitle(dataemptyArray, tabActive));
-  } else if (tabActive === "Characters") {
-    let dataemptyArray = [];
-    if (emptyCharactersArray.length === 0) {
-      dataemptyArray = peopleData;
-    } else {
-      dataemptyArray = emptyCharactersArray;
-    }
-    printDataCharacters(orderImport.sortAToZTitle(dataemptyArray, tabActive));
-  } else if (tabActive === "Vehicles") {
-    let dataemptyArray = [];
-    if (emptyVehiclesArray.length === 0) {
-      dataemptyArray = vehiclesData;
-    } else {
-      dataemptyArray = emptyVehiclesArray;
-    }
-    createVehicles(orderImport.sortAToZTitle(dataemptyArray, tabActive));
-  } else {
-    let dataemptyArray = [];
-    if (emptyLocationsArray.length === 0) {
-      dataemptyArray = locationsData;
-    } else {
-      dataemptyArray = emptyLocationsArray;
-    }
-    createLocations(orderImport.sortAToZTitle(dataemptyArray, tabActive));
-  }
-}
 
-function callOrderZA(tabActive) {
-  //let dataemptyArray = [];
-  if (tabActive === "Movies") {
-    let dataemptyArray = [];
-    if (emptyArray.length === 0) {
-      dataemptyArray = filmsData;
-    } else {
-      dataemptyArray = emptyArray;
-    }
-    createFilms(orderImport.sortZToATitle(dataemptyArray, tabActive));
-  } else if (tabActive === "Characters") {
-    let dataemptyArray = [];
-    if (emptyCharactersArray.length === 0) {
-      dataemptyArray = peopleData;
-    } else {
-      dataemptyArray = emptyCharactersArray;
-    }
-    printDataCharacters(orderImport.sortZToATitle(dataemptyArray, tabActive));
-  } else if (tabActive === "Vehicles") {
-    let dataemptyArray = [];
-    if (emptyVehiclesArray.length === 0) {
-      dataemptyArray = vehiclesData;
-    } else {
-      dataemptyArray = emptyVehiclesArray;
-    }
-    createVehicles(orderImport.sortZToATitle(dataemptyArray, tabActive));
-  } else {
-    let dataemptyArray = [];
-    if (emptyLocationsArray.length === 0) {
-      dataemptyArray = locationsData;
-    } else {
-      dataemptyArray = emptyLocationsArray;
-    }
-    createLocations(orderImport.sortZToATitle(dataemptyArray, tabActive));
-  }
-}
-
-function callDateAsc(tabActive) {
-  let dataemptyArray = [];
-  if (emptyArray.length === 0) {
-    dataemptyArray = filmsData;
-  } else {
-    dataemptyArray = emptyArray;
-  }
-  if (tabActive === "Movies") {
-    createFilms(orderImport.sortRDAsc(dataemptyArray, tabActive));
-  }
-}
-
-function callDateDesc(tabActive) {
-  let dataemptyArray = [];
-  if (emptyArray.length === 0) {
-    dataemptyArray = filmsData;
-  } else {
-    dataemptyArray = emptyArray;
-  }
-  if (tabActive === "Movies") {
-    createFilms(orderImport.sortRDDesc(dataemptyArray, tabActive));
-  }
-}
-
-//Mostrar data ordenada en página
-function createFilms(films) {
-  root.innerHTML = "";
-  for (let i = 0; i < films.length; i++) {
-    root.innerHTML += `<figure class="poster">
-        <div class="info">
-            <p><b>Rating<b/>: ⭐${films[i].rt_score} / <b>Año:</b> ${films[i].release_date}</p> 
-            <p>${films[i].description}</p>
-            <br>
-            <p>Director: <b>${films[i].director}</b></p> 
-            <p>Productor: <b>${films[i].producer}</b></p> 
-        </div>
-        <img src="${films[i].poster}" alt="${films[i].title}" />
-        <figcaption>${films[i].title}</figcaption> 
-        </figure>`;
-  }
 }*/
 function callOrderAZ(tabActive) {
   if (tabActive === "Movies") {
@@ -692,4 +571,125 @@ function printDataCharacters(people) {
         <p><strong>Gender</strong>: ${people[i].gender}</p>
         </figure>`;
   }
+}
+
+
+
+function calcularDirectores() {
+  const directores = {};
+
+  filmsData.forEach(element => {
+    if ((element.director in directores)) {
+      directores[element.director].cantidad++;
+      directores[element.director].totalRtScore += parseFloat(element.rt_score);
+    } else {
+      directores[element.director] = {
+        cantidad: 1,
+        totalRtScore: parseFloat(element.rt_score)
+      };
+    }
+  });
+
+  return directores;
+}
+function calcularProducer() {
+  const producers = {}; // Cambiado de 'producer' a 'producers'
+
+  filmsData.forEach(element => {
+    if ((element.producer in producers)) {
+      producers[element.producer].cantidad++;
+      producers[element.producer].totalRtScore += parseFloat(element.rt_score);
+    } else {
+      producers[element.producer] = {
+        cantidad: 1,
+        totalRtScore: parseFloat(element.rt_score)
+      };
+    }
+  });
+
+  return producers;
+}
+
+let google;
+google.charts.load("current", { packages: ["corechart", "bar"] });
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+  const directoresData = calcularDirectores();
+  const data = new google.visualization.DataTable();
+  data.addColumn('string');
+  data.addColumn('number', 'Films');
+  data.addColumn('number', '% Rating');
+
+  Object.keys(directoresData).forEach(director => {
+    const cantidad = directoresData[director].cantidad;
+    const totalRtScore = directoresData[director].totalRtScore;
+    const porcentajeRtScore = cantidad > 0 ? totalRtScore / cantidad : 0;
+    data.addRow([director, cantidad, porcentajeRtScore]);
+  });
+
+  const options = {
+    tooltip: { isHtml: true },
+    addColumn: { fontSize: 8 },
+    width: '100%',
+    heigth: '500px',
+    chartArea: {
+      'width': '50%'
+    },
+    title: 'Films por por Productor',
+    bars: 'horizontal',
+    axes: {
+      y: {
+        0: { side: 'right' }
+      }
+    },
+    bar: { groupWidth: "90%" }
+
+  };
+
+  const chart = new google.visualization.BarChart(
+    document.getElementById('director_chart_div'));
+
+  chart.draw(data, options);
+}
+
+google.charts.load("current", { packages: ["corechart", "bar"] });
+google.charts.setOnLoadCallback(drawProducerChart);
+
+function drawProducerChart() {
+  const producersData = calcularProducer();
+  const data = new google.visualization.DataTable();
+
+  data.addColumn('string', 'Productor');
+  data.addColumn('number', 'Films');
+  data.addColumn('number', '% Rating');
+
+  Object.keys(producersData).forEach(producer => {
+    const cantidad = producersData[producer].cantidad;
+    const totalRtScore = producersData[producer].totalRtScore;
+    const porcentajeRtScore = cantidad > 0 ? (totalRtScore / cantidad) : 0;
+    data.addRow([producer, cantidad, porcentajeRtScore]);
+  });
+
+  const options = {
+    tooltip: { isHtml: true },
+    addColumn: { fontSize: 8 },
+    width: '100%',
+    heigth: '500px',
+    chartArea: {
+      'width': '50%'
+    },
+    title: 'Films por por Productor',
+    bars: 'horizontal',
+    axes: {
+      y: {
+        0: { side: 'right' }
+      }
+    },
+    bar: { groupWidth: "90%" }
+
+  };
+
+  const chartProducer = new google.visualization.BarChart(document.getElementById('productor_chart_div'));
+  chartProducer.draw(data, options);
 }
