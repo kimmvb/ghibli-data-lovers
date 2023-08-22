@@ -586,25 +586,9 @@ function printDataCharacters(people) {
   }
 }
 
-
-
-
-
-
-filmsData.forEach(element => {
-  if ((element.producer in producers)) {
-    producers[element.producer].cantidad++;
-    producers[element.producer].totalRtScore += parseFloat(element.rt_score);
-  } else {
-    producers[element.producer] = {
-      cantidad: 1,
-      totalRtScore: parseFloat(element.rt_score)
-    };
-  }
-});
-
 // eslint-disable-next-line no-undef
 google.charts.load("current", { packages: ["corechart", "bar"] });
+// eslint-disable-next-line no-undef
 google.charts.setOnLoadCallback(drawBasic);
 
 function drawBasic() {
@@ -639,7 +623,7 @@ function drawBasic() {
     },
     bar: { groupWidth: "90%" },
   };
-
+  // eslint-disable-next-line no-undef
   const chart = new google.visualization.BarChart(
     document.getElementById("director_chart_div"),
   );
@@ -647,7 +631,9 @@ function drawBasic() {
   chart.draw(data, options);
 }
 
+// eslint-disable-next-line no-undef
 google.charts.load("current", { packages: ["corechart", "bar"] });
+// eslint-disable-next-line no-undef
 google.charts.setOnLoadCallback(drawProducerChart);
 
 function drawProducerChart() {

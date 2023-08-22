@@ -240,7 +240,6 @@ export const chartDirectors = {
         };
       }
     });
-
     return directores;
   }
 }

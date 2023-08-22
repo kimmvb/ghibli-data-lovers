@@ -1,8 +1,11 @@
+import { expect } from "@jest/globals";
 import {
   orderImport,
   filterImport,
   searchImport,
-} from "/Users/Usuario/ghibli-data-lovers/test/data.spec.js"
+  chartDirectors,
+  chartProducers
+} from "../src/data.js"
 const moviesData = [
   {
     title: "Castle in the Sky",
@@ -764,7 +767,42 @@ describe("searchImport", () => {
 
 describe("chartDirectors", () => {
   describe("chartDirectors.calcularDirectores", () => {
+    it("It must give the sum of the total rt_score per directed film", () => {
+      expect(
+        chartDirectors.calcularDirectores(moviesData),
+      ).toEqual({
+        'Hayao Miyazaki': { cantidad: 3, totalRtScore: 282 },
+        'Hiroyuki Morita': { cantidad: 1, totalRtScore: 89 },
+      })
+    });
+  });
+  describe("calcularDirectores", () => {
+    it("it must return an error if not params filmsData", () => {
+      expect(() => {
+        chartDirectors.calcularDirectores();
+      }).toThrow("Cannot read properties of undefined (reading 'forEach')");
+    });
+  });
+});
 
+describe("chartProducers", () => {
+  describe("chartProducers.calcularProducer", () => {
+    it("It must give the sum of the total rt_score per productors film", () => {
+      expect(
+        chartProducers.calcularProducer(moviesData),
+      ).toEqual({
+        'Hayao Miyazaki': { cantidad: 1, totalRtScore: 93 },
+        'Isao Takahata': { cantidad: 1, totalRtScore: 95 },
+        'Toshio Suzuki': { cantidad: 2, totalRtScore: 183 }
+      })
+    });
+  });
+  describe("calcularProducer", () => {
+    it("it must return an error if not params filmsData", () => {
+      expect(() => {
+        chartProducers.calcularProducer();
+      }).toThrow("Cannot read properties of undefined (reading 'forEach')");
+    });
   });
 });
 
