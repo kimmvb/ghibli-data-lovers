@@ -247,6 +247,11 @@ footer ul li {
   margin-top: 90px;
 }
 
+#trivia-big-container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 #trivia-big-container p,
 h1 {
   text-align: center;
@@ -267,22 +272,10 @@ h1 {
   justify-content: center;
   margin-top: 100px;
   gap: 30px;
+  padding-top: 150px;
+  text-align: justify;
 
 }
-
-/* .info1,
-.info2,
-.info3,
-.info4,
-.info5,
-.info6,
-.info7,
-.info8 {
-  
-} */
-
-
-
 
 @media (max-width:900px) {
 

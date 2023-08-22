@@ -4,7 +4,7 @@ import {
   filterImport,
   orderImport,
   actives,
-  searchImport,
+  searchImport, chartDirectors, chartProducers
 } from "./data.js";
 
 const root = document.getElementById("root");
@@ -575,47 +575,18 @@ function printDataCharacters(people) {
 
 
 
-function calcularDirectores() {
-  const directores = {};
 
-  filmsData.forEach(element => {
-    if ((element.director in directores)) {
-      directores[element.director].cantidad++;
-      directores[element.director].totalRtScore += parseFloat(element.rt_score);
-    } else {
-      directores[element.director] = {
-        cantidad: 1,
-        totalRtScore: parseFloat(element.rt_score)
-      };
-    }
-  });
 
-  return directores;
-}
-function calcularProducer() {
-  const producers = {}; // Cambiado de 'producer' a 'producers'
 
-  filmsData.forEach(element => {
-    if ((element.producer in producers)) {
-      producers[element.producer].cantidad++;
-      producers[element.producer].totalRtScore += parseFloat(element.rt_score);
-    } else {
-      producers[element.producer] = {
-        cantidad: 1,
-        totalRtScore: parseFloat(element.rt_score)
-      };
-    }
-  });
 
-  return producers;
-}
-
-let google;
+// eslint-disable-next-line no-undef
 google.charts.load("current", { packages: ["corechart", "bar"] });
+// eslint-disable-next-line no-undef
 google.charts.setOnLoadCallback(drawBasic);
 
 function drawBasic() {
-  const directoresData = calcularDirectores();
+  const directoresData = chartDirectors.calcularDirectores(filmsData);
+  // eslint-disable-next-line no-undef
   const data = new google.visualization.DataTable();
   data.addColumn('string');
   data.addColumn('number', 'Films');
@@ -647,17 +618,21 @@ function drawBasic() {
 
   };
 
+  // eslint-disable-next-line no-undef
   const chart = new google.visualization.BarChart(
     document.getElementById('director_chart_div'));
 
   chart.draw(data, options);
 }
 
+// eslint-disable-next-line no-undef
 google.charts.load("current", { packages: ["corechart", "bar"] });
+// eslint-disable-next-line no-undef
 google.charts.setOnLoadCallback(drawProducerChart);
 
 function drawProducerChart() {
-  const producersData = calcularProducer();
+  const producersData = chartProducers.calcularProducer(filmsData);
+  // eslint-disable-next-line no-undef
   const data = new google.visualization.DataTable();
 
   data.addColumn('string', 'Productor');
@@ -690,6 +665,7 @@ function drawProducerChart() {
 
   };
 
+  // eslint-disable-next-line no-undef
   const chartProducer = new google.visualization.BarChart(document.getElementById('productor_chart_div'));
   chartProducer.draw(data, options);
 }

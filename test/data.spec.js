@@ -761,3 +761,10 @@ describe("searchImport", () => {
     });
   });
 });
+
+describe("chartDirectors", () => {
+  describe("chartDirectors.calcularDirectores", () => {
+
+  });
+});
+
