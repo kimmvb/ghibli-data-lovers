@@ -206,7 +206,7 @@ export const searchImport = {
     }
     if (searchString.length > 2) {
       return data.filter((element) => {
-        return element.name.toLowerCase().includes(searchString.toLowerCase());
+        return element.vehicle_class.toLowerCase().includes(searchString.toLowerCase());
       });
     }
     return data;
