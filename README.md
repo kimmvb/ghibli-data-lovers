@@ -1,6 +1,6 @@
-##DataLovers Studio Ghibli
+## DataLovers Studio Ghibli
 
-###Descripcíon
+### Descripcíon
 
 Página web enfocada al estudio Ghibli y a su público. Los principales usuarios de la página son fans del Studio Ghibli que buscan conocer datos concretos de  las películas, sus personajes, locaciones etc  y algún dato curioso sobre el estudio.
 
@@ -24,9 +24,9 @@ Estas funciones seran alternadas dentro de las secciones de la pagina divididas 
 
 
 
-##Detalle de funciones
+## Detalle de funciones
 
-####Funcion Filtrar
+#### Funcion Filtrar
 
 - Películas ➡️ productor y  director
 - Productor ➡️ Films
@@ -35,7 +35,7 @@ Estas funciones seran alternadas dentro de las secciones de la pagina divididas 
 - Locaciones ➡️ clima y tipo de terreno
 
 
-####Funcion Ordenar
+#### Funcion Ordenar
 
 Se podra ordenar de forma alfabetica (ascendente y descendente). Disponible para:
 
@@ -50,9 +50,9 @@ Video Demo：<https://github.com> ejemplo
 
 
 
-#Proceso del proyecto
+# Proceso del proyecto
 
-####Prototipos de interfaz:
+#### Prototipos de interfaz:
 
 Se llevaron a cabo prototipos de la visualización de la página; uno de baja y otro de alta fidelidad.
 
@@ -65,9 +65,9 @@ Prototipo de alta fidelidad (se hizo en Figma)
 ~~(Irían las imágenes de los prototipos)~~
 
 
-#Historia de usuario
+# Historia de usuario
 El proyecto fue dividido en cuatro HU.
-####Historia 1.
+#### Historia 1.
 
 **Objetivo:** Visualizacion de la data, basada en los diseños de Interfaz.
 
@@ -81,7 +81,7 @@ La informacion a mostrar para las peliculas sera la siguiente:
 
 Estos datos seran mostraran con un tooltip que se desplegara al momento de pasar el cursor sobre la imagen de la pelicula.
 
-####Historia 2.
+#### Historia 2.
 
 **Objetivo:** Ordenar data
 
@@ -90,7 +90,7 @@ La data de (películas, personajes, vehículos y locaciones) se podra ordenar en
 La data de películas también se ordenarán por fecha de lanzamiento (más reciente a más antigua y más antigua a más reciente).
 
 
-####Historia 3.
+#### Historia 3.
 
 **Objetivo:** Filtrar data
 
@@ -121,7 +121,7 @@ Estos datos se mostraran en la seccion "Trivia" y se basan en el porcentaje de e
 > Estos datos seran visualizados con gráficos de barras laterales, mostrando por barra el detalle.
 
 
-#Tests unitarios
+# Tests unitarios
 
 Para confirmar la funcionalidad en diferentes situaciones del proyecto, se crearon tests para validar la correcta ejecucion de las funciones.
 
@@ -133,7 +133,7 @@ A continuación un video de los tests:
 
 (Aquí iría un grabación de los tests corriéndose en VSC)
 
-####Al pasar los tests se detectaron dos problemáticas:
+#### Al pasar los tests se detectaron dos problemáticas:
 
 - Las funciones de orden no se ejecutaron correctamente, los datos  estaban en minúsculas y mayúsculas.
 
