@@ -767,7 +767,7 @@ describe("searchImport", () => {
 
 describe("chartDirectors", () => {
   describe("chartDirectors.calcularDirectores", () => {
-    it("It must give the sum of the total rt_score per directed film", () => {
+    it("should return the sum of the total rating score", () => {
       expect(
         chartDirectors.calcularDirectores(moviesData),
       ).toEqual({
@@ -777,7 +777,7 @@ describe("chartDirectors", () => {
     });
   });
   describe("calcularDirectores", () => {
-    it("it must return an error if not params filmsData", () => {
+    it("should return an error when the data is not found", () => {
       expect(() => {
         chartDirectors.calcularDirectores();
       }).toThrow("Cannot read properties of undefined (reading 'forEach')");
@@ -787,7 +787,7 @@ describe("chartDirectors", () => {
 
 describe("chartProducers", () => {
   describe("chartProducers.calcularProducer", () => {
-    it("It must give the sum of the total rt_score per productors film", () => {
+    it("should return the sum of the total rating score", () => {
       expect(
         chartProducers.calcularProducer(moviesData),
       ).toEqual({
@@ -798,7 +798,7 @@ describe("chartProducers", () => {
     });
   });
   describe("calcularProducer", () => {
-    it("it must return an error if not params filmsData", () => {
+    it("should return an error when the data is not found", () => {
       expect(() => {
         chartProducers.calcularProducer();
       }).toThrow("Cannot read properties of undefined (reading 'forEach')");
